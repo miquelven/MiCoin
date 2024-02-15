@@ -3,9 +3,15 @@ import { CryptoContext } from "../../../../context/CryptoContext";
 import InputArea from "../InputArea";
 import { ArrowRightSquare, Triangle } from "lucide-react";
 export default function FilterTable() {
-  const { setCurrency } = useContext(CryptoContext);
+  const { setCurrency, setSortby } = useContext(CryptoContext);
 
   const inputCurrency = useRef(null);
+
+  const selectedSort = (e) => {
+    e.preventDefault();
+    const value = e.target.value;
+    setSortby(value);
+  };
 
   const handleCurrency = (e) => {
     e.preventDefault();
@@ -43,6 +49,7 @@ export default function FilterTable() {
           <select
             name="sortby"
             className="rounded bg-zinc-800 text-base pl-2 pr-10 py-0.5 leading-4 capitalize focus:outline-0"
+            onClick={selectedSort}
           >
             <option value="market_cap_desc">Market cap desc</option>
             <option value="market_cap_asc">Market cap asc</option>
