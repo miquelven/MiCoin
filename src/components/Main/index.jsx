@@ -1,6 +1,8 @@
 import Container from "../Container";
 import DetailText from "../DetailText";
+import Table from "./Table";
 import banner from "../../assets/images/banner.png";
+import FilterTable from "./Table/FilterTable";
 export default function Main() {
   return (
     <Container>
@@ -26,6 +28,11 @@ export default function Main() {
               <img src={banner} alt="Imagem do banner" className=" w-[80%]" />
             </div>
           </div>
+        </section>
+        <section className="flex flex-col justify-center items-center">
+          <h2>Market Overview</h2>
+          <FilterTable />
+          <Table />
         </section>
       </main>
     </Container>
