@@ -57,6 +57,8 @@ export default function FilterTable() {
             <option value="volume_asc">Volume asc</option>
             <option value="id_desc">id desc</option>
             <option value="id_asc">id asc</option>
+            <option value="gecko_desc">gecko desc</option>
+            <option value="gecko_asc">gecko asc</option>
           </select>
           <Triangle className="w-[0.9rem] h-auto absolute right-0.5 top-2 pointer-events-none fill-blue-800 rotate-180 text-blue-600" />
         </label>
