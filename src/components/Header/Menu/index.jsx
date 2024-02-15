@@ -3,16 +3,16 @@ import { useRef } from "react";
 export default function Menu() {
   const headerLinks = [
     {
-      name: "about",
-      to: "#about",
-    },
-    {
       name: "favorites",
       to: "#favorites",
     },
     {
       name: "notices",
       to: "#notices",
+    },
+    {
+      name: "contact",
+      to: "#contact",
     },
   ];
 
@@ -48,7 +48,7 @@ export default function Menu() {
           <li key={link.name}>
             <button
               onClick={() => redirectAnchor(link.to)}
-              className="px-10 capitalize text-md transition-all  hover:text-zinc-400"
+              className="px-10 capitalize  transition-all  hover:text-zinc-400"
             >
               {link.name}
             </button>
@@ -73,7 +73,7 @@ export default function Menu() {
             >
               <button
                 onClick={() => redirectAnchor(link.to)}
-                className="px-10 capitalize text-md transition-all  dark:hover:text-zinc-400"
+                className="px-10 capitalize  transition-all  dark:hover:text-zinc-400"
               >
                 {link.name}
               </button>
