@@ -30,12 +30,14 @@ export default function Menu() {
 
   const openMenu = () => {
     menuBar.current.style.top = "80px";
-    menuBar.current.style.opacity = "1";
+    setTimeout(() => (menuBar.current.style.opacity = "1"), 200);
+    // menuBar.current.style.opacity = "1";
     closeMenuBtn.current.style.display = "block";
     openMenuBtn.current.style.display = "none";
   };
 
   const redirectAnchor = (to) => {
+    closeMenu();
     window.location.href = `${to}`;
   };
 
@@ -46,7 +48,7 @@ export default function Menu() {
           <li key={link.name}>
             <button
               onClick={() => redirectAnchor(link.to)}
-              className="px-10 capitalize text-lg transition-all  hover:text-zinc-400"
+              className="px-10 capitalize text-md transition-all  hover:text-zinc-400"
             >
               {link.name}
             </button>
@@ -62,7 +64,7 @@ export default function Menu() {
         </button>
         <ul
           ref={menuBar}
-          className="flex absolute transition-all delay-150 duration-500 ease-in opacity-0 -top-[185px] left-0 right-0 flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-800"
+          className="flex absolute transition-all  duration-500 ease-in opacity-0 -top-[185px] left-0 right-0 flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-800"
         >
           {headerLinks.map((link) => (
             <li
@@ -71,7 +73,7 @@ export default function Menu() {
             >
               <button
                 onClick={() => redirectAnchor(link.to)}
-                className="px-10 capitalize text-lg transition-all  dark:hover:text-zinc-400"
+                className="px-10 capitalize text-md transition-all  dark:hover:text-zinc-400"
               >
                 {link.name}
               </button>

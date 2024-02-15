@@ -1,15 +1,15 @@
 import Container from "../Container";
 import Menu from "./Menu";
-import Theme from "./Theme";
+import ChangeTheme from "./ChangeTheme";
 
 export default function Header() {
   return (
     <header className="py-5">
       <Container>
         <div className="flex justify-between items-center">
-          <span className="text-blue-500/80 font-semibold text-3xl transition-all duration-300 ease-in-out hover:brightness-125">
+          <span className="text-blue-500/80 font-semibold text-2xl transition-all duration-300 ease-in-out hover:brightness-125">
             Mi
-            <span className="ml-1 text-slate-800 dark:text-zinc-50 text-2xl">
+            <span className="ml-1 text-slate-800 dark:text-zinc-50 text-xl">
               Coin
             </span>
           </span>
@@ -17,7 +17,7 @@ export default function Header() {
             {/* navigation */}
             <Menu />
             {/* light/dark */}
-            <Theme />
+            <ChangeTheme />
           </div>
         </div>
       </Container>
