@@ -43,12 +43,15 @@ export default function Menu() {
 
   return (
     <nav className="">
-      <ul className="max-md:hidden flex">
+      <ul className="max-md:hidden flex mr-3">
         {headerLinks.map((link) => (
-          <li key={link.name}>
+          <li
+            key={link.name}
+            className="py-5 transition duration-300 ease-in border-b-2 border-transparent hover:border-blue-500 hover:opacity-70 "
+          >
             <button
               onClick={() => redirectAnchor(link.to)}
-              className="px-10 capitalize  transition-all  hover:text-zinc-400"
+              className="px-6 capitalize"
             >
               {link.name}
             </button>

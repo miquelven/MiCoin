@@ -13,7 +13,10 @@ export default function Theme() {
   return (
     <div class="flex flex-col justify-center ml-3 ">
       <button id={"light-switch"} onClick={toggleTheme}></button>
-      <label class="relative cursor-pointer p-2" for="light-switch">
+      <label
+        class="transition-all duration-300 relative cursor-pointer px-4 py-6 hover:opacity-70"
+        for="light-switch"
+      >
         <svg
           class="dark:hidden"
           width="16"
