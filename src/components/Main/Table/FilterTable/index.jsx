@@ -1,9 +1,9 @@
 import { useContext, useRef } from "react";
 import { CryptoContext } from "../../../../context/CryptoContext";
 import InputArea from "../InputArea";
-import { ArrowRightSquare, Triangle } from "lucide-react";
+import { ArrowRightSquare, RefreshCcw, Triangle } from "lucide-react";
 export default function FilterTable() {
-  const { setCurrency, setSortby } = useContext(CryptoContext);
+  const { setCurrency, setSortby, resetData } = useContext(CryptoContext);
 
   const inputCurrency = useRef(null);
 
@@ -62,6 +62,12 @@ export default function FilterTable() {
           </select>
           <Triangle className="w-[0.9rem] h-auto absolute right-0.5 top-2 pointer-events-none fill-blue-800 rotate-180 text-blue-600" />
         </label>
+        <button
+          onClick={resetData}
+          className="w-[2rem] ml-4 flex justify-center"
+        >
+          <RefreshCcw className="transition-all  hover:text-blue-300 " />
+        </button>
       </div>
     </div>
   );

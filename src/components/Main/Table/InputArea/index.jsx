@@ -44,7 +44,7 @@ const Input = ({ handleSearch }) => {
       </form>
 
       {inputText.length > 0 ? (
-        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-800 bg-opacity-60 backdrop-blur-md">
+        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-800 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900">
           {searchData ? (
             searchData.map((data) => {
               return (

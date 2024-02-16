@@ -24,7 +24,7 @@ export default function Main() {
             </p>
           </div>
           <div className="flex-1 self-center">
-            <div className="flex justify-end  transition duration-300 ease-in-out  invert-[.95] dark:contrast-125 dark:brightness-105 dark:hover:brightness-95 ">
+            <div className="flex justify-end  transition duration-300 ease-in-out  invert-[.95] dark:contrast-125 dark:brightness-95 dark:hover:brightness-105 ">
               <img src={banner} alt="Imagem do banner" className=" w-[80%]" />
             </div>
           </div>
