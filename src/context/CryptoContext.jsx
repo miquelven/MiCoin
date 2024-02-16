@@ -5,6 +5,7 @@ export const CryptoContext = createContext({});
 
 export const CryptoProvider = ({ children }) => {
   const [cryptoData, setCryptoData] = useState();
+  const [coinData, setCoinData] = useState();
   const [searchData, setSearchData] = useState();
   const [coinSelected, setCoinSelected] = useState("");
   const [pageSelected, setPageSelected] = useState(1);
@@ -39,7 +40,7 @@ export const CryptoProvider = ({ children }) => {
 
       setTotalPages(data.length);
     } catch (e) {
-      console.log("error: " + e);
+      console.log("error: ");
     }
     try {
       const data = await fetch(
@@ -52,6 +53,25 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       setCryptoData(data);
+    } catch (e) {
+      alert("error");
+      console.log("error: " + e);
+    }
+  };
+
+  const getCoinData = async (id) => {
+    try {
+      const data = await fetch(
+        `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`,
+        {
+          method: "GET",
+        }
+      )
+        .then((res) => res.json())
+        .then((json) => json);
+
+      setCoinData(data);
+      console.log(data);
     } catch (e) {
       alert("error");
       console.log("error: " + e);
@@ -84,6 +104,8 @@ export const CryptoProvider = ({ children }) => {
         resetData,
         setPerPage,
         per_page,
+        coinData,
+        getCoinData,
       }}
     >
       {children}

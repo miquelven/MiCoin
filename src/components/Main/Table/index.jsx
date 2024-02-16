@@ -2,6 +2,7 @@ import { useContext, useRef } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 import { ArrowRightSquare, Star } from "lucide-react";
 import Pagination from "./Pagination";
+import { Link } from "react-router-dom";
 
 const PageFor = () => {
   const inputPage = useRef(null);
@@ -75,9 +76,17 @@ export default function Table() {
                       src={crypto.image}
                       alt={crypto.name}
                     />
-                    <span>{crypto.symbol}</span>
+                    <span>
+                      <Link to={`/${crypto.id}`} className="cursor-pointer">
+                        {crypto.symbol}
+                      </Link>
+                    </span>
                   </td>
-                  <td className="py-4">{crypto.name}</td>
+                  <td className="py-4">
+                    <Link to={`/${crypto.id}`} className="cursor-pointer">
+                      {crypto.name}
+                    </Link>
+                  </td>
                   <td className="py-4">
                     {new Intl.NumberFormat("en-IN", {
                       style: "currency",
