@@ -29,7 +29,7 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CryptoProvider>
-      <RouterProvider router={router} />
+         <RouterProvider router={router} />
     </CryptoProvider>
   </React.StrictMode>
 );

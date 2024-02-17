@@ -7,8 +7,8 @@ export default function Menu() {
       to: "#favorites",
     },
     {
-      name: "notices",
-      to: "#notices",
+      name: "trending",
+      to: "#trending",
     },
     {
       name: "contact",
