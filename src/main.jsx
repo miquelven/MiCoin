@@ -6,6 +6,7 @@ import { CryptoProvider } from "./context/CryptoContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import CryptoModal from "./components/Main/CryptoModal";
 import Crypto from "./pages/Crypto";
+import { StorageProvider } from "./context/StorageContext";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <CryptoProvider>
+      <StorageProvider>
          <RouterProvider router={router} />
+      </StorageProvider>
     </CryptoProvider>
   </React.StrictMode>
 );

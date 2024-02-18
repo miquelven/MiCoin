@@ -1,8 +1,30 @@
 import { useContext, useRef } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
+import { StorageContext } from "../../../context/StorageContext";
 import { ArrowRightSquare, Star } from "lucide-react";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
+
+const SaveBtn = ({data}) =>{
+  const {saveCoin, coins, removeCoin} = useContext(StorageContext)
+
+  const handleClick = (e) =>{
+    e.preventDefault();
+    saveCoin(data.id);
+
+    if(coins.includes(data.id)){
+      removeCoin(data.id)
+    }else{
+      saveCoin(data.id)
+    }
+  }
+
+  return (
+<button className="outline-0 border-0 bg-none cursor-pointer" onClick={(e) => handleClick(e)}>
+                      <Star className={`w-7 h-7 mx-1.5 text-blue-900 ${coins.includes(data.id)? 'fill-blue-900' : ''}`} />
+                    </button>
+  )
+}
 
 const PageFor = () => {
   const inputPage = useRef(null);
@@ -67,9 +89,7 @@ export default function Table() {
                   className="text-center text-base border-b border-gray-100 hover:bg-gray-200 last:border-b-0"
                 >
                   <td className="py-4 flex items-center uppercase ">
-                    <button className="outline-0 border-0 bg-none cursor-pointer">
-                      <Star className="w-7 h-7 mx-1.5 " />
-                    </button>
+                    <SaveBtn data={crypto}/>
 
                     <img
                       className="w-[1.2rem] h-[1.2] mx-1.5"

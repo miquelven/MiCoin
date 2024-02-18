@@ -3,8 +3,8 @@ import DetailText from "../DetailText";
 import Table from "./Table";
 import banner from "../../assets/images/banner.png";
 import FilterTable from "./Table/FilterTable";
-import Favorite from "./Favorites";
 import TrendingCoin from "./TrendingCoin";
+import Favorites from "./Favorites";
 export default function Main() {
   return (
     <Container>
@@ -38,7 +38,7 @@ export default function Main() {
         </section>
 
         <section className="mt-16">
-          <Favorite />
+          <Favorites />
         </section>
 
 
