@@ -1,7 +1,7 @@
 import { useContext, useRef } from "react";
 import { CryptoContext } from "../../context/CryptoContext";
 import { StorageContext } from "../../context/StorageContext";
-import { ArrowRightSquare, Outdent, Star } from "lucide-react";
+import { ArrowRightSquare, Star } from "lucide-react";
 import Pagination from "./Pagination";
 import { Link, Outlet } from "react-router-dom";
 

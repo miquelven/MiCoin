@@ -3,7 +3,6 @@ import { useContext } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 
 export default function Pagination() {
-console.log("PAGINATION")
   const { pageSelected, setPageSelected, totalPages, per_page } =
     useContext(CryptoContext);
 
