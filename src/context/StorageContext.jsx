@@ -11,10 +11,12 @@ export const StorageProvider = ({ children }) => {
 
 
   useEffect(()=>{
-    if(coins.length > 0){
-      getCoinsData(coins)
-    }else{
-      setSavedCoins();
+    if(coins){
+      if(coins.length > 0){
+        getCoinsData(coins)
+      }else{
+        setSavedCoins();
+      }
     }
   }, [coins])
 
@@ -60,16 +62,20 @@ setCoins(newCoin)
 
   useLayoutEffect(() => {
     const total = JSON.parse(localStorage.getItem("coins")) || [];
-    
-    if(!total){
+    console.log(total)
+    if(total == null){
         localStorage.setItem("coins", JSON.stringify([]))
     }else{
         let totalCoins = JSON.parse(localStorage.getItem("coins"));
         setCoins(totalCoins);
 
-
-        if(totalCoins.length > 0){
-            getCoinsData(totalCoins)
+        console.log(totalCoins)
+        if(totalCoins){
+          if(totalCoins.length > 0){
+              getCoinsData(totalCoins)
+          }
+        }else{
+          localStorage.setItem("coins", JSON.stringify([]))
         }
     }
   }, []);
