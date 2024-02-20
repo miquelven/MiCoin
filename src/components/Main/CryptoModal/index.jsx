@@ -4,6 +4,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { CryptoContext } from '../../../context/CryptoContext';
 import { Triangle } from 'lucide-react';
 import Chart from './Chart';
+import { MonitoredContext } from '../../../context/MonitoredContext';
 
 const Indicator = ({ currentPrice, high, low }) => {
   const [greenColor, setGreenColor] = useState();
@@ -30,6 +31,21 @@ export default function CryptoModal() {
   const { coinId } = useParams();
   const navigate = useNavigate();
 
+
+
+  const {saveMonitoredCoin, monitoredCoins, removeMonitored} = useContext(MonitoredContext)
+
+  const [inputPrice, setInputPrice] = useState();
+  const [inputEmail, setInputEmail] = useState();
+
+  const handleClick = () => {if(inputPrice.trim() !== "" && inputEmail.trim() !== ''){
+    localStorage.setItem("userEmail", inputEmail) 
+    saveMonitoredCoin(coinId, inputPrice)
+  }}
+
+  const handleClickCancelMonitored = () =>removeMonitored(coinId)
+      
+
   const close = () => {
     navigate('..');
   };
@@ -39,6 +55,7 @@ export default function CryptoModal() {
   useLayoutEffect(() => {
     getCoinData(coinId);
   }, [coinId]);
+
 
   return ReactDOM.createPortal(
     <div
@@ -227,17 +244,58 @@ export default function CryptoModal() {
             <div className="flex flex-col w-[55%] h-full pr-3">
               <Chart id={coinData.id} />
 
-              <div className='flex justify-end mt-4'>
-                <h3 className='text-zinc-50 text-xl py-1'>
+              <div className='flex flex-col items-end mt-4'>
+                <div className='text-zinc-50 text-xl py-1'>
                   <span className='text-zinc-600 capitalize mr-1'>
                     market cap rank: 
                   </span>
                     <span>
                     {coinData.market_cap_rank}
                     </span>
-                </h3>
+                </div>
+                
+              {monitoredCoins && !monitoredCoins.some(coin => coin.name == coinId) && 
+                    <div className='mt-28 gap-3 flex flex-col items-center justify-center  w-full'>
+                    <div className='text-zinc-50 py-1 self-start text-sm'>
+                    <span className='text-zinc-600 capitalize mr-1'>
+                    monitored currencies
+                    </span>
+                      <span>
+                        {monitoredCoins.length}/5
+                      </span>
+                    </div>
+                      <div className='flex justify-center gap-6 w-full text-sm text-zinc-200'>
+                <input type="number" placeholder='price' onChange={(e)=> setInputPrice(e.target.value)} className='w-24 bg-transparent transition-all duration-300 outline-0 border-2 border-zinc-600 rounded focus:border-blue-900 px-2'/>
+                <input type='text' placeholder='your email' onChange={(e)=> setInputEmail(e.target.value)} className='bg-transparent transition-all duration-300 outline-0 border-2 border-zinc-600 rounded focus:border-blue-900 px-2  py-1'/>  
+                      </div>
+
+                    
+
+                <button onClick={handleClick} className='mt-3 border-2 bg-blue-800 border-transparent rounded px-6 py-[2px] hover:border-transparent hover:bg-transparent hover:border-blue-800 transition-all duration-300 font-bold outline-none'>save</button>
+
+                    </div>
+          
+              }
+
+              {monitoredCoins && monitoredCoins.some(coin => coin.name == coinId) && 
+              <>
+              <div className='text-zinc-50 py-1 text-end mt-28 text-sm'>
+              <span className='text-zinc-600 capitalize mr-1'>
+              monitored currencies
+              </span>
+                <span>
+                  {monitoredCoins.length}/5
+                </span>
+                
+              </div>
+              <button onClick={handleClickCancelMonitored} className='mt-3 border-2 text-sm capitalize bg-red-800 border-transparent rounded px-3 py-[2px] hover:border-transparent hover:bg-transparent hover:border-red-800 transition-all duration-300 font-bold outline-none'>stop monitored</button>
+              </>
+              
+              }
+
               </div>
             </div>
+            
           </div>
         ) : null}
       </div>

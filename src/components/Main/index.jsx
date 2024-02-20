@@ -5,7 +5,12 @@ import banner from "../../assets/images/banner.png";
 import FilterTable from "./Table/FilterTable";
 import TrendingCoin from "./TrendingCoin";
 import Favorites from "./Favorites";
+import { useEffect } from "react";
 export default function Main() {
+
+
+
+
   return (
     <Container>
       <main className="mt-20 flex flex-col gap-32">

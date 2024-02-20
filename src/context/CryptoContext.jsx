@@ -74,7 +74,7 @@ export const CryptoProvider = ({ children }) => {
       console.log(data);
     } catch (e) {
       alert("error");
-      console.log("error: " + e);
+      console.log("ERROR ERROR ERROR")
     }
   };
 
