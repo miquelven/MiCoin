@@ -33,17 +33,17 @@ export default function CryptoModal() {
 
 
 
-  const {saveMonitoredCoin, monitoredCoins, removeMonitored} = useContext(MonitoredContext)
+  // const {saveMonitoredCoin, monitoredCoins, removeMonitored} = useContext(MonitoredContext)
 
   const [inputPrice, setInputPrice] = useState();
   const [inputEmail, setInputEmail] = useState();
 
-  const handleClick = () => {if(inputPrice.trim() !== "" && inputEmail.trim() !== ''){
-    localStorage.setItem("userEmail", inputEmail) 
-    saveMonitoredCoin(coinId, inputPrice)
-  }}
+  // const handleClick = () => {if(inputPrice.trim() !== "" && inputEmail.trim() !== ''){
+  //   localStorage.setItem("userEmail", inputEmail) 
+  //   saveMonitoredCoin(coinId, inputPrice)
+  // }}
 
-  const handleClickCancelMonitored = () =>removeMonitored(coinId)
+  // const handleClickCancelMonitored = () =>removeMonitored(coinId)
       
 
   const close = () => {
