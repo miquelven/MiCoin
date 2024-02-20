@@ -254,7 +254,7 @@ export default function CryptoModal() {
                     </span>
                 </div>
                 
-              {monitoredCoins && !monitoredCoins.some(coin => coin.name == coinId) && 
+              {/* {monitoredCoins && !monitoredCoins.some(coin => coin.name == coinId) && 
                     <div className='mt-28 gap-3 flex flex-col items-center justify-center  w-full'>
                     <div className='text-zinc-50 py-1 self-start text-sm'>
                     <span className='text-zinc-600 capitalize mr-1'>
@@ -275,9 +275,9 @@ export default function CryptoModal() {
 
                     </div>
           
-              }
+              } */}
 
-              {monitoredCoins && monitoredCoins.some(coin => coin.name == coinId) && 
+              {/* {monitoredCoins && monitoredCoins.some(coin => coin.name == coinId) && 
               <>
               <div className='text-zinc-50 py-1 text-end mt-28 text-sm'>
               <span className='text-zinc-600 capitalize mr-1'>
@@ -291,7 +291,7 @@ export default function CryptoModal() {
               <button onClick={handleClickCancelMonitored} className='mt-3 border-2 text-sm capitalize bg-red-800 border-transparent rounded px-3 py-[2px] hover:border-transparent hover:bg-transparent hover:border-red-800 transition-all duration-300 font-bold outline-none'>stop monitored</button>
               </>
               
-              }
+              } */}
 
               </div>
             </div>
