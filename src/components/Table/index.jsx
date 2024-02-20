@@ -1,9 +1,9 @@
 import { useContext, useRef } from "react";
 import { CryptoContext } from "../../context/CryptoContext";
 import { StorageContext } from "../../context/StorageContext";
-import { ArrowRightSquare, Star } from "lucide-react";
+import { ArrowRightSquare, Outdent, Star } from "lucide-react";
 import Pagination from "./Pagination";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 const SaveBtn = ({data}) =>{
   const {saveCoin, coins, removeCoin} = useContext(StorageContext)
@@ -63,7 +63,6 @@ const PageFor = () => {
 };
 
 export default function Table() {
-  console.log("TABLE")
   let { cryptoData, currency, per_page } = useContext(CryptoContext);
 
   return (
@@ -161,6 +160,7 @@ export default function Table() {
         <div className="w-full h-[2.5rem] capitalize flex justify-center items-center mt-3">
           <PageFor />
           <Pagination />
+          <Outlet />
         </div>
       )}
     </>

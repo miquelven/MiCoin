@@ -60,6 +60,7 @@ export const MonitoredProvider = ({ children }) => {
   const monitoredCoinsValue = async () => {
     for (const monitoredCoin of monitoredCoins) {
       const { name, price } = monitoredCoin;
+      
       try {
         const data = await fetch(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${name}&order=${sortBy}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
