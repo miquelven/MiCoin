@@ -1,8 +1,10 @@
+import { memo } from "react";
 import { useNavigate } from "react-router-dom"
 
-export default function TrendingComponent ({data}) {
+ function TrendingComponent ({data}) {
 
     const navigate = useNavigate();
+    console.log("TRENDINGCOMPONENT")
 
     const getCoinDetail = (id) =>{
         navigate(id)
@@ -56,3 +58,5 @@ export default function TrendingComponent ({data}) {
         </div>
     )
 }
+
+export default memo(TrendingComponent)

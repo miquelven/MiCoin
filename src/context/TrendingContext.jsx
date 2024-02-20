@@ -7,6 +7,7 @@ export const TrendingProvider = ({ children }) => {
   const [trendingData, setTrendingData] = useState();
 
   const getTrendingData = async () => {
+    console.log("FEITA REQUISIÇÃO")
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/search/trending`

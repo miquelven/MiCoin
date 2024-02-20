@@ -1,9 +1,10 @@
 import { useContext } from "react"
 
 import TrendingComponent from "./TrendingComponent"
-import { TrendingContext } from "../../../context/TrendingContext"
+import { TrendingContext } from "../../context/TrendingContext"
 
 export default function TrendingCoin () {
+    console.log('TRENDINGCOIN')
 
     const {trendingData} = useContext(TrendingContext)
 

@@ -1,6 +1,6 @@
 import { useContext, useLayoutEffect, useState } from "react"
 
-import {CryptoContext} from '../../../../context/CryptoContext'
+import {CryptoContext} from '../../../context/CryptoContext'
 
 import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, Legend, ResponsiveContainer } from 'recharts';
 

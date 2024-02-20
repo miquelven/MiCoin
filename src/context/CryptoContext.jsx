@@ -17,6 +17,7 @@ export const CryptoProvider = ({ children }) => {
   const [sortBy, setSortby] = useState("market_cap_desc");
 
   const getSearch = async (query) => {
+    console.log("CryptoContext")
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/search?query=${query}`
@@ -31,6 +32,7 @@ export const CryptoProvider = ({ children }) => {
   };
 
   const getCryptoData = async () => {
+    console.log("CryptoContext")
     try {
       const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
         method: "GET",
@@ -60,6 +62,7 @@ export const CryptoProvider = ({ children }) => {
   };
 
   const getCoinData = async (id) => {
+    console.log("CryptoContext")
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`,
@@ -71,10 +74,8 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       setCoinData(data);
-      console.log(data);
     } catch (e) {
       alert("error");
-      console.log("ERROR ERROR ERROR")
     }
   };
 

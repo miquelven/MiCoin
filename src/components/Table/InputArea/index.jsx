@@ -1,6 +1,6 @@
 import { Search } from "lucide-react";
 import { useContext, useState } from "react";
-import { CryptoContext } from "../../../../context/CryptoContext";
+import { CryptoContext } from "../../../context/CryptoContext";
 import debounce from "lodash.debounce";
 
 const Input = ({ handleSearch }) => {

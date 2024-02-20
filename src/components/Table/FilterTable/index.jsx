@@ -1,8 +1,9 @@
 import { useContext, useRef } from "react";
-import { CryptoContext } from "../../../../context/CryptoContext";
+import { CryptoContext } from "../../../context/CryptoContext";
 import InputArea from "../InputArea";
 import { ArrowRightSquare, RefreshCcw, Triangle } from "lucide-react";
 export default function FilterTable() {
+  console.log("FILTERTABLE")
   const { setCurrency, setSortby, resetData } = useContext(CryptoContext);
 
   const inputCurrency = useRef(null);

@@ -4,11 +4,11 @@ export default function Menu() {
   const headerLinks = [
     {
       name: "favorites",
-      to: "#favorites",
+      to: "/favorites",
     },
     {
       name: "trending",
-      to: "#trending",
+      to: "/trending",
     },
     {
       name: "contact",

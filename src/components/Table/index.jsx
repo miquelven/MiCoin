@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react";
-import { CryptoContext } from "../../../context/CryptoContext";
-import { StorageContext } from "../../../context/StorageContext";
+import { CryptoContext } from "../../context/CryptoContext";
+import { StorageContext } from "../../context/StorageContext";
 import { ArrowRightSquare, Star } from "lucide-react";
 import Pagination from "./Pagination";
 import { Link } from "react-router-dom";
@@ -63,6 +63,7 @@ const PageFor = () => {
 };
 
 export default function Table() {
+  console.log("TABLE")
   let { cryptoData, currency, per_page } = useContext(CryptoContext);
 
   return (

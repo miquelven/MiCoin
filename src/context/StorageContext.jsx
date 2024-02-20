@@ -18,9 +18,13 @@ export const StorageProvider = ({ children }) => {
         setSavedCoins();
       }
     }
+
+    
   }, [coins])
 
   const getCoinsData = async (allCoins = coins) => {
+    console.log("StorageContext")
+    if(window.location.href !== '')
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${allCoins.join(',')}&order=${sortBy}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
@@ -35,7 +39,6 @@ export const StorageProvider = ({ children }) => {
 
     } catch (e) {
       alert("error");
-      console.log("error: " + e);
     }
   };
 
@@ -62,14 +65,12 @@ setCoins(newCoin)
 
   useLayoutEffect(() => {
     const total = JSON.parse(localStorage.getItem("coins")) || [];
-    console.log(total)
     if(total == null){
         localStorage.setItem("coins", JSON.stringify([]))
     }else{
         let totalCoins = JSON.parse(localStorage.getItem("coins"));
         setCoins(totalCoins);
 
-        console.log(totalCoins)
         if(totalCoins){
           if(totalCoins.length > 0){
               getCoinsData(totalCoins)
