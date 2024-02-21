@@ -23,8 +23,12 @@ function Home() {
           </p>
         </div>
         <div className="flex-1 self-center">
-          <div className="flex justify-end  transition duration-300 ease-in-out brightness-105 hover:brightness-75 invert-[1] dark:invert-[1] dark:contrast-125 dark:brightness-90 dark:hover:brightness-75 ">
-            <img src={banner} alt="Imagem do banner" className=" w-[80%]" />
+          <div className="flex justify-end  transition duration-300 ease-in-out  ">
+            <img
+              src={banner}
+              alt="Imagem do banner"
+              className=" w-[80%] transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-0"
+            />
           </div>
         </div>
       </section>
