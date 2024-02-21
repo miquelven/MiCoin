@@ -8,8 +8,13 @@ const Input = ({ handleSearch }) => {
   const { searchData, setCoinSelected, setSearchData } =
     useContext(CryptoContext);
 
+  const [showResults, setShowResults] = useState(false);
+
+  window.addEventListener("click", () => setShowResults(false));
+
   let handleText = (e) => {
     const value = e.target.value;
+    setShowResults(true);
     setInputText(value);
     handleSearch(value);
   };
@@ -35,26 +40,26 @@ const Input = ({ handleSearch }) => {
           type="text"
           onChange={handleText}
           name="search"
-          className="w-full rounded bg-zinc-200 placeholder:text-zinc-400 focus:border-zinc-300 dark:bg-zinc-900 dark:placeholder:text-zinc-600 pl-2 required outline-0 border-2 border-transparent dark:focus:border-blue-400"
+          className="w-full rounded bg-zinc-900 placeholder:text-zinc-600 pl-2 required outline-0 border-2 border-transparent focus:border-blue-400"
           placeholder="search"
         />
         <button type="submit" className="absolute right-2 cursor-pointer">
-          <Search className="w-7 text-zinc-400" />
+          <Search className="w-7" />
         </button>
       </form>
 
-      {inputText.length > 0 ? (
-        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-300 scrollbar-thumb-zinc-200 scrollbar-track-zinc-400  dark:bg-zinc-800 dark:bg-opacity-60 backdrop-blur-md scrollbar-thin dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900">
-          {searchData.length > 0 ? (
+      {inputText.length > 0 && showResults == true ? (
+        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-800 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900">
+          {searchData ? (
             searchData.map((data) => {
               return (
                 <li
                   key={data.id}
-                  className="flex hover:font-bold items-center ml-4 my-2 cursor-pointer"
+                  className="flex items-center ml-4 my-2 cursor-pointer"
                   onClick={() => selectedCoin(data.id)}
                 >
                   <img src={data.thumb} alt={data.name} />
-                  <span className="ml-2">{data.name}</span>
+                  <span>{data.name}</span>
                 </li>
               );
             })
@@ -64,9 +69,7 @@ const Input = ({ handleSearch }) => {
                 className="w-8 h-8 border-4 border-blue-600 rounded-full border-b-transparent animate-spin"
                 role="status"
               ></div>
-              <span className="ml-4 font-bold text-zinc-700 dark:text-zinc-300">
-                Searching...
-              </span>
+              <span className="ml-2">Searching...</span>
             </div>
           )}
         </ul>

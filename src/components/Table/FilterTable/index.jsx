@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 import InputArea from "../InputArea";
 import { ArrowRightSquare, RefreshCcw, Triangle } from "lucide-react";
