@@ -1,107 +1,104 @@
-import { memo, useContext } from "react"
-import { Star } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom"
-import { CryptoContext } from "../../../context/CryptoContext"
-import { StorageContext } from "../../../context/StorageContext"
+import { memo, useContext } from "react";
+import { Star } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
+import { CryptoContext } from "../../../context/CryptoContext";
+import { StorageContext } from "../../../context/StorageContext";
 
+function FavoriteComponent({ data }) {
+  let { currency } = useContext(CryptoContext);
 
-function FavoriteComponent ({data}){
-    console.log("FAVORITECOMPONENTCOMPONENT")
-    let {currency} = useContext(CryptoContext)
+  const { saveCoin, coins, removeCoin } = useContext(StorageContext);
 
-    const {saveCoin, coins, removeCoin} = useContext(StorageContext)
+  const navigate = useNavigate();
 
-    const navigate = useNavigate();
-    
-    
-    const getCoinDetail = (id) =>{
-        navigate(id)
+  const getCoinDetail = (id) => {
+    navigate(id);
+  };
+
+  const handleClick = (id) => {
+    e.preventDefault();
+    saveCoin(id);
+
+    if (coins.includes(id)) {
+      removeCoin(id);
+    } else {
+      saveCoin(id);
     }
+  };
 
+  return (
+    <tr
+      key={data.id}
+      className="text-center text-base border-b-2 border-zinc-400  hover:bg-zinc-200/70 dark:border-gray-600 dark:hover:bg-zinc-800/30 last:border-b-0"
+    >
+      <td className="py-4 flex items-center uppercase ">
+        <button
+          className="outline-0 border-0 bg-none cursor-pointer"
+          onClick={() => handleClick(data.id)}
+        >
+          <Star
+            className={`w-7 h-7 mx-1.5 text-blue-900 ${
+              coins.includes(data.id) ? "fill-blue-900" : ""
+            }`}
+          />
+        </button>
 
-    const handleClick = (id) =>{
-        e.preventDefault();
-        saveCoin(id);
-    
-        if(coins.includes(id)){
-          removeCoin(id)
-        }else{
-          saveCoin(id)
-        }
-      }
-
-    return (
-        <tr
-            key={data.id}
-            className="text-center text-base border-b border-gray-100 hover:bg-gray-200 last:border-b-0"
+        <img
+          className="w-[1.2rem] h-[1.2] mx-1.5"
+          src={data.image}
+          alt={data.name}
+        />
+        <span>
+          <div
+            onClick={() => getCoinDetail(data.id)}
+            className="cursor-pointer"
           >
-            <td className="py-4 flex items-center uppercase ">
-            <button className="outline-0 border-0 bg-none cursor-pointer" onClick={() => handleClick(data.id)}>
-              <Star className={`w-7 h-7 mx-1.5 text-blue-900 ${coins.includes(data.id)? 'fill-blue-900' : ''}`} />
-            </button>
-
-              <img
-                className="w-[1.2rem] h-[1.2] mx-1.5"
-                src={data.image}
-                alt={data.name}
-              />
-              <span>
-                <div onClick={()=>getCoinDetail(data.id)} className="cursor-pointer">
-                  {data.symbol}
-                </div>
-              </span>
-            </td>
-            <td className="py-4">
-              <Link onClick={()=>getCoinDetail(data.id)} className="cursor-pointer">
-                {data.name}
-              </Link>
-            </td>
-            <td className="py-4">
-              {new Intl.NumberFormat("en-IN", {
-                style: "currency",
-                currency: currency,
-              }).format(data.current_price)}
-            </td>
-            <td className="py-4">{data.total_volume}</td>
-            <td className="py-4">
-              {data.market_cap_change_percentage_24h}%
-            </td>
-            <td
-              className={
-                data.price_change_percentage_1h_in_currency > 0
-                  ? "text-green-400 py-4"
-                  : "text-red-400 py-4"
-              }
-            >
-              {Number(
-                data.price_change_percentage_1h_in_currency
-              ).toFixed(2)}
-            </td>
-            <td
-              className={
-                data.price_change_percentage_24h_in_currency > 0
-                  ? "text-green-400 py-4"
-                  : "text-red-400 py-4"
-              }
-            >
-              {Number(
-                data.price_change_percentage_24h_in_currency
-              ).toFixed(2)}
-            </td>
-            <td
-              className={
-                data.price_change_percentage_7d_in_currency > 0
-                  ? "text-green-400 py-4"
-                  : "text-red-400 py-4"
-              }
-            >
-              {Number(
-                data.price_change_percentage_7d_in_currency
-              ).toFixed(2)}
-            </td>
-          </tr>
-                          
-    )
+            {data.symbol}
+          </div>
+        </span>
+      </td>
+      <td className="py-4">
+        <Link onClick={() => getCoinDetail(data.id)} className="cursor-pointer">
+          {data.name}
+        </Link>
+      </td>
+      <td className="py-4">
+        {new Intl.NumberFormat("en-IN", {
+          style: "currency",
+          currency: currency,
+        }).format(data.current_price)}
+      </td>
+      <td
+        className={
+          data.price_change_percentage_1h_in_currency > 0
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+        }
+      >
+        {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
+      </td>
+      <td
+        className={
+          data.price_change_percentage_24h_in_currency > 0
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+        }
+      >
+        {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
+      </td>
+      <td
+        className={
+          data.price_change_percentage_7d_in_currency > 0
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+        }
+      >
+        {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
+      </td>
+      <td className="py-4">{data.market_cap_change_percentage_24h}%</td>
+      <td className="py-4">{data.total_volume}</td>
+    </tr>
+  );
 }
 
-export default memo(FavoriteComponent)
+export default memo(FavoriteComponent);

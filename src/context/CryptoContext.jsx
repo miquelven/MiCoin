@@ -1,6 +1,8 @@
 import { createContext, useLayoutEffect } from "react";
 import { useState } from "react";
 
+import { toast } from "react-toastify";
+
 export const CryptoContext = createContext({});
 
 export const CryptoProvider = ({ children }) => {
@@ -26,7 +28,7 @@ export const CryptoProvider = ({ children }) => {
 
       setSearchData(data.coins);
     } catch (e) {
-      console.log("error: " + e);
+      toast.error("An error occurred. Please wait a moment and try again");
     }
   };
 
@@ -35,14 +37,13 @@ export const CryptoProvider = ({ children }) => {
       const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
         method: "GET",
       })
-      .then((res) => res.json())
-      .then((json) => json);
-      
+        .then((res) => res.json())
+        .then((json) => json);
+
       setTotalPages(data.length);
     } catch (e) {
-      console.log("error: ");
+      toast.error("An error occurred. Please wait a moment and try again");
     }
-
 
     try {
       const data = await fetch(
@@ -56,8 +57,7 @@ export const CryptoProvider = ({ children }) => {
 
       setCryptoData(data);
     } catch (e) {
-      alert("error");
-      console.log("error: " + e);
+      toast.error("An error occurred. Please wait a moment and try again");
     }
   };
 
@@ -74,7 +74,7 @@ export const CryptoProvider = ({ children }) => {
 
       setCoinData(data);
     } catch (e) {
-      alert("error");
+      toast.error("An error occurred. Please wait a moment and try again");
     }
   };
 

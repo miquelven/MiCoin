@@ -12,20 +12,20 @@ export const MonitoredProvider = ({ children }) => {
 
   const fetchMonitoredCoinPrice = (name, currentPrice, userPrice) => {
     if (currentPrice === userPrice) {
-      fetch('http://localhost:4000/api/send-email', {
-        method: 'POST',
+      fetch("http://localhost:4000/api/send-email", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           to: userEmail,
           name: name,
-          currentPrice: currentPrice
-        })
+          currentPrice: currentPrice,
+        }),
       })
-      .then(response => response.json())
-      .then(data => console.log(data))
-      .catch(error => console.log("ERRO BACKEND", error));
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => console.log("ERRO BACKEND", error));
     }
   };
 
@@ -37,9 +37,13 @@ export const MonitoredProvider = ({ children }) => {
     }, 30 * 60 * 1000); // Intervalo de 30 minutos
 
     // Armazenar o intervalId no localStorage
-    const storedIntervals = JSON.parse(localStorage.getItem("monitored-intervals")) || {};
+    const storedIntervals =
+      JSON.parse(localStorage.getItem("monitored-intervals")) || {};
     storedIntervals[id] = intervalId;
-    localStorage.setItem("monitored-intervals", JSON.stringify(storedIntervals));
+    localStorage.setItem(
+      "monitored-intervals",
+      JSON.stringify(storedIntervals)
+    );
 
     // Atualizar o state intervalIds
     setIntervalIds(storedIntervals);
@@ -51,16 +55,20 @@ export const MonitoredProvider = ({ children }) => {
     // Remover o intervalId do localStorage
     const storedIntervals = { ...intervalIds };
     delete storedIntervals[id];
-    localStorage.setItem("monitored-intervals", JSON.stringify(storedIntervals));
+    localStorage.setItem(
+      "monitored-intervals",
+      JSON.stringify(storedIntervals)
+    );
 
     // Atualizar o state intervalIds
     setIntervalIds(storedIntervals);
   };
 
   const monitoredCoinsValue = async () => {
+    console.log("monitoredCoinsValue");
     for (const monitoredCoin of monitoredCoins) {
       const { name, price } = monitoredCoin;
-      
+
       try {
         const data = await fetch(
           `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${name}&order=${sortBy}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
@@ -77,14 +85,18 @@ export const MonitoredProvider = ({ children }) => {
   };
 
   const saveMonitoredCoin = (idCoin, price) => {
-    const oldCoin = JSON.parse(localStorage.getItem("monitored-currency")) || [];
+    const oldCoin =
+      JSON.parse(localStorage.getItem("monitored-currency")) || [];
 
     if (oldCoin.includes(idCoin)) {
       return null;
     } else {
       const newMonitoredCoin = [...oldCoin, { name: idCoin, price: price }];
       setMonitoredCoins(newMonitoredCoin);
-      localStorage.setItem("monitored-currency", JSON.stringify(newMonitoredCoin));
+      localStorage.setItem(
+        "monitored-currency",
+        JSON.stringify(newMonitoredCoin)
+      );
     }
   };
 
@@ -98,24 +110,31 @@ export const MonitoredProvider = ({ children }) => {
       return;
     }
 
-    setMonitoredCoins(oldCoin.filter((coinValue) => {
-      return coinValue.name !== idCoin;
-    }));
+    setMonitoredCoins(
+      oldCoin.filter((coinValue) => {
+        return coinValue.name !== idCoin;
+      })
+    );
 
     const storedIntervals = { ...intervalIds };
     delete storedIntervals[idCoin];
     localStorage.setItem("monitored-currency", JSON.stringify(monitoredCoins));
-    localStorage.setItem("monitored-intervals", JSON.stringify(storedIntervals));
+    localStorage.setItem(
+      "monitored-intervals",
+      JSON.stringify(storedIntervals)
+    );
     stopMonitoringCoin(idCoin); // Parar o intervalo associado ao ativo removido
   };
 
   useEffect(() => {
-    setUserEmail(localStorage.getItem("userEmail"))
+    setUserEmail(localStorage.getItem("userEmail"));
     monitoredCoinsValue();
   }, [monitoredCoins]);
 
   return (
-    <MonitoredContext.Provider value={{ saveMonitoredCoin, monitoredCoins, removeMonitored }}>
+    <MonitoredContext.Provider
+      value={{ saveMonitoredCoin, monitoredCoins, removeMonitored }}
+    >
       {children}
     </MonitoredContext.Provider>
   );

@@ -1,13 +1,12 @@
 import { createContext, useLayoutEffect, useState } from "react";
 
-export const TrendingContext = createContext({})
-
+export const TrendingContext = createContext({});
 
 export const TrendingProvider = ({ children }) => {
   const [trendingData, setTrendingData] = useState();
 
   const getTrendingData = async () => {
-    if(trendingData) return;
+    if (trendingData) return;
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/search/trending`
@@ -17,12 +16,12 @@ export const TrendingProvider = ({ children }) => {
 
       setTrendingData(data.coins);
     } catch (e) {
-      console.log("error: " + e);
+      toast.error("An error occurred. Please wait a moment and try again");
     }
   };
 
   const resetTrendingResult = () => {
-    getTrendingData()
+    getTrendingData();
   };
 
   useLayoutEffect(() => {
@@ -32,7 +31,8 @@ export const TrendingProvider = ({ children }) => {
   return (
     <TrendingContext.Provider
       value={{
-       trendingData, resetTrendingResult
+        trendingData,
+        resetTrendingResult,
       }}
     >
       {children}
