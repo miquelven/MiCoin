@@ -40,26 +40,26 @@ const Input = ({ handleSearch }) => {
           type="text"
           onChange={handleText}
           name="search"
-          className="w-full rounded bg-zinc-900 placeholder:text-zinc-600 pl-2 required outline-0 border-2 border-transparent focus:border-blue-400"
+          className="w-full rounded bg-zinc-300 placeholder-text-zinc-200 dark:bg-zinc-900 dark:placeholder:text-zinc-600 pl-2 required outline-0 border-2 border-transparent focus:border-zinc-400 dark:focus:border-blue-400 "
           placeholder="search"
         />
         <button type="submit" className="absolute right-2 cursor-pointer">
-          <Search className="w-7" />
+          <Search className="w-7 text-zinc-400" />
         </button>
       </form>
 
       {inputText.length > 0 && showResults == true ? (
-        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-800 bg-opacity-60 backdrop-blur-md scrollbar-thin scrollbar-thumb-zinc-700 scrollbar-track-zinc-900">
+        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-200 dark:bg-zinc-800 bg-opacity-60 backdrop-blur-md scrollbar-thin  dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900">
           {searchData ? (
             searchData.map((data) => {
               return (
                 <li
                   key={data.id}
-                  className="flex items-center ml-4 my-2 cursor-pointer"
+                  className="flex items-center ml-4 my-2 cursor-pointer hover:font-bold"
                   onClick={() => selectedCoin(data.id)}
                 >
                   <img src={data.thumb} alt={data.name} />
-                  <span>{data.name}</span>
+                  <span className="ml-4 ">{data.name}</span>
                 </li>
               );
             })
