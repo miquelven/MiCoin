@@ -27,7 +27,7 @@ function Home() {
             <img
               src={banner}
               alt="Imagem do banner"
-              className=" w-[80%] transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-0"
+              className=" w-[80%] transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-100 dark:hover:brightness-110"
             />
           </div>
         </div>
