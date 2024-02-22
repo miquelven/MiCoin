@@ -69,7 +69,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ToastContainer
       transition="Zoom"
-      limit={1}
+      limit={2}
       stacked
       toastClassName={(context) =>
         contextClass[context?.type || "default"] +
