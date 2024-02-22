@@ -74,19 +74,21 @@ export default function Table() {
 
   return (
     <>
-      <div className="flex h-[500px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative">
+      <div className="flex min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative">
         {cryptoData ? (
           <table className="table-auto">
             <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-400 dark:border-gray-100">
               <tr>
-                <th className="py-1">asset</th>
-                <th className="py-1">name</th>
-                <th className="py-1">price</th>
-                <th className="py-1">1H</th>
-                <th className="py-1">24H</th>
-                <th className="py-1">7D</th>
-                <th className="py-1">market cap change</th>
-                <th className="py-1">total volume</th>
+                <th className="py-1 max-[460px]:text-sm">asset</th>
+                <th className="py-1 max-[460px]:text-sm">name</th>
+                <th className="py-1 max-[460px]:text-sm max-[380px]:hidden">
+                  price
+                </th>
+                <th className="py-1 max-[460px]:hidden ">1H</th>
+                <th className="py-1 max-sm:hidden">24H</th>
+                <th className="py-1 max-md:hidden">7D</th>
+                <th className="py-1 max-lg:hidden">market cap change</th>
+                <th className="py-1 max-lg:hidden">total volume</th>
               </tr>
             </thead>
             <tbody>
@@ -95,7 +97,7 @@ export default function Table() {
                   key={crypto.id}
                   className="text-center text-zinc-950 dark:text-zinc-200 text-base border-b-2 dark:border-b border-zinc-400 last:border-b-0 dark:last:border-transparent hover:bg-zinc-200/70 dark:border-gray-100 dark:hover:bg-zinc-800/30 "
                 >
-                  <td className="py-4 pl-3  flex items-center uppercase ">
+                  <td className="py-4 pl-3  flex items-center uppercase max-[460px]:text-sm">
                     <SaveBtn data={crypto} />
 
                     <img
@@ -109,12 +111,12 @@ export default function Table() {
                       </Link>
                     </span>
                   </td>
-                  <td className="py-4">
+                  <td className="py-4 max-[460px]:text-sm">
                     <Link to={`/${crypto.id}`} className="cursor-pointer">
                       {crypto.name}
                     </Link>
                   </td>
-                  <td className="py-4">
+                  <td className="py-4 max-[460px]:text-sm max-[380px]:hidden">
                     {new Intl.NumberFormat("en-IN", {
                       style: "currency",
                       currency: currency,
@@ -123,8 +125,8 @@ export default function Table() {
                   <td
                     className={
                       crypto.price_change_percentage_1h_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-sm:px-2 max-[460px]:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-sm:px-2 max-[460px]:hidden"
                     }
                   >
                     {Number(
@@ -134,8 +136,8 @@ export default function Table() {
                   <td
                     className={
                       crypto.price_change_percentage_24h_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-md:px-2 max-sm:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-md:px-2 max-sm:hidden"
                     }
                   >
                     {Number(
@@ -145,18 +147,18 @@ export default function Table() {
                   <td
                     className={
                       crypto.price_change_percentage_7d_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-md:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-md:hidden"
                     }
                   >
                     {Number(
                       crypto.price_change_percentage_7d_in_currency
                     ).toFixed(2)}
                   </td>
-                  <td className="py-4">
+                  <td className="py-4 max-lg:hidden">
                     {crypto.market_cap_change_percentage_24h}%
                   </td>
-                  <td className="py-4">{crypto.total_volume}</td>
+                  <td className="py-4 max-lg:hidden">{crypto.total_volume}</td>
                 </tr>
               ))}
             </tbody>

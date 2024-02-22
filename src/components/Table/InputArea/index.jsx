@@ -33,7 +33,7 @@ const Input = ({ handleSearch }) => {
   return (
     <>
       <form
-        className="w-96 relative flex items-center ml-7"
+        className="w-96 relative flex items-center ml-7 max-[490px]:ml-0 max-[490px]:w-72 max-[380px]:w-60"
         onSubmit={handleSubmit}
       >
         <input
