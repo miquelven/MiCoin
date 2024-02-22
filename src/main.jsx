@@ -17,6 +17,10 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
 
+window.addEventListener("beforeunload", () => {
+  localStorage.removeItem("dark-mode");
+});
+
 const router = createBrowserRouter([
   {
     path: "/",
