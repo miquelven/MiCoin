@@ -4,7 +4,10 @@ import { useNavigate, useParams } from "react-router-dom";
 import { CryptoContext } from "../../context/CryptoContext";
 import { Triangle } from "lucide-react";
 import Chart from "./Chart";
+import { useForm } from "react-hook-form";
 import { MonitoredContext } from "../../context/MonitoredContext";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { z } from "zod";
 
 const Indicator = ({ currentPrice, high, low }) => {
   const [greenColor, setGreenColor] = useState();
@@ -34,20 +37,34 @@ const Indicator = ({ currentPrice, high, low }) => {
 };
 
 export default function CryptoModal() {
+  const createUserFormSchema = z.object({
+    price: z.preprocess(
+      (a) => parseInt(z.string().parse(a), 10),
+      z.number().gte(111, "Min 3 character")
+    ),
+    email: z
+      .string()
+      .nonempty("This field cannot be empty")
+      .email("Please enter a valid email address"),
+  });
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: zodResolver(createUserFormSchema),
+  });
+
   const { coinId } = useParams();
   const navigate = useNavigate();
 
   const { saveMonitoredCoin, monitoredCoins, removeMonitored } =
     useContext(MonitoredContext);
 
-  const [inputPrice, setInputPrice] = useState();
-  const [inputEmail, setInputEmail] = useState();
-
-  const handleClick = () => {
-    if (inputPrice.trim() !== "" && inputEmail.trim() !== "") {
-      localStorage.setItem("userEmail", inputEmail);
-      saveMonitoredCoin(coinId, inputPrice);
-    }
+  const handleClick = (data) => {
+    localStorage.setItem("userEmail", inputEmail);
+    saveMonitoredCoin(coinId, data.price);
   };
 
   const handleClickCancelMonitored = () => removeMonitored(coinId);
@@ -290,7 +307,10 @@ export default function CryptoModal() {
 
                 {monitoredCoins &&
                   !monitoredCoins.some((coin) => coin.name == coinId) && (
-                    <div className="mt-28 gap-3 flex flex-col items-center justify-center  w-full">
+                    <form
+                      onSubmit={handleSubmit(handleClick)}
+                      className="mt-16 gap-3 flex flex-col items-center justify-center  w-full"
+                    >
                       <div className="text-zinc-50 py-1 text-sm self-end">
                         <span className="text-zinc-500 capitalize mr-1">
                           monitored currencies
@@ -298,27 +318,51 @@ export default function CryptoModal() {
                         <span>{monitoredCoins.length}/5</span>
                       </div>
                       <div className="flex justify-center gap-6 w-full text-sm text-zinc-200">
-                        <input
-                          type="number"
-                          placeholder="price"
-                          onChange={(e) => setInputPrice(e.target.value)}
-                          className="w-24 bg-transparent transition-all duration-300 outline-0 border-2 border-zinc-600 rounded focus:border-blue-700 px-2"
-                        />
-                        <input
-                          type="text"
-                          placeholder="your email"
-                          onChange={(e) => setInputEmail(e.target.value)}
-                          className="bg-transparent transition-all duration-300 outline-0 border-2 border-zinc-600 rounded focus:border-blue-700 px-2  py-1"
-                        />
+                        <div className="flex flex-col gap-1">
+                          <input
+                            {...register("price")}
+                            placeholder="price"
+                            className={`w-24 bg-transparent transition-all duration-300 outline-0 border-2  rounded py-1 px-2
+                            ${
+                              errors.price
+                                ? "border-red-400 border-1"
+                                : "border-zinc-600"
+                            }
+                            `}
+                          />
+                          {errors.price && (
+                            <span className=" text-sm text-red-400 dark:text-red-400 font-bold max-w-28">
+                              {errors.price.message}
+                            </span>
+                          )}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                          <input
+                            {...register("email")}
+                            placeholder="your email"
+                            className={`bg-transparent transition-all duration-300 outline-0 border-2 border-zinc-600 rounded focus:border-blue-700 px-2  py-1
+                            ${
+                              errors.email
+                                ? "border-red-400 border-1"
+                                : "border-zinc-600"
+                            }
+                            `}
+                          />
+                          {errors.email && (
+                            <span className=" text-red-400 dark:text-red-400 font-bold w-44">
+                              {errors.email.message}
+                            </span>
+                          )}
+                        </div>
                       </div>
 
                       <button
-                        onClick={handleClick}
+                        type="submit"
                         className="mt-3 border-2 bg-blue-800 border-transparent rounded px-6 py-[2px] hover:border-transparent hover:bg-transparent hover:border-blue-800 transition-all duration-300 font-bold outline-none"
                       >
                         save
                       </button>
-                    </div>
+                    </form>
                   )}
 
                 {monitoredCoins &&
