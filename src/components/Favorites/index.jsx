@@ -8,7 +8,7 @@ function Favorites() {
 
   return (
     <section
-      className="mt-16 w-full h-full items-center flex flex-col  mb-24 relative"
+      className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="favorites"
     >
       <h2 className="text-4xl font-bold">Favorites</h2>

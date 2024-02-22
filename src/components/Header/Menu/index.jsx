@@ -12,7 +12,7 @@ export default function Menu() {
     },
     {
       name: "contact",
-      to: "#contact",
+      to: "/contact",
     },
   ];
 
@@ -47,14 +47,10 @@ export default function Menu() {
         {headerLinks.map((link) => (
           <li
             key={link.name}
-            className="py-5 transition duration-300 ease-in border-b-2 border-transparent hover:border-blue-500 hover:opacity-70 "
+            onClick={() => redirectAnchor(link.to)}
+            className="py-5 cursor-pointer transition duration-300 ease-in border-b-2 border-transparent hover:border-blue-500 hover:opacity-70 "
           >
-            <button
-              onClick={() => redirectAnchor(link.to)}
-              className="px-6 capitalize"
-            >
-              {link.name}
-            </button>
+            <button className="px-6 capitalize">{link.name}</button>
           </li>
         ))}
       </ul>

@@ -15,6 +15,7 @@ import Header from "./components/Header";
 import { TrendingProvider } from "./context/TrendingContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Contact from "./pages/Contact";
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,10 @@ const router = createBrowserRouter([
         element: <CryptoModal />,
       },
     ],
+  },
+  {
+    path: "/contact",
+    element: <Contact />,
   },
 ]);
 
