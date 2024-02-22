@@ -74,7 +74,7 @@ export default function Table() {
 
   return (
     <>
-      <div className="flex w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent">
+      <div className="flex min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative">
         {cryptoData ? (
           <table className="table-auto">
             <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-400 dark:border-gray-100">
@@ -161,7 +161,17 @@ export default function Table() {
               ))}
             </tbody>
           </table>
-        ) : null}
+        ) : (
+          <div className="w-full absolute inset-0 bg-zinc-300 dark:bg-transparent   min-h-[60vh] flex justify-center items-center ">
+            <div
+              className="w-8 h-8 border-4 border-blue-600 rounded-full border-b-transparent animate-spin"
+              role="status"
+            ></div>
+            <span className="ml-4 font-bold text-zinc-700 dark:text-zinc-300">
+              Searching...
+            </span>
+          </div>
+        )}
       </div>
       {cryptoData && cryptoData.length >= per_page && (
         <div className="w-full h-[2.5rem] capitalize flex justify-center items-center mt-7">

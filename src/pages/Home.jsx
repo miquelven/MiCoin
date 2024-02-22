@@ -32,7 +32,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center mb-10">
+      <section className="flex flex-col justify-center items-center my-28">
         <h2 className="mb-10 text-4xl font-bold">Market Overview</h2>
         <FilterTable />
         <Table />

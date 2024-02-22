@@ -4,7 +4,7 @@ import ChangeTheme from "./ChangeTheme";
 
 export default function Header() {
   return (
-    <header className="bg-zinc-200 dark:bg-zinc-900/30">
+    <header id="top" className="bg-zinc-200 dark:bg-zinc-900/30">
       <Container>
         <div className="flex justify-between items-center ">
           <div

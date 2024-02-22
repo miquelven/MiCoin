@@ -127,7 +127,7 @@ export default function Contact() {
         <button
           type="submit"
           onClick={() => setShowError(true)}
-          className="bg-blue-600 hover:bg-blue-500 text-zinc-100 dark:text-zinc-800 dark:bg-blue-900 dark:hover:bg-blue-700 py-2 rounded-md border-2 border-transparent font-bold transition-all duration-300 hover:bg-transparent "
+          className="bg-blue-600 hover:bg-blue-700 text-zinc-100 dark:text-zinc-300 dark:hover:text-zinc-100 dark:bg-blue-900 dark:hover:bg-blue-700 py-2 rounded-md border-2 border-transparent font-bold transition-all duration-300 hover:bg-transparent "
         >
           Send
         </button>

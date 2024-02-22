@@ -1,6 +1,7 @@
 import { useContext } from "react";
 
 import TrendingComponent from "./TrendingComponent";
+import ToUp from "../ToUp";
 import { TrendingContext } from "../../context/TrendingContext";
 
 export default function TrendingCoin() {
@@ -29,6 +30,7 @@ export default function TrendingCoin() {
           </div>
         )}
       </div>
+      <ToUp />
     </section>
   );
 }
