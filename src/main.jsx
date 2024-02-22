@@ -16,10 +16,7 @@ import { TrendingProvider } from "./context/TrendingContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
-
-window.addEventListener("beforeunload", () => {
-  localStorage.removeItem("dark-mode");
-});
+import Footer from "./components/Footer";
 
 const router = createBrowserRouter([
   {
@@ -88,14 +85,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <StorageProvider>
         <MonitoredProvider>
           <TrendingProvider>
-            <div className="bg-zinc-100 dark:bg-zinc-950 min-h-screen text-slate-900 dark:text-zinc-200">
+            <div className="bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
               <Header />
               <Container>
-                <main className="mt-20 flex flex-col gap-32">
+                <main className="mt-32 min-h-[calc(100vh-66px)] flex flex-col gap-32 relative">
                   <RouterProvider router={router} />
                 </main>
               </Container>
-              {/* <Footer /> */}
+              <Footer />
             </div>
             <Outlet />
           </TrendingProvider>
