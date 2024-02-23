@@ -63,7 +63,7 @@ export default function CryptoModal() {
     useContext(MonitoredContext);
 
   const handleClick = (data) => {
-    localStorage.setItem("userEmail", inputEmail);
+    localStorage.setItem("userEmail", data.email);
     saveMonitoredCoin(coinId, data.price);
   };
 
@@ -81,7 +81,7 @@ export default function CryptoModal() {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed top-0 w-full h-full bg-zinc-900 bg-opacity-70 backdrop-blur-sm flex items-center justify-center text-zinc-50  "
+      className="fixed z-50 top-0 w-full h-full bg-zinc-900 bg-opacity-70 backdrop-blur-sm flex items-center justify-center text-zinc-50  "
       onClick={close}
     >
       <div
