@@ -3,7 +3,6 @@ import { StorageContext } from "../../context/StorageContext";
 
 import FavoriteComponent from "./FavoriteComponent";
 function Favorites() {
-  console.log("FAVORITESCOMPONENT");
   const { savedCoins } = useContext(StorageContext);
 
   return (
@@ -11,20 +10,20 @@ function Favorites() {
       className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="favorites"
     >
-      <h2 className="text-4xl font-bold">Favorites</h2>
+      <h2 className="text-4xl font-bold max-sm:text-2xl">Favorites</h2>
       <div className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-600 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent ">
         {savedCoins ? (
           <table className="table-auto w-full">
             <thead className="capitalize text-base text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-gray-600 dark:border-gray-400">
-              <tr>
+              <tr className="max-[470px]:text-sm">
                 <th className="py-1">asset</th>
                 <th className="py-1">name</th>
                 <th className="py-1">price</th>
-                <th className="py-1">1H</th>
-                <th className="py-1">24H</th>
-                <th className="py-1">7D</th>
-                <th className="py-1">market cap change</th>
-                <th className="py-1">total volume</th>
+                <th className="py-1 max-[370px]:hidden">1H</th>
+                <th className="py-1 max-[470px]:hidden">24H</th>
+                <th className="py-1 max-[540px]:hidden">7D</th>
+                <th className="py-1 max-md:hidden">market cap change</th>
+                <th className="py-1 max-lg:hidden">total volume</th>
               </tr>
             </thead>
             <tbody>

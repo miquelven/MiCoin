@@ -29,9 +29,9 @@ function FavoriteComponent({ data }) {
   return (
     <tr
       key={data.id}
-      className="text-center text-base border-b-2 border-zinc-400  hover:bg-zinc-200/70 dark:border-gray-600 dark:hover:bg-zinc-800/30 last:border-b-0"
+      className="text-center text-base border-b-2 border-zinc-400  hover:bg-zinc-200/70 dark:border-gray-600 dark:hover:bg-zinc-800/30 last:border-b-0 max-[470px]:text-sm"
     >
-      <td className="py-4 flex items-center uppercase ">
+      <td className="py-4 flex items-center uppercase  ">
         <button
           className="outline-0 border-0 bg-none cursor-pointer"
           onClick={() => handleClick(data.id)}
@@ -57,7 +57,7 @@ function FavoriteComponent({ data }) {
           </div>
         </span>
       </td>
-      <td className="py-4">
+      <td className="py-4 ">
         <Link onClick={() => getCoinDetail(data.id)} className="cursor-pointer">
           {data.name}
         </Link>
@@ -71,8 +71,8 @@ function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_1h_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[370px]:hidden"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[370px]:hidden"
         }
       >
         {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
@@ -80,8 +80,8 @@ function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_24h_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[470px]:hidden"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[470px]:hidden"
         }
       >
         {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
@@ -89,14 +89,16 @@ function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_7d_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4"
+            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[540px]:hidden"
+            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[540px]:hidden"
         }
       >
         {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
       </td>
-      <td className="py-4">{data.market_cap_change_percentage_24h}%</td>
-      <td className="py-4">{data.total_volume}</td>
+      <td className="py-4 max-md:hidden">
+        {data.market_cap_change_percentage_24h}%
+      </td>
+      <td className="py-4 max-lg:hidden">{data.total_volume}</td>
     </tr>
   );
 }
