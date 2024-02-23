@@ -19,10 +19,12 @@ function FavoriteComponent({ data }) {
     e.preventDefault();
     saveCoin(id);
 
-    if (coins.includes(id)) {
-      removeCoin(id);
-    } else {
-      saveCoin(id);
+    if (coins) {
+      if (coins.includes(id)) {
+        removeCoin(id);
+      } else {
+        saveCoin(id);
+      }
     }
   };
 
@@ -38,7 +40,7 @@ function FavoriteComponent({ data }) {
         >
           <Star
             className={`w-7 h-7 mx-1.5 text-blue-900 ${
-              coins.includes(data.id) ? "fill-blue-900" : ""
+              coins && coins.includes(data.id) ? "fill-blue-900" : ""
             }`}
           />
         </button>

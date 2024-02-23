@@ -23,6 +23,8 @@ export const StorageProvider = ({ children }) => {
       } else {
         setSavedCoins();
       }
+    } else {
+      localStorage.setItem("coins", JSON.stringify([]));
     }
   }, [coins]);
 

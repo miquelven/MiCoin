@@ -32,10 +32,7 @@ export default function FilterTable() {
           className="relative flex items-center mr-12 max-sm:flex-col max-sm:gap-4 max-sm:mr-0 "
           onSubmit={handleCurrency}
         >
-          <label
-            htmlFor="currency"
-            className="relative flex justify-center items-center mr-2 gap-2 font-bold text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center"
-          >
+          <label className="relative flex justify-center items-center mr-2 gap-2 font-bold text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center">
             Currency:
             <input
               type="text"

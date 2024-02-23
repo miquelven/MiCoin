@@ -11,11 +11,12 @@ const SaveBtn = ({ data }) => {
   const handleClick = (e) => {
     e.preventDefault();
     saveCoin(data.id);
-
-    if (coins.includes(data.id)) {
-      removeCoin(data.id);
-    } else {
-      saveCoin(data.id);
+    if (coins) {
+      if (coins.includes(data.id)) {
+        removeCoin(data.id);
+      } else {
+        saveCoin(data.id);
+      }
     }
   };
 
@@ -26,7 +27,9 @@ const SaveBtn = ({ data }) => {
     >
       <Star
         className={`w-7 h-7 mx-1.5 text-blue-400 dark:text-blue-900 ${
-          coins.includes(data.id) ? "fill-blue-400 dark:fill-blue-900" : ""
+          coins && coins.includes(data.id)
+            ? "fill-blue-400 dark:fill-blue-900"
+            : ""
         }`}
       />
     </button>

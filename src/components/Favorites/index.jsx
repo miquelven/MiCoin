@@ -28,7 +28,7 @@ function Favorites() {
             </thead>
             <tbody>
               {savedCoins.map((crypto) => (
-                <FavoriteComponent data={crypto} />
+                <FavoriteComponent key={crypto} data={crypto} />
               ))}
             </tbody>
           </table>
