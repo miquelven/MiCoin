@@ -105,7 +105,7 @@ export default function CryptoModal() {
                   {coinData.symbol}
                 </span>
               </div>
-              <div className="flex w-full mt-6">
+              <div className="flex w-full ">
                 <div className="flex">
                   <div className="flex flex-col w-full ">
                     <div className="flex">
@@ -249,14 +249,14 @@ export default function CryptoModal() {
                 </div>
               </div>
               <div className="w-full flex justify-end">
-                <div className="flex flex-col content-start mt-5">
+                <div className="flex flex-col content-start mt-2">
                   <span className="text-sm capitalize text-zinc-400">
                     sentiment
                   </span>
                   <div>
-                    <div className="flex flex-col w-24 my-2 ">
+                    <div className="flex flex-col w-24 ">
                       <div
-                        className={`text-sm  px-1 ml-2 font-medium flex flex-col my-2  items-center rounded uppercase bg-opacity-25 bg-green-600 text-green-400 dark:text-green-500
+                        className={`text-sm  px-1 ml-2 font-medium flex flex-col my-1  items-center rounded uppercase bg-opacity-25 bg-green-600 text-green-400 dark:text-green-500
                     }
                     `}
                       >
@@ -273,7 +273,7 @@ export default function CryptoModal() {
                         </span>
                       </div>
                       <div
-                        className={`text-sm  px-1 ml-2 font-medium flex flex-col my-2  items-center rounded uppercase bg-opacity-25 
+                        className={`text-sm  px-1 ml-2 font-medium flex flex-col my-1  items-center rounded uppercase bg-opacity-25 
                         bg-red-600 text-red-400 dark:text-red-500
                     }
                     `}

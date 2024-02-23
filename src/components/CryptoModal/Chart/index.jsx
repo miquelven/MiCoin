@@ -87,7 +87,7 @@ export default function Chart({ id }) {
   }, [id, type, days]);
 
   return (
-    <div className="w-full h-[60%] max-sm:mt-16 max-[400px]:mt-32">
+    <div className="w-full h-[60%] max-sm:mt-20 max-[400px]:mt-32">
       <ChartComponent data={chartData} currency={currency} type={type} />
       <div className="max-sm:flex max-sm:gap-[15px] max-sm:flex-wrap max-sm:mt-3">
         <button
