@@ -1,9 +1,9 @@
 import { Search } from "lucide-react";
-import { useContext, useState } from "react";
+import { memo, useContext, useState } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 import debounce from "lodash.debounce";
 
-const Input = ({ handleSearch }) => {
+const InputComponent = ({ handleSearch }) => {
   const [inputText, setInputText] = useState("");
   const { searchData, setCoinSelected, setSearchData } =
     useContext(CryptoContext);
@@ -77,6 +77,8 @@ const Input = ({ handleSearch }) => {
     </>
   );
 };
+
+const Input = memo(InputComponent);
 
 export default function InputArea() {
   const { getSearch } = useContext(CryptoContext);

@@ -1,5 +1,6 @@
 import {
   createContext,
+  useCallback,
   useContext,
   useEffect,
   useLayoutEffect,
@@ -60,13 +61,13 @@ export const StorageProvider = ({ children }) => {
     }
   };
 
-  const removeCoin = (idCoin) => {
+  const removeCoin = useCallback((idCoin) => {
     let oldCoin = JSON.parse(localStorage.getItem("coins"));
 
     let newCoin = oldCoin.filter((coin) => coin !== idCoin);
     setCoins(newCoin);
     localStorage.setItem("coins", JSON.stringify(newCoin));
-  };
+  }, []);
 
   useLayoutEffect(() => {
     const total = JSON.parse(localStorage.getItem("coins")) || [];

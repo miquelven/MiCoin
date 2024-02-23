@@ -1,4 +1,4 @@
-import { useContext, useRef } from "react";
+import { memo, useContext, useRef } from "react";
 import { CryptoContext } from "../../context/CryptoContext";
 import { StorageContext } from "../../context/StorageContext";
 import { ArrowRightSquare, Star } from "lucide-react";
@@ -75,7 +75,7 @@ const PageFor = () => {
   );
 };
 
-export default function Table() {
+const Table = () => {
   let { cryptoData, currency, per_page } = useContext(CryptoContext);
 
   return (
@@ -190,4 +190,6 @@ export default function Table() {
       )}
     </>
   );
-}
+};
+
+export default memo(Table);

@@ -1,4 +1,4 @@
-import { createContext, useLayoutEffect } from "react";
+import { createContext, useCallback, useLayoutEffect } from "react";
 import { useState } from "react";
 
 import { toast } from "react-toastify";
@@ -61,7 +61,7 @@ export const CryptoProvider = ({ children }) => {
     }
   };
 
-  const getCoinData = async (id) => {
+  const getCoinData = useCallback(async (id) => {
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/${id}?localization=false&tickers=false&market_data=true&community_data=false&developer_data=true&sparkline=false`,
@@ -76,7 +76,7 @@ export const CryptoProvider = ({ children }) => {
     } catch (e) {
       toast.error("An error occurred. Please wait a moment and try again");
     }
-  };
+  }, []);
 
   const resetData = () => {
     setPageSelected(1);
