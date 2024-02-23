@@ -36,11 +36,13 @@ export default function Contact() {
 
   return (
     <section className="flex flex-col w-full justify-center items-center ">
-      <h2 className=" text-center text-4xl font-bold mb-5">Contact Us</h2>
+      <h2 className=" text-center text-4xl font-bold mb-5 max-sm:text-3xl">
+        Contact Us
+      </h2>
 
       <form
         onSubmit={handleSubmit(createUserData)}
-        className="flex flex-col mt-10 gap-8 w-1/2"
+        className="flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
       >
         <div className="flex flex-col gap-2">
           <label
@@ -53,14 +55,14 @@ export default function Contact() {
             {...register("name")}
             name="name"
             id="name"
-            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 ${
+            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border ${
               errors.name
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
             }`}
           />
           {errors.name && (
-            <span className=" text-red-400 dark:text-red-700 font-bold">
+            <span className=" text-red-400 dark:text-red-700 font-bold max-[420px]:text-xs">
               {errors.name.message}
             </span>
           )}
@@ -76,14 +78,14 @@ export default function Contact() {
             {...register("email")}
             name="email"
             id="email"
-            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 ${
+            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border ${
               errors.email
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
             }`}
           />
           {errors.email && (
-            <span className="text-red-400 dark:text-red-700 font-bold">
+            <span className="text-red-400 dark:text-red-700 font-bold max-[420px]:text-xs">
               {errors.email.message}
             </span>
           )}
@@ -101,7 +103,7 @@ export default function Contact() {
             id="message"
             cols="30"
             rows="10"
-            className={`px-2 text-zinc-700 dark:text-zinc-300  rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 rouded-md resize-none ${
+            className={`px-2 text-zinc-700 dark:text-zinc-300  rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 rouded-md resize-none max-[420px]:border ${
               textAreaValue.trim().length < 4 && showError
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
@@ -110,7 +112,7 @@ export default function Contact() {
             value={textAreaValue}
           ></textarea>
           {showError && (
-            <span className="text-red-400 dark:text-red-700 font-bold">
+            <span className="text-red-400 dark:text-red-700 font-bold max-[420px]:text-xs">
               {textAreaValue.trim().length == 0 ? (
                 <>This field cannot be empty</>
               ) : (
@@ -127,7 +129,7 @@ export default function Contact() {
         <button
           type="submit"
           onClick={() => setShowError(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-zinc-100 dark:text-zinc-300 dark:hover:text-zinc-100 dark:bg-blue-900 dark:hover:bg-blue-700 py-2 rounded-md border-2 border-transparent font-bold transition-all duration-300 hover:bg-transparent "
+          className="bg-blue-600 hover:bg-blue-700 text-zinc-100 dark:text-zinc-300 dark:hover:text-zinc-100 dark:bg-blue-900 dark:hover:bg-blue-700 py-2 rounded-md border-2 border-transparent font-bold max-[420px]:py-1 transition-all duration-300 hover:bg-transparent "
         >
           Send
         </button>
