@@ -4,7 +4,7 @@ export default function TrendingComponent({ data }) {
   const navigate = useNavigate();
 
   const getCoinDetail = (id) => {
-    navigate(id);
+    navigate(`/trending/crypto/${id}`);
   };
 
   return (

@@ -2,6 +2,7 @@ import DetailText from "../components/DetailText";
 import Table from "../components/Table";
 import banner from "../assets/images/banner.png";
 import FilterTable from "../components/Table/FilterTable";
+import { Outlet } from "react-router-dom";
 
 function Home() {
   return (
@@ -39,6 +40,7 @@ function Home() {
         <FilterTable />
         <Table />
       </section>
+      <Outlet />
     </>
   );
 }

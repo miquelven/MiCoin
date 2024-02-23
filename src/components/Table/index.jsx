@@ -112,13 +112,19 @@ const Table = () => {
                       alt={crypto.name}
                     />
                     <span>
-                      <Link to={`/${crypto.id}`} className="cursor-pointer">
+                      <Link
+                        to={`/crypto/${crypto.id}`}
+                        className="cursor-pointer"
+                      >
                         {crypto.symbol}
                       </Link>
                     </span>
                   </td>
                   <td className="py-4 max-[460px]:text-sm">
-                    <Link to={`/${crypto.id}`} className="cursor-pointer">
+                    <Link
+                      to={`/crypto/${crypto.id}`}
+                      className="cursor-pointer"
+                    >
                       {crypto.name}
                     </Link>
                   </td>
