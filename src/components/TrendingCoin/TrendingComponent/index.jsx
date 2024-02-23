@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 function TrendingComponent({ data }) {
   const navigate = useNavigate();
-  console.log("TRENDINGCOMPONENT");
 
   const getCoinDetail = (id) => {
     navigate(id);
@@ -16,10 +15,10 @@ function TrendingComponent({ data }) {
     >
       {data ? (
         <>
-          <h3 className="text-xl flex items-center mt-0.5 mb-2.5">
-            <span className="text-zinc-800 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
+          <div className="text-xl flex items-center  max-[420px]:text-lg  mt-0.5 mb-2.5">
+            <h3 className="text-zinc-800 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
               name:&nbsp;
-            </span>
+            </h3>
             <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
               {data.name}
             </span>
@@ -28,16 +27,16 @@ function TrendingComponent({ data }) {
               alt={data.name}
               className="w-[1.5rem] h-[1.5rem] mx-1.5 rounded-full"
             />
-          </h3>
-          <h3 className="text-base flex items-center my-0.5">
+          </div>
+          <div className="text-base flex items-center  max-[420px]:text-sm my-0.5">
             <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
               score:&nbsp;
             </span>
             <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
               {data.score}
             </span>
-          </h3>
-          <h3 className="text-base flex items-center my-0.5">
+          </div>
+          <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
             <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
               price (in btc):&nbsp;
             </span>
@@ -48,15 +47,15 @@ function TrendingComponent({ data }) {
                 maximumSignificantDigits: 5,
               }).format(data.price_btc)}
             </span>
-          </h3>
-          <h3 className="text-base flex items-center my-0.5">
+          </div>
+          <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
             <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
               market cap rank:&nbsp;
             </span>
             <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
               {data.market_cap_rank}
             </span>
-          </h3>
+          </div>
         </>
       ) : null}
     </div>

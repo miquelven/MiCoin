@@ -1,19 +1,24 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 import TrendingComponent from "./TrendingComponent";
 import ToUp from "../ToUp";
 import { TrendingContext } from "../../context/TrendingContext";
 
 export default function TrendingCoin() {
+  document.addEventListener("scroll", () => {
+    window.scrollY >= 500 ? setShowArrow(true) : setShowArrow(false);
+  });
+
   const { trendingData } = useContext(TrendingContext);
+  const [showArrow, setShowArrow] = useState(false);
 
   return (
     <section
       className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="trending"
     >
-      <h2 className="text-4xl font-bold">Trending</h2>
-      <div className="w-full overflow-hidden min-h-[60vh] relative py-8 grid grid-cols-2  mt-9 border-2  dark:border-gray-100 border-zinc-400 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent">
+      <h2 className="text-4xl font-bold max-[520px]:text-3xl">Trending</h2>
+      <div className="w-full overflow-hidden min-h-[60vh] relative py-8 grid grid-cols-2  mt-9 border-2  dark:border-gray-100 border-zinc-400 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent max-md:grid-cols-1 ">
         {trendingData ? (
           trendingData.map((trending) => (
             <TrendingComponent key={trending.item.id} data={trending.item} />
@@ -30,7 +35,7 @@ export default function TrendingCoin() {
           </div>
         )}
       </div>
-      {trendingData && <ToUp />}
+      {trendingData && <ToUp show={showArrow} />}
     </section>
   );
 }
