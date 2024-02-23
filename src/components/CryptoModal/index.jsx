@@ -81,11 +81,12 @@ export default function CryptoModal() {
 
   return ReactDOM.createPortal(
     <div
-      className="fixed top-0 w-full h-full bg-zinc-900 bg-opacity-70 backdrop-blur-sm flex items-center justify-center text-zinc-50"
+      className="fixed top-0 w-full h-full bg-zinc-900 bg-opacity-70 backdrop-blur-sm flex items-center justify-center text-zinc-50  "
       onClick={close}
     >
       <div
-        className="overflow-x-none w-[65%] h-[75%] bg-blue-950/80 bg-opacity-75 rounded-xl text-zinc-50 relative max-2xl:w-5/6 max-xl:overflow-y-auto max-md:w-11/12"
+        id="modalArea"
+        className="overflow-x-none w-[65%] h-[75%] bg-blue-950/80 bg-opacity-75 rounded-xl text-zinc-50 relative max-2xl:w-5/6 max-xl:overflow-y-auto max-md:w-11/12 max-sm:w-4/5"
         onClick={(e) => e.stopPropagation()}
       >
         {coinData ? (
