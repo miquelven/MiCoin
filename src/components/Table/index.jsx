@@ -46,7 +46,10 @@ const PageFor = () => {
   };
 
   return (
-    <form className="relative flex items-center mr-12" onSubmit={handleSubmit}>
+    <form
+      className="relative flex items-center mr-12 max-[490px]:mr-0 "
+      onSubmit={handleSubmit}
+    >
       <label
         htmlFor="Page"
         className="relative flex justify-center items-center mr-2 font-bold"

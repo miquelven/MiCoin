@@ -25,7 +25,7 @@ export default function Pagination() {
   };
 
   return (
-    <div className="flex items-center ">
+    <div className="flex items-center max-[470px]:flex-col max-[470px]:gap-7 max-[470px]:pt-10">
       <ul className="flex items-center justify-end text-sm">
         <li className="flex items-center">
           <button className="outline-0  w-8" onClick={prev}>
