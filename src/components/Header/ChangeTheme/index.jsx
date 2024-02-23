@@ -11,7 +11,7 @@ export default function Theme() {
   };
 
   return (
-    <div class="flex flex-col justify-center ml-3 relative z-40">
+    <div class="flex flex-col justify-center ml-3 ">
       <button id={"light-switch"} onClick={toggleTheme}></button>
       <label
         class="transition-all duration-300 relative cursor-pointer px-4 py-6 hover:opacity-70"
