@@ -27,14 +27,14 @@ export default function FilterTable() {
     "
     >
       <InputArea />
-      <div className="flex mr-7 max-lg:gap-3 max-sm:mr-0 max-[490px]:flex-col max-[490px]:gap-8">
+      <div className="flex mr-7 max-lg:gap-3 max-sm:mr-0 max-sm:flex-col max-sm:gap-8">
         <form
-          className="relative flex items-center mr-12 max-sm:flex-col max-sm:gap-4 max-[490px]:mr-0 "
+          className="relative flex items-center mr-12 max-sm:flex-col max-sm:gap-4 max-sm:mr-0 "
           onSubmit={handleCurrency}
         >
           <label
             htmlFor="currency"
-            className="relative flex justify-center items-center mr-2 gap-2 font-bold text-zinc-700 dark:text-zinc-300 max-sm:flex-col max-sm:items-start max-sm:mr-0 max-[490px]:flex-row max-[490px]:items-center"
+            className="relative flex justify-center items-center mr-2 gap-2 font-bold text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center"
           >
             Currency:
             <input
