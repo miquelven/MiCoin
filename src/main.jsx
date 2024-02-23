@@ -5,7 +5,6 @@ import "./index.css";
 import { CryptoProvider } from "./context/CryptoContext";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import CryptoModal from "./components/CryptoModal";
-import Crypto from "./pages/Crypto";
 import { StorageProvider } from "./context/StorageContext";
 import FavoritesPage from "./pages/FavoritesPage";
 import TrendingPage from "./pages/TrendingPage";
@@ -16,6 +15,7 @@ import { TrendingProvider } from "./context/TrendingContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
 
 const router = createBrowserRouter([
@@ -24,14 +24,8 @@ const router = createBrowserRouter([
     element: <Home />,
     children: [
       {
-        path: "/",
-        element: <Crypto />,
-        children: [
-          {
-            path: ":coinId",
-            element: <CryptoModal />,
-          },
-        ],
+        path: "/crypto/:coinId",
+        element: <CryptoModal />,
       },
     ],
   },
@@ -40,7 +34,7 @@ const router = createBrowserRouter([
     element: <FavoritesPage />,
     children: [
       {
-        path: "/favorites/:coinId",
+        path: "/favorites/crypto/:coinId",
         element: <CryptoModal />,
       },
     ],
@@ -50,7 +44,7 @@ const router = createBrowserRouter([
     element: <TrendingPage />,
     children: [
       {
-        path: "/trending/:coinId",
+        path: "/trending/crypto/:coinId",
         element: <CryptoModal />,
       },
     ],
@@ -58,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: "/contact",
     element: <Contact />,
+  },
+  {
+    path: "*",
+    element: <NotFound />,
   },
 ]);
 
