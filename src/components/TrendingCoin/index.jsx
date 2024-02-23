@@ -30,7 +30,7 @@ export default function TrendingCoin() {
           </div>
         )}
       </div>
-      <ToUp />
+      {trendingData && <ToUp />}
     </section>
   );
 }
