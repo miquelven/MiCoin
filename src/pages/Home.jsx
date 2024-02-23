@@ -8,12 +8,20 @@ function Home() {
   return (
     <>
       <section className="flex h-96 max-md:flex-col max-md:gap-8">
-        <div className="flex-1 flex flex-col justify-around text-justify max-md:flex-col gap-3  max-md:text-center max-md:mb-14 max-md:gap-6">
+        <div
+          data-aos="fade-right"
+          data-aos-delay="1200"
+          className="flex-1 flex flex-col justify-around text-justify max-md:flex-col gap-3  max-md:text-center max-md:mb-14 max-md:gap-6"
+        >
           <h1 className="text-5xl max-lg:text-4xl max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl">
             Welcome to <DetailText>Mi</DetailText>
             Coin
           </h1>
-          <p className=" dark:text-zinc-300 text-lg leading-8 max-lg:text-base max-md:text-sm max-sm:leading-9 max-[390px]:text-xs">
+          <p
+            data-aos="fade-right"
+            data-aos-delay="1500"
+            className=" dark:text-zinc-300 text-lg leading-8 max-lg:text-base max-md:text-sm max-sm:leading-9 max-[390px]:text-xs"
+          >
             Your comprehensive hub for exploring the exciting world of digital
             currencies. With <DetailText>real-time </DetailText>
             prices, customizable
@@ -23,7 +31,11 @@ function Home() {
             future of finance.
           </p>
         </div>
-        <div className="flex-1 self-center">
+        <div
+          data-aos="fade-left"
+          data-aos-delay="1700"
+          className="flex-1 self-center"
+        >
           <div className="flex justify-end  transition duration-300 ease-in-out max-md:justify-center ">
             <img
               src={banner}
@@ -33,8 +45,11 @@ function Home() {
           </div>
         </div>
       </section>
-      <section className="flex flex-col justify-center items-center my-28 max-md:my-36">
-        <h2 className="mb-10 text-4xl font-bold max-sm:text-2xl">
+      <section className="flex flex-col justify-center items-center my-10 max-md:my-36">
+        <h2
+          data-aos="fade-up"
+          className="mb-10 text-4xl font-bold max-sm:text-2xl"
+        >
           Market Overview
         </h2>
         <FilterTable />

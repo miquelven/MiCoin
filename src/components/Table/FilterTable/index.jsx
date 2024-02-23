@@ -22,6 +22,8 @@ export default function FilterTable() {
 
   return (
     <div
+      data-aos="fade-up"
+      data-aos-delay="500"
       className="w-full  min-h-14 border-2 dark:border border-zinc-400 dark:border-gray-100 rounded-xl flex flex-wrap items-center justify-between relative
    max-lg:justify-center max-lg:gap-8 max-lg:py-4 
     "

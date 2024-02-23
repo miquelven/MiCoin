@@ -80,7 +80,11 @@ const Table = () => {
 
   return (
     <>
-      <div className="flex min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative">
+      <div
+        data-aos="fade-up"
+        data-aos-delay="800"
+        className="flex min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative"
+      >
         {cryptoData ? (
           <table className="table-auto">
             <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-400 dark:border-gray-100">

@@ -36,11 +36,17 @@ export default function Contact() {
 
   return (
     <section className="flex flex-col w-full justify-center items-center ">
-      <h2 className=" text-center text-4xl font-bold mb-5 max-sm:text-3xl">
+      <h2
+        data-aos="zoom-in"
+        data-aos-delay="1200"
+        className=" text-center text-4xl font-bold mb-5 max-sm:text-3xl"
+      >
         Contact Us
       </h2>
 
       <form
+        data-aos="fade-up"
+        data-aos-delay="1400"
         onSubmit={handleSubmit(createUserData)}
         className="flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
       >

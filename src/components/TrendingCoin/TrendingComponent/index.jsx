@@ -9,6 +9,8 @@ export default function TrendingComponent({ data }) {
 
   return (
     <div
+      data-aos="fade-up"
+      data-aos-delay="300"
       className="w-[80%] flex flex-col items-center mx-auto gap-3 shadow-lg shadow-zinc-200 dark:shadow-transparent justify-center bg-zinc-300 dark:bg-zinc-900 mb-12 last:mb-0 rounded-lg p-4 relative cursor-pointer hover:bg-zinc-500 hover:dark:bg-zinc-800 hover:bg-opacity-40"
       onClick={() => getCoinDetail(data.id)}
     >
