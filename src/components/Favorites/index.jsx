@@ -12,7 +12,7 @@ function Favorites() {
     >
       <h2 className="text-4xl font-bold max-sm:text-2xl">Favorites</h2>
       <div className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-600 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent ">
-        {savedCoins ? (
+        {savedCoins.length > 0 ? (
           <table className="table-auto w-full">
             <thead className="capitalize text-base text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-gray-600 dark:border-gray-400">
               <tr className="max-[470px]:text-sm">
@@ -32,6 +32,12 @@ function Favorites() {
               ))}
             </tbody>
           </table>
+        ) : savedCoins.length == 0 ? (
+          <div className="w-full bg-zinc-300 dark:bg-transparent dark:text-gray-100  min-h-[60vh] flex justify-center items-center ">
+            <span className="ml-4 font-bold text-zinc-700 dark:text-zinc-300 text-3xl max-sm:text-xl">
+              There are no favorites
+            </span>
+          </div>
         ) : (
           <div className="w-full bg-zinc-300 dark:bg-transparent dark:text-gray-100  min-h-[60vh] flex justify-center items-center ">
             <div

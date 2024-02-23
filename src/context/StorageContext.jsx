@@ -13,7 +13,7 @@ export const StorageContext = createContext({});
 
 export const StorageProvider = ({ children }) => {
   const [coins, setCoins] = useState([]);
-  const [savedCoins, setSavedCoins] = useState();
+  const [savedCoins, setSavedCoins] = useState([]);
 
   let { currency, sortBy } = useContext(CryptoContext);
 
@@ -22,7 +22,7 @@ export const StorageProvider = ({ children }) => {
       if (coins.length > 0) {
         getCoinsData(coins);
       } else {
-        setSavedCoins();
+        setSavedCoins([]);
       }
     } else {
       localStorage.setItem("coins", JSON.stringify([]));
@@ -30,7 +30,7 @@ export const StorageProvider = ({ children }) => {
   }, [coins]);
 
   const getCoinsData = async (allCoins = coins) => {
-    if (savedCoins !== undefined) return;
+    if (savedCoins.length !== 0) return;
     try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${allCoins.join(
