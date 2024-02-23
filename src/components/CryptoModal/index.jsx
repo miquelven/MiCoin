@@ -85,12 +85,12 @@ export default function CryptoModal() {
       onClick={close}
     >
       <div
-        className="w-[65%] h-[75%] bg-blue-950/80 bg-opacity-75 rounded-xl text-zinc-50 relative"
+        className="overflow-x-none w-[65%] h-[75%] bg-blue-950/80 bg-opacity-75 rounded-xl text-zinc-50 relative max-2xl:w-5/6 max-xl:overflow-y-auto max-md:w-11/12"
         onClick={(e) => e.stopPropagation()}
       >
         {coinData ? (
-          <div className="flex items-center justify-between h-full w-full p-4">
-            <div className="flex flex-col w-[45%] h-full pr-2 gap-6 ">
+          <div className="flex items-center justify-between h-full w-full p-4 max-xl:flex-col">
+            <div className="flex flex-col w-[45%] h-full pr-2 gap-4 max-2xl:w-full">
               <div className="flex w-full items-center justify-center ">
                 <img
                   className="w-[3rem] h-[3rem] mx-1.5"
@@ -121,7 +121,7 @@ export default function CryptoModal() {
                     </h2>
                   </div>
                   <div
-                    className={`text-sm w-20 py-1 px-1 ml-5 mt-4 font-medium flex items-center rounded-lg uppercase bg-opacity-25 
+                    className={`text-sm w-20 py-1 px-1 ml-5 mt-4 font-medium flex items-center rounded-lg uppercase bg-opacity-25 max-sm:py-0 
                     ${
                       coinData.market_data.price_change_percentage_24h > 0
                         ? " bg-green-600 text-green-400 dark:text-green-500"
@@ -148,7 +148,7 @@ export default function CryptoModal() {
                 </div>
               </div>
 
-              <div className="flex w-full mt-4 justify-between">
+              <div className="flex w-full mt-4 justify-between max-sm:flex-col max-sm:gap-4">
                 <div className="flex flex-col">
                   <span className="text-sm capitalize text-zinc-400">
                     Market Cap
@@ -195,7 +195,7 @@ export default function CryptoModal() {
                   low={coinData.market_data.low_24h[currency]}
                 />
               </div>
-              <div className="flex w-full mt-4 justify-between">
+              <div className="flex w-full mt-4 justify-between max-[400px]:flex-col max-[400px]:gap-3">
                 <div className="flex flex-col">
                   <span className="text-sm capitalize text-zinc-400">
                     Low 24H
@@ -221,7 +221,7 @@ export default function CryptoModal() {
                   </h2>
                 </div>
               </div>
-              <div className="flex w-full mt-4 justify-between">
+              <div className="flex w-full mt-1 justify-between max-[400px]:flex-col max-[400px]:gap-3">
                 <div className="flex flex-col">
                   <span className="text-sm capitalize text-zinc-400">
                     max suply
@@ -294,12 +294,12 @@ export default function CryptoModal() {
                 </div>
               </div>
             </div>
-            <div className="flex flex-col w-[55%] h-full pr-3">
+            <div className="flex flex-col w-[55%] h-full pr-3 max-2xl:w-full max-2xl:mt-5 max-[420px]:mr-0 max-[420px]:mt-[9.25rem]">
               <Chart id={coinData.id} />
 
               <div className="flex flex-col items-end mt-4">
-                <div className="text-zinc-50 text-xl py-1">
-                  <span className="text-zinc-500 capitalize mr-1">
+                <div className="text-zinc-50 text-xl py-1 max-sm:mt-10 max-sm:text-lg">
+                  <span className="text-zinc-500 capitalize mr-1 ">
                     market cap rank:
                   </span>
                   <span>{coinData.market_cap_rank}</span>
@@ -309,7 +309,7 @@ export default function CryptoModal() {
                   !monitoredCoins.some((coin) => coin.name == coinId) && (
                     <form
                       onSubmit={handleSubmit(handleClick)}
-                      className="mt-16 gap-3 flex flex-col items-center justify-center  w-full"
+                      className="mt-16 gap-3 flex flex-col items-center justify-center  w-full max-sm:mb-6"
                     >
                       <div className="text-zinc-50 py-1 text-sm self-end">
                         <span className="text-zinc-500 capitalize mr-1">
@@ -317,7 +317,7 @@ export default function CryptoModal() {
                         </span>
                         <span>{monitoredCoins.length}/5</span>
                       </div>
-                      <div className="flex justify-center gap-6 w-full text-sm text-zinc-200">
+                      <div className="flex justify-center gap-6 w-full text-sm text-zinc-200 max-sm:items-center max-sm:flex-col max-sm:mt-5">
                         <div className="flex flex-col gap-1">
                           <input
                             {...register("price")}

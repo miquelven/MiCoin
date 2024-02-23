@@ -87,9 +87,9 @@ export default function Chart({ id }) {
   }, [id, type, days]);
 
   return (
-    <div className="w-full h-[60%]">
+    <div className="w-full h-[60%] max-sm:mt-16 max-[400px]:mt-32">
       <ChartComponent data={chartData} currency={currency} type={type} />
-      <div>
+      <div className="max-sm:flex max-sm:gap-[15px] max-sm:flex-wrap max-sm:mt-3">
         <button
           className={`text-sm py-0.5 px-1.5 ml-2 opacity-85 rounded capitalize ${
             type == "prices"
@@ -142,7 +142,7 @@ export default function Chart({ id }) {
           14d
         </button>
         <button
-          className={`text-sm py-0.5 px-1.5 ml-2 opacity-85 rounded capitalize ${
+          className={`text-sm py-0.5 px-1.5 ml-2 opacity-85 rounded capitalize max-2xl:mb-3 ${
             days == 30
               ? "bg-blue-600 text-blue-300"
               : "bg-zinc-700  text-zinc-400"
