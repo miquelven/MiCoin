@@ -23,13 +23,15 @@ export default function Menu() {
 
   const closeMenu = () => {
     menuBar.current.style.top = "-185px";
+    menuBar.current.style.backDrop = "blur(0px)";
     menuBar.current.style.opacity = "0";
     closeMenuBtn.current.style.display = "none";
     openMenuBtn.current.style.display = "block";
   };
 
   const openMenu = () => {
-    menuBar.current.style.top = "80px";
+    menuBar.current.style.top = "64px";
+    menuBar.current.style.backDrop = "blur(64px)";
     setTimeout(() => (menuBar.current.style.opacity = "1"), 200);
     // menuBar.current.style.opacity = "1";
     closeMenuBtn.current.style.display = "block";
@@ -63,7 +65,7 @@ export default function Menu() {
         </button>
         <ul
           ref={menuBar}
-          className="flex absolute transition-all  duration-500 ease-in opacity-0 -top-[185px] left-0 right-0 flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-800"
+          className="flex absolute transition-all  duration-700 ease-in opacity-0 -top-[185px] left-0 right-0 flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
         >
           {headerLinks.map((link) => (
             <li
