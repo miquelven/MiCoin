@@ -33,3 +33,7 @@ html ::-webkit-scrollbar-thumb {
   background-color: #29292d7d;
   border-radius: 15px;
 }
+
+#modalArea::-webkit-scrollbar {
+  display: none;
+}
