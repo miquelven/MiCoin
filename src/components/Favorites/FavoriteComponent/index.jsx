@@ -12,7 +12,7 @@ export default function FavoriteComponent({ data }) {
   const navigate = useNavigate();
 
   const getCoinDetail = (id) => {
-    navigate(`favorites/crypto/${id}`);
+    navigate(`/favorites/crypto/${id}`);
   };
 
   const handleClick = (id) => {
