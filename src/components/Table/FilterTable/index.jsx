@@ -53,7 +53,7 @@ export default function FilterTable() {
           className="relative flex items-center mr-12 max-sm:flex-col max-sm:gap-4 max-sm:mr-0 "
           onSubmit={handleCurrency}
         >
-          <label className="relative flex justify-center items-center mr-2 gap-2 font-bold text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center">
+          <label className="relative flex justify-center items-center mr-2 gap-2  text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center">
             Currency:
             <input
               type="text"
@@ -67,7 +67,7 @@ export default function FilterTable() {
           </label>
         </form>
         <label className="relative flex justify-center items-center text-zinc-700 dark:text-zinc-300 max-sm:justify-start max-sm:flex-col max-sm:items-center max-sm:gap-[10px] max-[490px]:items-start">
-          <span className="font-bold mr-2">Sort by:</span>
+          <span className=" mr-2">Sort by:</span>
           <select
             name="sortby"
             className="rounded  bg-zinc-200 dark:bg-zinc-800 text-base pl-2 pr-10 py-0.5 leading-4 capitalize focus:outline-0"

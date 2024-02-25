@@ -13,14 +13,14 @@ function Home() {
           data-aos-delay="1200"
           className="flex-1 flex flex-col justify-around text-justify max-md:flex-col gap-3  max-md:text-center max-md:mb-14 max-md:gap-6"
         >
-          <h1 className="text-5xl max-lg:text-4xl max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl">
+          <h1 className="text-5xl max-lg:text-4xl font-bold max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl">
             Welcome to <DetailText>Mi</DetailText>
             Coin
           </h1>
           <p
             data-aos="fade-right"
             data-aos-delay="1500"
-            className=" dark:text-zinc-300 text-lg leading-8 max-lg:text-base max-md:text-sm max-sm:leading-9 max-[390px]:text-xs"
+            className=" dark:text-zinc-300 text-lg font-light leading-8 max-lg:text-base max-md:text-sm max-sm:leading-9 max-[390px]:text-xs"
           >
             Your comprehensive hub for exploring the exciting world of digital
             currencies. With <DetailText>real-time </DetailText>
