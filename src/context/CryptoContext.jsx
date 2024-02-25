@@ -48,7 +48,6 @@ export const CryptoProvider = ({ children }) => {
       toast.error("An error occurred. Please wait a moment and try again");
     }
 
-    if (totalPages.length !== 250) return;
     try {
       const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
         method: "GET",
