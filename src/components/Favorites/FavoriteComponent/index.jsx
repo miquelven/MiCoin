@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Star } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { CryptoContext } from "../../../context/CryptoContext";
@@ -7,7 +7,8 @@ import { StorageContext } from "../../../context/StorageContext";
 export default function FavoriteComponent({ data }) {
   let { currency } = useContext(CryptoContext);
 
-  const { saveCoin, coins, removeCoin } = useContext(StorageContext);
+  const { saveCoin, coins, removeCoin, setCoins, getCoinsData } =
+    useContext(StorageContext);
 
   const navigate = useNavigate();
 
@@ -27,6 +28,24 @@ export default function FavoriteComponent({ data }) {
       }
     }
   };
+
+  useEffect(() => {
+    const total = JSON.parse(localStorage.getItem("coins")) || [];
+    if (total == null) {
+      localStorage.setItem("coins", JSON.stringify([]));
+    } else {
+      let totalCoins = JSON.parse(localStorage.getItem("coins"));
+      setCoins(totalCoins);
+
+      if (totalCoins) {
+        if (totalCoins.length > 0) {
+          getCoinsData(totalCoins);
+        }
+      } else {
+        localStorage.setItem("coins", JSON.stringify([]));
+      }
+    }
+  }, []);
 
   return (
     <tr

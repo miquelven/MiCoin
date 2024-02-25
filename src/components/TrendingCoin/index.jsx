@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 
 import TrendingComponent from "./TrendingComponent";
 import ToUp from "../ToUp";
@@ -9,8 +9,12 @@ export default function TrendingCoin() {
     window.scrollY >= 500 ? setShowArrow(true) : setShowArrow(false);
   });
 
-  const { trendingData } = useContext(TrendingContext);
+  const { trendingData, getTrendingData } = useContext(TrendingContext);
   const [showArrow, setShowArrow] = useState(false);
+
+  useEffect(() => {
+    getTrendingData();
+  }, []);
 
   return (
     <section

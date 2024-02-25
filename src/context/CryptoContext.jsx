@@ -1,4 +1,4 @@
-import { createContext, useCallback, useLayoutEffect } from "react";
+import { createContext, useCallback } from "react";
 import { useState } from "react";
 
 import { toast } from "react-toastify";
@@ -34,18 +34,6 @@ export const CryptoProvider = ({ children }) => {
 
   const getCryptoData = async () => {
     try {
-      const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((json) => json);
-
-      setTotalPages(data.length);
-    } catch (e) {
-      toast.error("An error occurred. Please wait a moment and try again");
-    }
-
-    try {
       const data = await fetch(
         `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coinSelected}&order=${sortBy}&per_page=${per_page}&page=${pageSelected}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
         {
@@ -56,6 +44,19 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       setCryptoData(data);
+    } catch (e) {
+      toast.error("An error occurred. Please wait a moment and try again");
+    }
+
+    if (totalPages.length !== 250) return;
+    try {
+      const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((json) => json);
+
+      setTotalPages(data.length);
     } catch (e) {
       toast.error("An error occurred. Please wait a moment and try again");
     }
@@ -78,19 +79,11 @@ export const CryptoProvider = ({ children }) => {
     }
   }, []);
 
-  const resetData = () => {
-    setPageSelected(1);
-    setSearchData("");
-  };
-
-  useLayoutEffect(() => {
-    getCryptoData();
-  }, [coinSelected, currency, sortBy, pageSelected, per_page]);
-
   return (
     <CryptoContext.Provider
       value={{
         cryptoData,
+        sortBy,
         searchData,
         getSearch,
         setSearchData,
@@ -101,11 +94,12 @@ export const CryptoProvider = ({ children }) => {
         totalPages,
         pageSelected,
         setPageSelected,
-        resetData,
         setPerPage,
         per_page,
         coinData,
         getCoinData,
+        getCryptoData,
+        pageSelected,
       }}
     >
       {children}

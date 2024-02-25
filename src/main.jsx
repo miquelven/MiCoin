@@ -62,10 +62,11 @@ const router = createBrowserRouter([
 const contextClass = {
   error: "bg-red-600",
   dark: "bg-white-600 font-gray-300",
+  success: "bg-green-600",
 };
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
+  <>
     <ToastContainer
       transition="Zoom"
       limit={2}
@@ -74,7 +75,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         contextClass[context?.type || "default"] +
         " relative flex p-1 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer"
       }
-      autoClose={2000}
+      autoClose={500}
       hideProgressBar={true}
       closeOnClick
       draggable
@@ -97,5 +98,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
         </MonitoredProvider>
       </StorageProvider>
     </CryptoProvider>
-  </React.StrictMode>
+  </>
 );

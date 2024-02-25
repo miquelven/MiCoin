@@ -1,4 +1,4 @@
-import { createContext, useLayoutEffect, useState } from "react";
+import { createContext, useState } from "react";
 
 export const TrendingContext = createContext({});
 
@@ -20,19 +20,11 @@ export const TrendingProvider = ({ children }) => {
     }
   };
 
-  const resetTrendingResult = () => {
-    getTrendingData();
-  };
-
-  useLayoutEffect(() => {
-    getTrendingData();
-  }, []);
-
   return (
     <TrendingContext.Provider
       value={{
         trendingData,
-        resetTrendingResult,
+        getTrendingData,
       }}
     >
       {children}

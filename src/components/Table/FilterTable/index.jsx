@@ -1,9 +1,19 @@
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 import InputArea from "../InputArea";
 import { ArrowRightSquare, RefreshCcw, Triangle } from "lucide-react";
+
 export default function FilterTable() {
-  const { setCurrency, setSortby, resetData } = useContext(CryptoContext);
+  const {
+    setCurrency,
+    setSortby,
+    currency,
+    sortBy,
+    getCryptoData,
+    setPageSelected,
+    pageSelected,
+    setSearchData,
+  } = useContext(CryptoContext);
 
   const inputCurrency = useRef(null);
 
@@ -20,11 +30,20 @@ export default function FilterTable() {
     inputCurrency.current.value = "";
   };
 
+  const handleResetData = () => {
+    setPageSelected(1);
+    setSearchData("");
+  };
+
+  useEffect(() => {
+    getCryptoData();
+  }, [sortBy, currency, pageSelected]);
+
   return (
     <div
       data-aos="fade-up"
       data-aos-delay="500"
-      className="w-full  min-h-14 border-2 dark:border border-zinc-400 dark:border-gray-100 rounded-xl flex flex-wrap items-center justify-between relative
+      className="w-full min-h-14 border-2 dark:border border-zinc-400 dark:border-gray-100 rounded-xl flex flex-wrap items-center justify-between relative z-50
    max-lg:justify-center max-lg:gap-8 max-lg:py-4 
     "
     >
@@ -66,7 +85,7 @@ export default function FilterTable() {
           <Triangle className="w-[0.9rem] h-auto absolute right-0.5 top-1.5 pointer-events-none fill-blue-400 text-blue-400  dark:fill-blue-800 rotate-180 dark:text-blue-800 max-sm:top-[2.4rem] " />
         </label>
         <button
-          onClick={resetData}
+          onClick={handleResetData}
           className="w-[2rem] ml-4 flex justify-center max-sm:self-center max-[490px]:ml-0"
         >
           <RefreshCcw className="transition-all  text-zinc-500  hover:text-blue-600 dark:hover:text-blue-600 " />

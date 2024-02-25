@@ -1,9 +1,9 @@
 import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { CryptoContext } from "../../../context/CryptoContext";
 
 export default function Pagination() {
-  const { pageSelected, setPageSelected, totalPages, per_page } =
+  const { pageSelected, setPageSelected, getCryptoData, totalPages, per_page } =
     useContext(CryptoContext);
 
   const TotalPages = Math.ceil(totalPages / per_page);
@@ -23,6 +23,10 @@ export default function Pagination() {
       setPageSelected(pageSelected - 1);
     }
   };
+
+  useEffect(() => {
+    getCryptoData();
+  }, [pageSelected]);
 
   return (
     <div className="flex items-center max-[470px]:flex-col max-[470px]:gap-7 max-[470px]:pt-10">

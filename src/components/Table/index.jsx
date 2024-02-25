@@ -1,4 +1,4 @@
-import { memo, useContext, useRef } from "react";
+import { memo, useContext, useEffect, useRef } from "react";
 import { CryptoContext } from "../../context/CryptoContext";
 import { StorageContext } from "../../context/StorageContext";
 import { ArrowRightSquare, Star } from "lucide-react";
@@ -27,7 +27,7 @@ const SaveBtn = ({ data }) => {
     >
       <Star
         className={`w-7 h-7 mx-1.5 text-blue-400 dark:text-blue-900 ${
-          coins && coins.includes(data.id)
+          localStorage.getItem("coins").includes(data.id)
             ? "fill-blue-400 dark:fill-blue-900"
             : ""
         }`}
@@ -39,7 +39,7 @@ const SaveBtn = ({ data }) => {
 const PageFor = () => {
   const inputPage = useRef(null);
 
-  const { setPerPage } = useContext(CryptoContext);
+  const { setPerPage, getCryptoData, per_page } = useContext(CryptoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -47,6 +47,10 @@ const PageFor = () => {
     setPerPage(inputPage.current.value);
     inputPage.current.value = inputPage.current.value;
   };
+
+  useEffect(() => {
+    getCryptoData();
+  }, [per_page]);
 
   return (
     <form
@@ -83,7 +87,7 @@ const Table = () => {
       <div
         data-aos="fade-up"
         data-aos-delay="800"
-        className="flex min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent relative"
+        className="flex  min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent "
       >
         {cryptoData ? (
           <table className="table-auto">
@@ -191,7 +195,7 @@ const Table = () => {
           </div>
         )}
       </div>
-      {cryptoData && cryptoData.length >= per_page && (
+      {cryptoData && (
         <div className="w-full h-[2.5rem] capitalize flex justify-center items-center mt-7">
           <PageFor />
           <Pagination />

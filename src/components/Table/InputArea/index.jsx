@@ -33,7 +33,7 @@ const InputComponent = ({ handleSearch }) => {
   return (
     <>
       <form
-        className="w-96 relative flex items-center ml-7 max-sm:ml-0 max-sm:w-72 max-[380px]:w-60"
+        className="w-96 relative flex items-center ml-7 max-sm:ml-0 max-sm:w-72 max-[380px]:w-60 z-50"
         onSubmit={handleSubmit}
       >
         <input
@@ -49,13 +49,13 @@ const InputComponent = ({ handleSearch }) => {
       </form>
 
       {inputText.length > 0 && showResults == true ? (
-        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-200 dark:bg-zinc-800 bg-opacity-60 backdrop-blur-md scrollbar-thin  dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900">
+        <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-200 dark:bg-zinc-800 backdrop-blur-md scrollbar-thin  dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900 z-[90]">
           {searchData ? (
             searchData.map((data) => {
               return (
                 <li
                   key={data.id}
-                  className="flex items-center ml-4 my-2 cursor-pointer hover:font-bold"
+                  className="flex transition-all duration-500 items-center pl-4 py-2 cursor-pointer hover:dark:bg-zinc-700"
                   onClick={() => selectedCoin(data.id)}
                 >
                   <img src={data.thumb} alt={data.name} />
@@ -88,7 +88,7 @@ export default function InputArea() {
   }, 2000);
 
   return (
-    <div className="relative flex ">
+    <div className="relative flex">
       <Input handleSearch={DebouncedSearch} />
     </div>
   );

@@ -1,5 +1,12 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useLayoutEffect,
+  useState,
+} from "react";
 import { CryptoContext } from "./CryptoContext";
+import { toast } from "react-toastify";
 
 export const MonitoredContext = createContext();
 
@@ -12,7 +19,7 @@ export const MonitoredProvider = ({ children }) => {
 
   const fetchMonitoredCoinPrice = (name, currentPrice, userPrice) => {
     if (currentPrice === userPrice) {
-      fetch("http://localhost:4000/api/send-email", {
+      fetch("https://mi-coin-send-email.vercel.app/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,9 +41,8 @@ export const MonitoredProvider = ({ children }) => {
 
     const intervalId = setInterval(() => {
       fetchMonitoredCoinPrice(name, currentPrice, userPrice);
-    }, 30 * 60 * 1000); // Intervalo de 30 minutos
+    }, 30 * 60 * 1000);
 
-    // Armazenar o intervalId no localStorage
     const storedIntervals =
       JSON.parse(localStorage.getItem("monitored-intervals")) || {};
     storedIntervals[id] = intervalId;
@@ -45,14 +51,12 @@ export const MonitoredProvider = ({ children }) => {
       JSON.stringify(storedIntervals)
     );
 
-    // Atualizar o state intervalIds
     setIntervalIds(storedIntervals);
   };
 
   const stopMonitoringCoin = (id) => {
     clearInterval(intervalIds[id]);
 
-    // Remover o intervalId do localStorage
     const storedIntervals = { ...intervalIds };
     delete storedIntervals[id];
     localStorage.setItem(
@@ -60,12 +64,10 @@ export const MonitoredProvider = ({ children }) => {
       JSON.stringify(storedIntervals)
     );
 
-    // Atualizar o state intervalIds
     setIntervalIds(storedIntervals);
   };
 
   const monitoredCoinsValue = async () => {
-    console.log("monitoredCoinsValue");
     for (const monitoredCoin of monitoredCoins) {
       const { name, price } = monitoredCoin;
 
@@ -97,6 +99,7 @@ export const MonitoredProvider = ({ children }) => {
         "monitored-currency",
         JSON.stringify(newMonitoredCoin)
       );
+      toast.success("The asset is being monitored");
     }
   };
 
@@ -106,7 +109,7 @@ export const MonitoredProvider = ({ children }) => {
     if (oldCoin.length === 1) {
       setMonitoredCoins([]);
       localStorage.setItem("monitored-currency", JSON.stringify([]));
-      stopMonitoringCoin(idCoin); // Parar o intervalo associado ao ativo removido
+      stopMonitoringCoin(idCoin);
       return;
     }
 
@@ -123,17 +126,26 @@ export const MonitoredProvider = ({ children }) => {
       "monitored-intervals",
       JSON.stringify(storedIntervals)
     );
-    stopMonitoringCoin(idCoin); // Parar o intervalo associado ao ativo removido
+    stopMonitoringCoin(idCoin);
   };
 
   useEffect(() => {
-    setUserEmail(localStorage.getItem("userEmail"));
-    monitoredCoinsValue();
-  }, [monitoredCoins]);
+    const oldCoin =
+      JSON.parse(localStorage.getItem("monitored-currency")) || [];
+
+    if (oldCoin.length > 0) setMonitoredCoins(oldCoin);
+  }, []);
 
   return (
     <MonitoredContext.Provider
-      value={{ saveMonitoredCoin, monitoredCoins, removeMonitored }}
+      value={{
+        saveMonitoredCoin,
+        setUserEmail,
+        monitoredCoins,
+        removeMonitored,
+        setUserEmail,
+        monitoredCoinsValue,
+      }}
     >
       {children}
     </MonitoredContext.Provider>

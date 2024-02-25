@@ -1,9 +1,33 @@
-import { memo, useContext } from "react";
+import { memo, useContext, useEffect, useLayoutEffect } from "react";
 import { StorageContext } from "../../context/StorageContext";
 
 import FavoriteComponent from "./FavoriteComponent";
 function Favorites() {
-  const { savedCoins } = useContext(StorageContext);
+  const { savedCoins, setSavedCoins, setCoins, getCoinsData, coins } =
+    useContext(StorageContext);
+
+  useLayoutEffect(() => {
+    console.log("uselayouteffect");
+    const isCoin = JSON.parse(localStorage.getItem("coins")) || [];
+
+    if (isCoin.length > 0) {
+      setCoins(isCoin);
+    } else {
+      localStorage.setItem("coins", JSON.stringify([]));
+    }
+  }, []);
+
+  useEffect(() => {
+    if (coins) {
+      if (coins.length > 0) {
+        getCoinsData(coins);
+      } else {
+        setSavedCoins([]);
+      }
+    } else {
+      localStorage.setItem("coins", JSON.stringify([]));
+    }
+  }, [coins]);
 
   return (
     <section

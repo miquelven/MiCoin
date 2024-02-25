@@ -1,6 +1,6 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { useNavigate, useParams } from "react-router-dom";
+import { json, useNavigate, useParams } from "react-router-dom";
 import { CryptoContext } from "../../context/CryptoContext";
 import { Triangle } from "lucide-react";
 import Chart from "./Chart";
@@ -59,8 +59,13 @@ export default function CryptoModal() {
   const { coinId } = useParams();
   const navigate = useNavigate();
 
-  const { saveMonitoredCoin, monitoredCoins, removeMonitored } =
-    useContext(MonitoredContext);
+  const {
+    saveMonitoredCoin,
+    monitoredCoins,
+    removeMonitored,
+    monitoredCoinsValue,
+    setUserEmail,
+  } = useContext(MonitoredContext);
 
   const handleClick = (data) => {
     localStorage.setItem("userEmail", data.email);
@@ -75,9 +80,16 @@ export default function CryptoModal() {
 
   const { getCoinData, coinData, currency } = useContext(CryptoContext);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     getCoinData(coinId);
   }, [coinId]);
+
+  useEffect(() => {
+    console.log("USELAYOUTEFFECT");
+    setUserEmail(localStorage.getItem("userEmail"));
+
+    monitoredCoinsValue();
+  }, [monitoredCoins]);
 
   return ReactDOM.createPortal(
     <div
@@ -314,8 +326,10 @@ export default function CryptoModal() {
                     >
                       <div className="text-zinc-50 py-1 text-sm self-end">
                         <span className="text-zinc-500 capitalize mr-1">
+                          {JSON.stringify(monitoredCoins)}
                           monitored currencies
                         </span>
+                        {JSON.stringify(monitoredCoins)}
                         <span>{monitoredCoins.length}/5</span>
                       </div>
                       <div className="flex justify-center gap-6 w-full text-sm text-zinc-200 max-sm:items-center max-sm:flex-col max-sm:mt-5">
