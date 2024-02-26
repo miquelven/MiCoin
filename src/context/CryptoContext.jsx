@@ -32,6 +32,20 @@ export const CryptoProvider = ({ children }) => {
     }
   };
 
+  const getTotalPages = async () => {
+    try {
+      const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
+        method: "GET",
+      })
+        .then((res) => res.json())
+        .then((json) => json);
+
+      setTotalPages(data.length);
+    } catch (e) {
+      toast.error("An error occurred. Please wait a moment and try again");
+    }
+  };
+
   const getCryptoData = async () => {
     try {
       const data = await fetch(
@@ -44,18 +58,6 @@ export const CryptoProvider = ({ children }) => {
         .then((json) => json);
 
       setCryptoData(data);
-    } catch (e) {
-      toast.error("An error occurred. Please wait a moment and try again");
-    }
-
-    try {
-      const data = await fetch(`https://api.coingecko.com/api/v3/coins/list`, {
-        method: "GET",
-      })
-        .then((res) => res.json())
-        .then((json) => json);
-
-      setTotalPages(data.length);
     } catch (e) {
       toast.error("An error occurred. Please wait a moment and try again");
     }
@@ -99,6 +101,7 @@ export const CryptoProvider = ({ children }) => {
         getCoinData,
         getCryptoData,
         pageSelected,
+        getTotalPages,
       }}
     >
       {children}

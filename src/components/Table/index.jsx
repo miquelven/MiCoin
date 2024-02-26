@@ -39,7 +39,8 @@ const SaveBtn = ({ data }) => {
 const PageFor = () => {
   const inputPage = useRef(null);
 
-  const { setPerPage, getCryptoData, per_page } = useContext(CryptoContext);
+  const { setPerPage, getCryptoData, per_page, getTotalPages } =
+    useContext(CryptoContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -50,7 +51,12 @@ const PageFor = () => {
 
   useEffect(() => {
     getCryptoData();
+    getTotalPages();
   }, [per_page]);
+
+  useEffect(() => {
+    getCryptoData();
+  }, []);
 
   return (
     <form
