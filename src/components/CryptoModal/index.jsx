@@ -326,10 +326,8 @@ export default function CryptoModal() {
                     >
                       <div className="text-zinc-50 py-1 text-sm self-end">
                         <span className="text-zinc-500 capitalize mr-1">
-                          {JSON.stringify(monitoredCoins)}
                           monitored currencies
                         </span>
-                        {JSON.stringify(monitoredCoins)}
                         <span>{monitoredCoins.length}/5</span>
                       </div>
                       <div className="flex justify-center gap-6 w-full text-sm text-zinc-200 max-sm:items-center max-sm:flex-col max-sm:mt-5">
