@@ -11,6 +11,7 @@ export default function FilterTable() {
     sortBy,
     getCryptoData,
     setPageSelected,
+    setCoinSelected,
     pageSelected,
     setSearchData,
   } = useContext(CryptoContext);
@@ -31,8 +32,9 @@ export default function FilterTable() {
   };
 
   const handleResetData = () => {
-    setPageSelected(1);
     setSearchData("");
+    setCoinSelected("");
+    setPageSelected(1);
   };
 
   useEffect(() => {
