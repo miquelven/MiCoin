@@ -86,7 +86,7 @@ const PageFor = () => {
 };
 
 const Table = () => {
-  let { cryptoData, currency, per_page } = useContext(CryptoContext);
+  let { cryptoData, currency } = useContext(CryptoContext);
 
   return (
     <>

@@ -3,8 +3,18 @@ import Table from "../components/Table";
 import banner from "../assets/images/banner.webp";
 import FilterTable from "../components/Table/FilterTable";
 import { Outlet } from "react-router-dom";
+import { useEffect } from "react";
 
 function Home() {
+  useEffect(() => {
+    const isCoin = localStorage.getItem("coin") || [];
+    console.log(isCoin);
+    if (isCoin.length > 0) return;
+    console.log("oioi");
+
+    localStorage.setItem("coin", JSON.stringify([]));
+  }, []);
+
   return (
     <>
       <section className="flex h-96 max-md:flex-col max-md:gap-8">
