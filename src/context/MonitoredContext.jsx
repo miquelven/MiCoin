@@ -133,6 +133,9 @@ export const MonitoredProvider = ({ children }) => {
     const oldCoin =
       JSON.parse(localStorage.getItem("monitored-currency")) || [];
 
+    if (oldCoin.length === 0) {
+      return localStorage.setItem("monitored-currency", JSON.stringify([]));
+    }
     if (oldCoin.length > 0) setMonitoredCoins(oldCoin);
   }, []);
 
