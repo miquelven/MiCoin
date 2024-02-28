@@ -27,6 +27,7 @@ const SaveBtn = ({ data }) => {
     >
       <Star
         className={`w-7 h-7 mx-1.5 text-blue-400 dark:text-blue-900 ${
+          localStorage.getItem("coins") &&
           localStorage.getItem("coins").includes(data.id)
             ? "fill-blue-400 dark:fill-blue-900"
             : ""
