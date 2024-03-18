@@ -1,6 +1,7 @@
 import DetailText from "../components/DetailText";
 import Table from "../components/Table";
-import banner from "../assets/images/banner.webp";
+import banner from "../assets/images/banner.png";
+import bannerGif from "../assets/images/banner2.png";
 import FilterTable from "../components/Table/FilterTable";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
@@ -17,11 +18,11 @@ function Home() {
 
   return (
     <>
-      <section className="flex h-96 max-md:flex-col max-md:gap-8">
+      <section className="flex  h-96 mt-28 mb-32 max-md:flex-col max-md:gap-8 max-md:mt-0">
         <div
           data-aos="fade-right"
           data-aos-delay="1200"
-          className="flex-1 flex flex-col justify-around text-justify max-md:flex-col gap-3  max-md:text-center max-md:mb-14 max-md:gap-6"
+          className="flex-1 relative flex flex-col justify-around text-justify max-md:flex-col gap-12  max-md:text-center max-md:mb-14 max-md:gap-6"
         >
           <h1 className="text-5xl max-lg:text-4xl font-bold max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl">
             Welcome to <DetailText>Mi</DetailText>
@@ -30,7 +31,7 @@ function Home() {
           <p
             data-aos="fade-right"
             data-aos-delay="1500"
-            className=" dark:text-zinc-300 text-lg font-light leading-8 max-lg:text-base max-md:text-sm max-sm:leading-9 max-[390px]:text-xs"
+            className=" dark:text-zinc-300 mt-10 text-lg font-light leading-8 max-md:max-w-[380px] max-md:mx-auto max-sm:leading-9 max-sm:text-sm max-[390px]:text-xs "
           >
             Your comprehensive hub for exploring the exciting world of digital
             currencies. With <DetailText>real-time </DetailText>
@@ -40,17 +41,20 @@ function Home() {
             navigate the cryptocurrency universe. Join us and dive into the
             future of finance.
           </p>
+          <div className="flex items-end max-md:justify-center">
+            <img src={bannerGif} className="w-[50%] mt-10" />
+          </div>
         </div>
         <div
           data-aos="fade-left"
           data-aos-delay="1700"
-          className="flex-1 self-center"
+          className="flex-1 self-center max-md:absolute max-md:top-0 max-md:left-0 max-md:w-full"
         >
-          <div className="flex justify-end  transition duration-300 ease-in-out max-md:justify-center ">
+          <div className="flex flex-col items-end justify-center  transition duration-300 ease-in-out max-md:justify-center max-md:items-center max-md:opacity-10">
             <img
               src={banner}
               alt="Imagem do banner"
-              className=" w-[80%] transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-100 dark:hover:brightness-110"
+              className=" w-[80%] my-20 transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-100 dark:hover:brightness-110 "
             />
           </div>
         </div>
