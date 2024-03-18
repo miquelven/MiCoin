@@ -22,7 +22,7 @@ export default function Menu() {
   const openMenuBtn = useRef(null);
 
   const closeMenu = () => {
-    menuBar.current.style.top = "-185px";
+    menuBar.current.style.top = "-685px";
     menuBar.current.style.backDrop = "blur(0px)";
     menuBar.current.style.opacity = "0";
     closeMenuBtn.current.style.display = "none";
@@ -30,7 +30,7 @@ export default function Menu() {
   };
 
   const openMenu = () => {
-    menuBar.current.style.top = "64px";
+    menuBar.current.style.top = "54px";
     menuBar.current.style.backDrop = "blur(64px)";
     setTimeout(() => (menuBar.current.style.opacity = "1"), 200);
     closeMenuBtn.current.style.display = "block";
@@ -73,12 +73,12 @@ export default function Menu() {
         </button>
         <ul
           ref={menuBar}
-          className="flex pt-4 fixed transition-all  gap-10 duration-700 ease-in opacity-0 top-[-180px] left-0 right-0 h-[50vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
+          className="flex w-[100vw] py-2  absolute transition-all  duration-700 ease-in opacity-0 top-[-685px] -left-5 h-[35vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
         >
           {headerLinks.map((link) => (
             <li
               key={link.name}
-              className="hover:bg-zinc-200 hover:text-zinc-500 font-semibold dark:hover:bg-zinc-800 w-full text-center py-3 dark:text-zinc-100"
+              className="hover:bg-zinc-200 hover:text-zinc-500 font-semibold dark:hover:bg-zinc-800 w-full text-center py-6 dark:text-zinc-100"
             >
               <button
                 onClick={() => redirectAnchor(link.to)}
