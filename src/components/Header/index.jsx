@@ -13,7 +13,7 @@ export default function Header() {
     });
   }, []);
   return (
-    <header id="top" className="bg-zinc-200 dark:bg-zinc-900/30 relative z-40">
+    <header id="top" className=" pt-10 relative z-40">
       <Container>
         <div
           data-aos="fade-down"
@@ -30,7 +30,7 @@ export default function Header() {
             </span>
           </div>
 
-          <div className="flex items-center gap-10 max-md:flex-row-reverse">
+          <div className="border-2 border-zinc-700 rounded-[2rem] px-10  flex items-center gap-10 max-md:flex-row-reverse max-sm:px-7 max-sm:gap-5">
             {/* navigation */}
             <Menu />
             {/* light/dark */}

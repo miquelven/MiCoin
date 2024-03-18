@@ -11,10 +11,10 @@ export default function Theme() {
   };
 
   return (
-    <div class="flex flex-col justify-center ml-3 ">
+    <div class=" flex flex-col justify-center ml-3 relative before:content-['']  before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:-bottom-1.5 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300">
       <button id={"light-switch"} onClick={toggleTheme}></button>
       <label
-        class="transition-all duration-300 relative cursor-pointer px-4 py-6 hover:opacity-70"
+        class="transition-all duration-300 relative cursor-pointer px-6 py-4 hover:opacity-40 max-sm:px-4"
         for="light-switch"
       >
         <svg

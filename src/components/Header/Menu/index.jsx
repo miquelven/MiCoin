@@ -33,7 +33,6 @@ export default function Menu() {
     menuBar.current.style.top = "64px";
     menuBar.current.style.backDrop = "blur(64px)";
     setTimeout(() => (menuBar.current.style.opacity = "1"), 200);
-    // menuBar.current.style.opacity = "1";
     closeMenuBtn.current.style.display = "block";
     openMenuBtn.current.style.display = "none";
   };
@@ -45,27 +44,36 @@ export default function Menu() {
 
   return (
     <nav className="">
-      <ul className="max-md:hidden flex mr-3">
+      {/* menu desktop */}
+      <ul className="max-md:hidden flex mr-3 ">
         {headerLinks.map((link) => (
           <li
             key={link.name}
             onClick={() => redirectAnchor(link.to)}
-            className="py-5 cursor-pointer transition duration-300 ease-in border-b-2 border-transparent hover:border-blue-500 hover:opacity-70 "
+            className="py-4 relative  cursor-pointer transition duration-300 ease-in before:content[''] before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:-bottom-0.5 hover:text-zinc-500 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300  "
           >
             <button className="px-6 capitalize">{link.name}</button>
           </li>
         ))}
       </ul>
       <div ref={content} className="hidden max-md:flex">
-        <button ref={openMenuBtn} onClick={openMenu}>
+        <button
+          ref={openMenuBtn}
+          onClick={openMenu}
+          className="py-3 px-2 relative before:content-['']  before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:left-0  before:-bottom-0.5 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300"
+        >
           <AlignJustify />
         </button>
-        <button ref={closeMenuBtn} className="hidden" onClick={closeMenu}>
+        <button
+          ref={closeMenuBtn}
+          onClick={closeMenu}
+          className="hidden py-3 px-2 relative before:content-['']  before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:left-0  before:-bottom-0.5 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300"
+        >
           <X />
         </button>
         <ul
           ref={menuBar}
-          className="flex absolute transition-all  duration-700 ease-in opacity-0 -top-[185px] left-0 right-0 flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
+          className="flex pt-4 fixed transition-all  gap-10 duration-700 ease-in opacity-0 top-[-180px] left-0 right-0 h-[50vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
         >
           {headerLinks.map((link) => (
             <li
