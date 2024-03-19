@@ -20,6 +20,9 @@ export default function Menu() {
   const menuBar = useRef(null);
   const closeMenuBtn = useRef(null);
   const openMenuBtn = useRef(null);
+  const menuIsOpen = useRef(false);
+
+  const firstClick = useRef(0);
 
   const closeMenu = () => {
     menuBar.current.style.top = "-685px";
@@ -27,14 +30,26 @@ export default function Menu() {
     menuBar.current.style.opacity = "0";
     closeMenuBtn.current.style.display = "none";
     openMenuBtn.current.style.display = "block";
+    menuIsOpen.value = false;
   };
 
+  document.addEventListener("click", () => {
+    // serve para que ele não feche o menu logo quando ele abre
+    firstClick.value++;
+    if (menuIsOpen.value && firstClick.value !== 1) {
+      closeMenu();
+    }
+  });
+
   const openMenu = () => {
-    menuBar.current.style.top = "54px";
+    firstClick.value = 0;
+    menuBar.current.style.top = "94px";
     menuBar.current.style.backDrop = "blur(64px)";
     setTimeout(() => (menuBar.current.style.opacity = "1"), 200);
     closeMenuBtn.current.style.display = "block";
     openMenuBtn.current.style.display = "none";
+
+    menuIsOpen.value = true;
   };
 
   const redirectAnchor = (to) => {
@@ -73,20 +88,18 @@ export default function Menu() {
         </button>
         <ul
           ref={menuBar}
-          className="flex w-[100vw] py-2  absolute transition-all  duration-700 ease-in opacity-0 top-[-685px] -left-5 h-[35vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
+          className="flex w-[100vw] py-2  absolute transition-all  duration-700 ease-in opacity-0 top-[-685px] -left-0 h-[35vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
         >
           {headerLinks.map((link) => (
-            <li
+            <button
+              onClick={() => redirectAnchor(link.to)}
               key={link.name}
               className="hover:bg-zinc-200 hover:text-zinc-500 font-semibold dark:hover:bg-zinc-800 w-full text-center py-6 dark:text-zinc-100"
             >
-              <button
-                onClick={() => redirectAnchor(link.to)}
-                className="px-10 capitalize  transition-all  dark:hover:text-zinc-400"
-              >
+              <li className="px-10 capitalize  transition-all  dark:hover:text-zinc-400">
                 {link.name}
-              </button>
-            </li>
+              </li>
+            </button>
           ))}
         </ul>
       </div>
