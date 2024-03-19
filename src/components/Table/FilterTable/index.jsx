@@ -45,7 +45,7 @@ export default function FilterTable() {
     <div
       data-aos="fade-up"
       data-aos-delay="500"
-      className="w-full min-h-14 border-2 dark:border border-zinc-400 dark:border-gray-100 rounded-xl flex flex-wrap items-center justify-between relative z-50
+      className="w-full min-h-14 border-2 dark:border border-zinc-300 dark:border-zinc-700 rounded-xl flex flex-wrap items-center justify-between relative z-50
    max-lg:justify-center max-lg:gap-8 max-lg:py-4 
     "
     >
@@ -90,7 +90,7 @@ export default function FilterTable() {
           onClick={handleResetData}
           className="w-[2rem] ml-4 flex justify-center max-sm:self-center max-[490px]:ml-0"
         >
-          <RefreshCcw className="transition-all  text-zinc-500  hover:text-blue-600 dark:hover:text-blue-600 " />
+          <RefreshCcw className="transition-all  text-zinc-400  hover:text-blue-600 dark:hover:text-blue-600 " />
         </button>
       </div>
     </div>

@@ -37,14 +37,14 @@ function Favorites() {
       <h2
         data-aos="zoom-in"
         data-aos-delay="1000"
-        className="text-4xl font-bold max-sm:text-2xl"
+        className="text-4xl  my-10 font-bold max-sm:text-2xl"
       >
         Favorites
       </h2>
       <div
         data-aos="zoom-in"
         data-aos-delay="1200"
-        className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-600 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent "
+        className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-300 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent "
       >
         {savedCoins.length > 0 ? (
           <table
@@ -52,7 +52,7 @@ function Favorites() {
             data-aos-delay="400"
             className="table-auto w-full"
           >
-            <thead className="capitalize text-base text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-gray-600 dark:border-gray-400">
+            <thead className="capitalize text-base text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-zinc-300 dark:border-zinc-700">
               <tr className="max-[470px]:text-sm">
                 <th className="py-1">asset</th>
                 <th className="py-1">name</th>

@@ -28,8 +28,7 @@ export default function Contact() {
   const [showError, setShowError] = useState(false);
 
   function createUserData(data) {
-    console.log(data);
-    toast.success("Email sent!");
+    toast.success("Email sent");
 
     // setFormValues(JSON.stringify(data, null, 2));
   }
@@ -50,7 +49,7 @@ export default function Contact() {
         onSubmit={handleSubmit(createUserData)}
         className="flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
       >
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col h-[94px] gap-2">
           <label
             htmlFor="name"
             className="text-lg font-bold text-zinc-700 dark:text-zinc-400"
@@ -61,7 +60,7 @@ export default function Contact() {
             {...register("name")}
             name="name"
             id="name"
-            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border ${
+            className={`transition-all duration-300 px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border dark:hover:bg-zinc-950 hover:bg-zinc-300 ${
               errors.name
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
@@ -73,7 +72,7 @@ export default function Contact() {
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col h-[94px] gap-2">
           <label
             htmlFor="email"
             className="text-lg font-bold text-zinc-700 dark:text-zinc-400"
@@ -84,7 +83,7 @@ export default function Contact() {
             {...register("email")}
             name="email"
             id="email"
-            className={`px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border ${
+            className={`transition-all duration-300 px-2 text-zinc-700 dark:text-zinc-300   rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 max-[420px]:border dark:hover:bg-zinc-950 hover:bg-zinc-300 ${
               errors.email
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
@@ -96,7 +95,7 @@ export default function Contact() {
             </span>
           )}
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col h-[310px] gap-2">
           <label
             htmlFor="message"
             className="text-lg font-bold text-zinc-700 dark:text-zinc-400"
@@ -109,7 +108,7 @@ export default function Contact() {
             id="message"
             cols="30"
             rows="10"
-            className={`px-2 text-zinc-700 dark:text-zinc-300  rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 rouded-md resize-none max-[420px]:border ${
+            className={`transition-all duration-300 px-2 text-zinc-700 dark:text-zinc-300  rounded-md py-1 border-2 outline-none bg-zinc-200 dark:bg-zinc-900 rouded-md resize-none max-[420px]:border dark:hover:bg-zinc-950 hover:bg-zinc-300 ${
               textAreaValue.trim().length < 4 && showError
                 ? "border-red-300 dark:border-red-700"
                 : "border-zinc-300 dark:border-zinc-700"
@@ -135,7 +134,7 @@ export default function Contact() {
         <button
           type="submit"
           onClick={() => setShowError(true)}
-          className="bg-blue-600 hover:bg-blue-700 text-zinc-100 dark:text-zinc-300 dark:hover:text-zinc-100 dark:bg-blue-900 dark:hover:bg-blue-700 py-2 rounded-md border-2 border-transparent font-bold max-[420px]:py-1 transition-all duration-300 hover:bg-transparent "
+          className=" bg-blue-600 text-zinc-100 dark:text-zinc-300 dark:hover:text-zinc-100 dark:bg-blue-900  py-2 rounded-md border-2 border-transparent font-bold max-[420px]:py-1 transition-all duration-300 hover:bg-transparent hover:border-zinc-300 dark:hover:border-zinc-700  dark:hover:bg-[#09090b] hover:bg-zinc-400"
         >
           Send
         </button>

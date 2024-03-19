@@ -94,11 +94,11 @@ const Table = () => {
       <div
         data-aos="fade-up"
         data-aos-delay="800"
-        className="flex  min-h-[656px] w-full flex-col mt-10 border-2 border-zinc-400 dark:border-gray-100 rounded-2xl overflow-hidden shadow-lg shadow-zinc-300 dark:shadow-transparent "
+        className="flex  min-h-[656px] w-full flex-col mt-10 border-2  border-zinc-300 dark:border-zinc-700 rounded-2xl overflow-hidden  "
       >
         {cryptoData ? (
           <table className="table-auto">
-            <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-400 dark:border-gray-100">
+            <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-300 dark:border-zinc-700">
               <tr>
                 <th className="py-1 max-[460px]:text-sm">asset</th>
                 <th className="py-1 max-[460px]:text-sm">name</th>
@@ -116,7 +116,7 @@ const Table = () => {
               {cryptoData.map((crypto) => (
                 <tr
                   key={crypto.id}
-                  className="text-center text-zinc-950 dark:text-zinc-200 text-base border-b-2 dark:border-b border-zinc-400 last:border-b-0 dark:last:border-transparent hover:bg-zinc-200/70 dark:border-gray-100 dark:hover:bg-zinc-800/30 "
+                  className="text-center text-zinc-950 dark:text-zinc-200 text-base border-b-2 dark:border-b border-zinc-300 last:border-b-0 dark:last:border-transparent hover:bg-zinc-200/70 dark:border-zinc-700 dark:hover:bg-zinc-800/30 "
                 >
                   <td className="py-4 pl-3  flex items-center uppercase max-[460px]:text-sm">
                     <SaveBtn data={crypto} />

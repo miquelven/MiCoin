@@ -24,14 +24,14 @@ export default function TrendingCoin() {
       <h2
         data-aos="zoom-in"
         data-aos-delay="1200"
-        className="text-4xl font-bold max-[520px]:text-3xl"
+        className="text-4xl my-10 font-bold max-[520px]:text-3xl"
       >
         Trending
       </h2>
       <div
         data-aos="zoom-in"
         data-aos-delay="1500"
-        className="w-full overflow-hidden min-h-[60vh] relative py-8 grid grid-cols-2  mt-9 border-2  dark:border-gray-100 border-zinc-400 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent max-md:grid-cols-1 "
+        className="w-full overflow-hidden min-h-[60vh] relative py-8 grid grid-cols-2  mt-9 border-2  dark:border-zinc-700 border-zinc-400 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent max-md:grid-cols-1 "
       >
         {trendingData ? (
           trendingData.map((trending) => (
