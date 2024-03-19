@@ -35,13 +35,13 @@ export default function Contact() {
 
   return (
     <section className="flex flex-col w-full justify-center items-center ">
-      <h2
+      <h3
         data-aos="zoom-in"
         data-aos-delay="1200"
-        className=" text-center text-4xl font-bold mb-5 max-sm:text-3xl"
+        className=" text-center text-4xl font-semibold mb-5 max-sm:text-3xl"
       >
         Contact Us
-      </h2>
+      </h3>
 
       <form
         data-aos="fade-up"

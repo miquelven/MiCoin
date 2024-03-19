@@ -92,8 +92,8 @@ export default function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_1h_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[370px]:hidden"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[370px]:hidden"
+            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[370px]:hidden"
+            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[370px]:hidden"
         }
       >
         {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
@@ -101,8 +101,8 @@ export default function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_24h_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[470px]:hidden"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[470px]:hidden"
+            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[470px]:hidden"
+            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[470px]:hidden"
         }
       >
         {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
@@ -110,8 +110,8 @@ export default function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_7d_in_currency > 0
-            ? "text-green-600 font-bold dark:font-normal dark:text-green-400 py-4 max-[540px]:hidden"
-            : "text-red-600 font-bold dark:font-normal dark:text-red-400 py-4 max-[540px]:hidden"
+            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[540px]:hidden"
+            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[540px]:hidden"
         }
       >
         {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}

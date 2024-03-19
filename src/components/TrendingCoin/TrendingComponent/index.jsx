@@ -17,10 +17,10 @@ export default function TrendingComponent({ data }) {
       {data ? (
         <>
           <div className="text-xl flex items-center  max-[420px]:text-lg  mt-0.5 mb-2.5">
-            <h3 className="text-zinc-800 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
+            <h3 className="text-zinc-800 font-semibold dark:font-normal dark:text-zinc-600 capitalize ">
               name:&nbsp;
             </h3>
-            <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
+            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
               {data.name}
             </span>
             <img
@@ -30,18 +30,18 @@ export default function TrendingComponent({ data }) {
             />
           </div>
           <div className="text-base flex items-center  max-[420px]:text-sm my-0.5">
-            <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
+            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
               score:&nbsp;
             </span>
-            <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
+            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
               {data.score}
             </span>
           </div>
           <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
-            <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
+            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
               price (in btc):&nbsp;
             </span>
-            <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
+            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
               {new Intl.NumberFormat("en-IN", {
                 style: "currency",
                 currency: "btc",
@@ -50,10 +50,10 @@ export default function TrendingComponent({ data }) {
             </span>
           </div>
           <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
-            <span className="text-zinc-600 font-bold dark:font-normal dark:text-zinc-600 capitalize ">
+            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
               market cap rank:&nbsp;
             </span>
-            <span className="text-blue-500 font-bold dark:font-normal dark:text-blue-400 ">
+            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
               {data.market_cap_rank}
             </span>
           </div>

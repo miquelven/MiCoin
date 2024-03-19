@@ -1,7 +1,7 @@
 import DetailText from "../components/DetailText";
 import Table from "../components/Table";
-import banner from "../assets/images/banner.png";
-import bannerLittle from "../assets/images/banner2.png";
+import banner from "../assets/images/banner.webp";
+import bannerLittle from "../assets/images/banner2.webp";
 import FilterTable from "../components/Table/FilterTable";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
@@ -21,7 +21,7 @@ function Home() {
           <h1
             data-aos="fade-right"
             data-aos-delay="100"
-            className="text-5xl max-lg:text-4xl font-bold max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl"
+            className="text-5xl font-bold max-lg:text-4xl max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl"
           >
             Welcome to <DetailText>Mi</DetailText>
             Coin
@@ -62,12 +62,12 @@ function Home() {
         </div>
       </section>
       <section className="flex flex-col justify-center items-center my-10 max-md:my-36">
-        <h2
+        <h3
           data-aos="fade-up"
-          className="mb-10 text-4xl font-bold max-sm:text-2xl"
+          className="mb-10 text-4xl font-semibold max-sm:text-2xl"
         >
           Market Overview
-        </h2>
+        </h3>
         <FilterTable />
         <Table />
       </section>

@@ -7,7 +7,6 @@ function Favorites() {
     useContext(StorageContext);
 
   useLayoutEffect(() => {
-    console.log("uselayouteffect");
     const isCoin = JSON.parse(localStorage.getItem("coins")) || [];
 
     if (isCoin.length > 0) {
@@ -34,13 +33,13 @@ function Favorites() {
       className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="favorites"
     >
-      <h2
+      <h3
         data-aos="zoom-in"
         data-aos-delay="1000"
-        className="text-4xl  my-10 font-bold max-sm:text-2xl"
+        className="text-4xl  my-10 font-semibold max-sm:text-2xl"
       >
         Favorites
-      </h2>
+      </h3>
       <div
         data-aos="zoom-in"
         data-aos-delay="1200"
@@ -76,7 +75,7 @@ function Favorites() {
             data-aos-delay="400"
             className="w-full bg-zinc-300 dark:bg-transparent dark:text-gray-100  min-h-[60vh] flex justify-center items-center "
           >
-            <span className="ml-4 font-bold text-zinc-700 dark:text-zinc-300 text-3xl max-sm:text-xl">
+            <span className="ml-4 font-medium text-zinc-700 dark:text-zinc-300 text-3xl max-sm:text-xl">
               There are no favorites
             </span>
           </div>
@@ -90,7 +89,7 @@ function Favorites() {
               className="w-8 h-8 border-4 border-blue-600 rounded-full border-b-transparent animate-spin"
               role="status"
             ></div>
-            <span className="ml-4 font-bold text-zinc-700 dark:text-zinc-300">
+            <span className="ml-4 font-medium text-zinc-700 dark:text-zinc-300">
               Searching...
             </span>
           </div>

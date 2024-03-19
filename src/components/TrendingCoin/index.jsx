@@ -21,13 +21,13 @@ export default function TrendingCoin() {
       className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="trending"
     >
-      <h2
+      <h3
         data-aos="zoom-in"
         data-aos-delay="1200"
-        className="text-4xl my-10 font-bold max-[520px]:text-3xl"
+        className="text-4xl my-10 font-semibold max-[520px]:text-3xl"
       >
         Trending
-      </h2>
+      </h3>
       <div
         data-aos="zoom-in"
         data-aos-delay="1500"

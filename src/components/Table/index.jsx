@@ -152,8 +152,8 @@ const Table = () => {
                   <td
                     className={
                       crypto.price_change_percentage_1h_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-sm:px-2 max-[460px]:hidden"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-sm:px-2 max-[460px]:hidden"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-medium py-4 max-sm:px-2 max-[460px]:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-medium py-4 max-sm:px-2 max-[460px]:hidden"
                     }
                   >
                     {Number(
@@ -163,8 +163,8 @@ const Table = () => {
                   <td
                     className={
                       crypto.price_change_percentage_24h_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-md:px-2 max-sm:hidden"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-md:px-2 max-sm:hidden"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-medium py-4 max-md:px-2 max-sm:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-medium py-4 max-md:px-2 max-sm:hidden"
                     }
                   >
                     {Number(
@@ -174,8 +174,8 @@ const Table = () => {
                   <td
                     className={
                       crypto.price_change_percentage_7d_in_currency > 0
-                        ? "dark:text-green-400 dark:font-normal text-green-600 font-bold py-4 max-md:hidden"
-                        : "dark:text-red-400 dark:font-normal text-red-600 font-bold py-4 max-md:hidden"
+                        ? "dark:text-green-400 dark:font-normal text-green-600 font-medium py-4 max-md:hidden"
+                        : "dark:text-red-400 dark:font-normal text-red-600 font-medium py-4 max-md:hidden"
                     }
                   >
                     {Number(
