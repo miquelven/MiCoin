@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-toastify";
+import bgContact from "../assets/images/backgroundContact.png";
 
 export default function Contact() {
   useEffect(() => {
@@ -38,10 +39,10 @@ export default function Contact() {
   }
 
   return (
-    <section className="flex flex-col w-full justify-center items-center ">
+    <section className="relative  flex flex-col w-full justify-center items-center ">
       <h3
         data-aos="zoom-in"
-        data-aos-delay="1200"
+        data-aos-delay="100"
         className=" text-center text-4xl font-semibold mb-5 max-sm:text-3xl"
       >
         Contact Us
@@ -49,9 +50,9 @@ export default function Contact() {
 
       <form
         data-aos="fade-up"
-        data-aos-delay="1400"
+        data-aos-delay="300"
         onSubmit={handleSubmit(createUserData)}
-        className="flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
+        className="relative z-50 flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
       >
         <div className="flex flex-col h-[94px] gap-2">
           <label
@@ -143,6 +144,11 @@ export default function Contact() {
           Send
         </button>
       </form>
+      <img
+        src={bgContact}
+        alt="Imagem de fundo"
+        className="absolute top-36 left-0 right-0 z-20 dark:blur-2xl blur-2xl opacity-15 dark:opacity-10 scale-150"
+      />
     </section>
   );
 }
