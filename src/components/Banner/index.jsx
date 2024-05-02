@@ -4,7 +4,7 @@ import bannerLittle from "../../assets/images/banner2.webp";
 
 export default function Banner() {
   return (
-    <section className="flex  h-96 mt-28 mb-32 max-md:flex-col max-md:gap-8 max-md:mt-0">
+    <section className="flex  h-96 mt-28 max-md:flex-col md:mb-60 max-md:gap-8 max-md:mt-0">
       <div className="flex-1 relative flex flex-col justify-around text-justify max-md:flex-col gap-12  max-md:text-center max-md:mb-14 max-md:gap-6">
         <h1
           data-aos="fade-right"
