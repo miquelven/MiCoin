@@ -1,21 +1,30 @@
-# MiCoin 🚀
+<h1 align='center'>MiCoin 🚀</h1>
 
-O MiCoin é uma aplicação web desenvolvida para rastreamento de criptomoedas, oferecendo uma interface intuitiva e uma série de funcionalidades úteis para acompanhar o mercado de ativos digitais.
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+
+<br/>
+<br/>
+
+
 
 <div align='center'>
-<img src="https://github.com/miquelven/miDrinks/assets/67767211/0cfdec2c-25f8-4bbb-ae79-58d614a522e8" />
+  
+![ezgif com-animated-gif-maker (6)](https://github.com/miquelven/miDrinks/assets/67767211/a2acf266-152d-41aa-a5a2-bce37e7cd6a3)
+
+> O MiCoin é uma aplicação web desenvolvida para rastreamento de criptomoedas, oferecendo uma interface intuitiva e uma série de funcionalidades úteis para acompanhar o mercado de ativos digitais.
+
+<br/>
+<br/>
+<br/>
+
 </div>
 
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+<br/>
+<br/>
+<br/>
+
+<br/>
 
 
 
@@ -28,8 +37,9 @@ O MiCoin é uma aplicação web desenvolvida para rastreamento de criptomoedas, 
 - React Hook Form 📝
 
 
-&nbsp; 
-&nbsp;
+<br/>
+<br/>
+
 
 
 ## Funcionalidades Principais
@@ -41,22 +51,25 @@ O MiCoin é uma aplicação web desenvolvida para rastreamento de criptomoedas, 
 - **Monitoramento de Preços**: Possui um sistema de monitoramento de preços que envia notificações por e-mail quando uma moeda atinge um preço-alvo definido pelo usuário.
 - **Favoritos**: Permite aos usuários favoritar as moedas mais utilizadas para acesso rápido.
 
-&nbsp; 
-&nbsp;
+<br/>
+<br/>
+
 
 ## Paginação
 
 O MiCoin também inclui um sistema de paginação para lidar com grandes conjuntos de dados, proporcionando uma experiência de usuário fluida e responsiva.
 
-&nbsp; 
-&nbsp;
+<br/>
+<br/>
+
 
 ## Limitações
 
 Por favor, note que o MiCoin consome uma API de terceiros, o que impõe limites de requisições. Portanto, algumas funcionalidades podem estar sujeitas a restrições temporárias.
 
-&nbsp; 
-&nbsp;
+<br/>
+
+<br/>
 
 ## Instalação e Uso
 
@@ -64,8 +77,8 @@ Por favor, note que o MiCoin consome uma API de terceiros, o que impõe limites 
 2. Instale as dependências usando `npm install`.
 3. Inicie o servidor de desenvolvimento usando `npm run dev`.
 
-&nbsp; 
-&nbsp;
+<br/>
+<br/>
 
 ## Contribuição
 
