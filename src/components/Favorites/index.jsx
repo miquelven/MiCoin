@@ -1,7 +1,12 @@
 import { memo, useContext, useEffect, useLayoutEffect } from "react";
 import { StorageContext } from "../../context/StorageContext";
 
+import stepFavorite1 from "../../assets/images/stepImg1.png";
+import stepFavorite2 from "../../assets/images/stepImg2.png";
+import stepFavorite3 from "../../assets/images/stepImg3.png";
+
 import FavoriteComponent from "./FavoriteComponent";
+import { MoveUpLeft } from "lucide-react";
 function Favorites() {
   const { savedCoins, setSavedCoins, setCoins, getCoinsData, coins } =
     useContext(StorageContext);
@@ -30,20 +35,33 @@ function Favorites() {
 
   return (
     <section
-      className=" w-full h-full items-center flex flex-col  mb-24 relative"
+      className=" w-full h-full items-center flex flex-col  sm:mb-24 relative"
       id="favorites"
     >
-      <h3
-        data-aos="zoom-in"
-        data-aos-delay="1000"
-        className="text-4xl  my-10 font-semibold max-sm:text-2xl"
-      >
-        Favorites
-      </h3>
+      <div>
+        <h2
+          data-aos="zoom-in"
+          data-aos-delay="1000"
+          className="text-4xl text-center my-10 font-semibold max-sm:text-2xl"
+        >
+          Your Favorite assets
+        </h2>
+
+        <h3
+          data-aos="zoom-in"
+          data-aos-delay="1200"
+          className="font-semibold text-zinc-600 dark:text-zinc-400 mb-10 text-sm sm:text-base "
+        >
+          Discover your favorite assets! Here, you can quickly access the assets
+          that matter most to you. Stay updated on your favorites and make
+          informed decisions to reach your financial goals. Personalize your
+          experience and always have your favorite assets at your fingertips.
+        </h3>
+      </div>
       <div
         data-aos="zoom-in"
-        data-aos-delay="1200"
-        className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-300 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent "
+        data-aos-delay="1400"
+        className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-300 rounded-2xl shadow-md shadow-zinc-300 dark:shadow-transparent "
       >
         {savedCoins.length > 0 ? (
           <table
@@ -51,7 +69,7 @@ function Favorites() {
             data-aos-delay="400"
             className="table-auto w-full"
           >
-            <thead className="capitalize text-base text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-zinc-300 dark:border-zinc-700">
+            <thead className="capitalize text-sm text-zinc-900 dark:text-gray-100 font-medium border-b-2 border-zinc-300 dark:border-zinc-700">
               <tr className="max-[470px]:text-sm">
                 <th className="py-1">asset</th>
                 <th className="py-1">name</th>
@@ -94,6 +112,60 @@ function Favorites() {
             </span>
           </div>
         )}
+      </div>
+      <div className="mb-10 mt-40">
+        <h4 className="relative text-4xl font-semibold max-sm:text-2xl mb-14 text-center">
+          Step by step guide to favorite an asset
+        </h4>
+        <ul className="flex flex-col gap-20 sm:gap-32">
+          <li className="relative w-full h-full">
+            <p className="mb-5">
+              <span className="font-semibold text-lg sm:text-xl">1- </span>
+              <span className="text-base sm:text-lg">
+                First, you should click on the star icon next to the asset you
+                want to favorite.
+              </span>
+            </p>
+            <img
+              src={stepFavorite1}
+              alt=""
+              width={"100%"}
+              className="invert-0 dark:invert"
+            />
+            <MoveUpLeft className="absolute top-[55%] left-[4%] sm:top-[30%]  sm:left-[3%] w-[7%] h-[40%] text-red-600 font-bold" />
+          </li>
+
+          <li className="w-full h-full relative">
+            <p className="mb-5">
+              <span className="font-semibold text-lg sm:text-xl">2- </span>
+              <span className="text-base sm:text-lg">
+                Second, navigate to the 'Favorites' tab where you can see your
+                favorited asset.
+              </span>
+            </p>
+            <img
+              src={stepFavorite2}
+              alt=""
+              width={"100%"}
+              className="invert-0 dark:invert"
+            />
+            <MoveUpLeft className="absolute top-[80%] sm:top-[70%] left-[20%] w-[7%] h-[40%] text-red-600 font-bold" />
+          </li>
+          <li className="w-full h-full relative">
+            <p className="mb-5">
+              <span className="font-semibold text-lg sm:text-xl">3- </span>
+              <span className="text-base sm:text-lg">
+                Third, you can now view your favorite assets.
+              </span>
+            </p>
+            <img
+              src={stepFavorite3}
+              alt=""
+              width={"100%"}
+              className="invert-0 dark:invert"
+            />
+          </li>
+        </ul>
       </div>
     </section>
   );
