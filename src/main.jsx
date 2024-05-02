@@ -17,6 +17,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
+import ToTopButton from "./components/ToTopButton";
 
 const router = createBrowserRouter([
   {
@@ -85,13 +86,14 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <StorageProvider>
         <MonitoredProvider>
           <TrendingProvider>
-            <div className="bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
+            <div className=" bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
               <Header />
               <Container>
-                <main className="mt-24 min-h-[calc(100vh-66px)] flex flex-col gap-32 relative">
+                <main className="mt-24 min-h-[calc(100vh-66px)] flex flex-col relative">
                   <RouterProvider router={router} />
                 </main>
               </Container>
+              <ToTopButton />
               <Footer />
             </div>
             <Outlet />
