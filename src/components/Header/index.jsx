@@ -18,7 +18,7 @@ export default function Header() {
         <div className="flex justify-between items-center ">
           <div
             onClick={() => (window.location.href = "/")}
-            className="text-blue-500/80 cursor-pointer font-semibold text-2xl transition-all duration-300 ease-in-out hover:brightness-125 "
+            className="text-blue-500/80 cursor-pointer font-semibold text-3xl transition-all duration-300 ease-in-out hover:brightness-125"
           >
             <span>Mi</span>
             <span className="ml-1 text-slate-800 dark:text-zinc-50 text-xl">
