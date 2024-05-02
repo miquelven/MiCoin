@@ -203,7 +203,7 @@ const Table = () => {
         )}
       </div>
       {cryptoData && (
-        <div className="w-full h-[2.5rem] capitalize flex justify-center items-center mt-7">
+        <div className="w-full h-[2.5rem] capitalize flex flex-col mt-14 md:flex-row justify-center items-center md:mt-7">
           <PageFor />
           <Pagination />
           <Outlet />
