@@ -4,8 +4,11 @@ import Banner from "../components/Banner";
 import TableArea from "../components/TableArea";
 import FeaturesArea from "../components/FeaturesArea";
 import CryptoText from "../components/CryptoText";
+import useTitle from "../hooks/useTitle";
 
 function Home() {
+  useTitle("Home");
+
   useEffect(() => {
     const isCoin = localStorage.getItem("coin") || [];
     if (isCoin.length > 0) return;

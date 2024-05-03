@@ -1,11 +1,9 @@
 import { Outlet } from "react-router-dom";
 import Favorites from "../components/Favorites";
-import { useEffect } from "react";
+import useTitle from "../hooks/useTitle";
 
 export default function FavoritesPage() {
-  useEffect(() => {
-    document.title = "MiCoin - Favorites";
-  }, []);
+  useTitle("Favorites");
 
   return (
     <>

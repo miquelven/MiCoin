@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "react-toastify";
 import bgContact from "../assets/images/backgroundContact.png";
+import useTitle from "../hooks/useTitle";
 
 export default function Contact() {
-  useEffect(() => {
-    document.title = "MiCoin - Contact";
-  }, []);
+  useTitle("Contact");
 
   const createUserFormSchema = z.object({
     name: z
