@@ -15,13 +15,24 @@ export default function TrendingCoin() {
       className=" w-full h-full items-center flex flex-col  mb-24 relative"
       id="trending"
     >
-      <h3
-        data-aos="zoom-in"
-        data-aos-delay="1200"
-        className="text-4xl my-10 font-semibold max-[520px]:text-3xl"
-      >
-        Trending
-      </h3>
+      <div>
+        <h2
+          data-aos="zoom-in"
+          data-aos-delay="1000"
+          className="text-4xl text-center my-10 font-semibold max-sm:text-2xl"
+        >
+          See some assets that are on the rise
+        </h2>
+
+        <h3
+          data-aos="zoom-in"
+          data-aos-delay="1200"
+          className="font-semibold text-zinc-600 dark:text-zinc-400 mb-10 text-center text-sm sm:text-base "
+        >
+          This is the place where you can find the assets that are trending the
+          most.
+        </h3>
+      </div>
       <div
         data-aos="zoom-in"
         data-aos-delay="1500"
