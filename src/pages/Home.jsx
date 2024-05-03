@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import Banner from "../components/Banner";
 import TableArea from "../components/TableArea";
 import FeaturesArea from "../components/FeaturesArea";
-import CryptoText from "../components/CryptoText";
+import NewsLatterArea from "../components/NewsLatterArea";
 import useTitle from "../hooks/useTitle";
 
 function Home() {
@@ -21,7 +21,7 @@ function Home() {
       <Banner />
       <TableArea />
       <FeaturesArea />
-      <CryptoText />
+      <NewsLatterArea />
       <Outlet />
     </>
   );
