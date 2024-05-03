@@ -1,14 +1,8 @@
-import { useContext, useEffect } from "react";
-
 import TrendingComponent from "./TrendingComponent";
-import { TrendingContext } from "../../context/TrendingContext";
+import useGetTrending from "../../hooks/useGetTrending";
 
 export default function TrendingCoin() {
-  const { trendingData, getTrendingData } = useContext(TrendingContext);
-
-  useEffect(() => {
-    getTrendingData();
-  }, []);
+  const { data: trendingData, isPending } = useGetTrending();
 
   return (
     <section
@@ -38,7 +32,7 @@ export default function TrendingCoin() {
         data-aos-delay="1500"
         className="w-full overflow-hidden min-h-[60vh] relative py-8 grid grid-cols-2  mt-9 border-2  dark:border-zinc-700 border-zinc-400 rounded-2xl shadow-lg shadow-zinc-300 dark:shadow-transparent max-md:grid-cols-1 "
       >
-        {trendingData ? (
+        {!isPending ? (
           trendingData.map((trending) => (
             <TrendingComponent key={trending.item.id} data={trending.item} />
           ))
