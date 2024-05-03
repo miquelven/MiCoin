@@ -17,7 +17,6 @@ export default function FavoriteComponent({ data }) {
   };
 
   const handleClick = (id) => {
-    e.preventDefault();
     saveCoin(id);
 
     if (coins) {

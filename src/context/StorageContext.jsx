@@ -1,4 +1,10 @@
-import { createContext, useCallback, useContext, useState } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { CryptoContext } from "./CryptoContext";
 import { toast } from "react-toastify";
 
@@ -47,6 +53,11 @@ export const StorageProvider = ({ children }) => {
     let newCoin = oldCoin.filter((coin) => coin !== idCoin);
     setCoins(newCoin);
     localStorage.setItem("coins", JSON.stringify(newCoin));
+  }, []);
+
+  useEffect(() => {
+    const coins = JSON.parse(localStorage.getItem("coins"));
+    if (coins) setCoins(coins);
   }, []);
 
   return (
