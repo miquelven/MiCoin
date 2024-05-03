@@ -1,12 +1,9 @@
 import { memo, useContext, useEffect, useLayoutEffect } from "react";
 import { StorageContext } from "../../context/StorageContext";
 
-import stepFavorite1 from "../../assets/images/stepImg1.png";
-import stepFavorite2 from "../../assets/images/stepImg2.png";
-import stepFavorite3 from "../../assets/images/stepImg3.png";
-
 import FavoriteComponent from "./FavoriteComponent";
-import { MoveUpLeft } from "lucide-react";
+import stepsItens from "../../data/stepsItens";
+import StepFavoriteItem from "./FavoriteComponent/StepFavoriteItem";
 function Favorites() {
   const { savedCoins, setSavedCoins, setCoins, getCoinsData, coins } =
     useContext(StorageContext);
@@ -50,7 +47,7 @@ function Favorites() {
         <h3
           data-aos="zoom-in"
           data-aos-delay="1200"
-          className="font-semibold text-zinc-600 dark:text-zinc-400 mb-10 text-sm sm:text-base "
+          className="font-semibold text-zinc-600 dark:text-zinc-400 mb-10 text-center text-sm sm:text-base "
         >
           Discover your favorite assets! Here, you can quickly access the assets
           that matter most to you. Stay updated on your favorites and make
@@ -114,57 +111,13 @@ function Favorites() {
         )}
       </div>
       <div className="mb-10 mt-40">
-        <h4 className="relative text-4xl font-semibold max-sm:text-2xl mb-14 text-center">
+        <h4 className="relative text-4xl font-semibold max-sm:text-2xl mb-20 text-center">
           Step by step guide to favorite an asset
         </h4>
         <ul className="flex flex-col gap-20 sm:gap-32">
-          <li className="relative w-full h-full">
-            <p className="mb-5">
-              <span className="font-semibold text-lg sm:text-xl">1- </span>
-              <span className="text-base sm:text-lg">
-                First, you should click on the star icon next to the asset you
-                want to favorite.
-              </span>
-            </p>
-            <img
-              src={stepFavorite1}
-              alt=""
-              width={"100%"}
-              className="invert-0 dark:invert"
-            />
-            <MoveUpLeft className="absolute top-[55%] left-[4%] sm:top-[30%]  sm:left-[3%] w-[7%] h-[40%] text-red-600 font-bold" />
-          </li>
-
-          <li className="w-full h-full relative">
-            <p className="mb-5">
-              <span className="font-semibold text-lg sm:text-xl">2- </span>
-              <span className="text-base sm:text-lg">
-                Second, navigate to the 'Favorites' tab where you can see your
-                favorited asset.
-              </span>
-            </p>
-            <img
-              src={stepFavorite2}
-              alt=""
-              width={"100%"}
-              className="invert-0 dark:invert"
-            />
-            <MoveUpLeft className="absolute top-[80%] sm:top-[70%] left-[20%] w-[7%] h-[40%] text-red-600 font-bold" />
-          </li>
-          <li className="w-full h-full relative">
-            <p className="mb-5">
-              <span className="font-semibold text-lg sm:text-xl">3- </span>
-              <span className="text-base sm:text-lg">
-                Third, you can now view your favorite assets.
-              </span>
-            </p>
-            <img
-              src={stepFavorite3}
-              alt=""
-              width={"100%"}
-              className="invert-0 dark:invert"
-            />
-          </li>
+          {stepsItens.map((dataItem) => (
+            <StepFavoriteItem dataItem={dataItem} key={dataItem.id} />
+          ))}
         </ul>
       </div>
     </section>
