@@ -11,13 +11,14 @@ import TrendingPage from "./pages/TrendingPage";
 import { MonitoredProvider } from "./context/MonitoredContext";
 import Container from "./components/Container";
 import Header from "./components/Header";
-import { TrendingProvider } from "./context/TrendingContext";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
 import ToTopButton from "./components/ToTopButton";
+
+import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 
 const router = createBrowserRouter([
   {
@@ -67,6 +68,15 @@ const contextClass = {
   success: "bg-green-600",
 };
 
+const client = new QueryClient({
+  defaultOptions: {
+    queries: {
+      refetchOnWindowFocus: false,
+      staleTime: 1000 * 60 * 30,
+    },
+  },
+});
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <ToastContainer
@@ -82,10 +92,10 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       closeOnClick
       draggable
     />
-    <CryptoProvider>
-      <StorageProvider>
-        <MonitoredProvider>
-          <TrendingProvider>
+    <QueryClientProvider client={client}>
+      <CryptoProvider>
+        <StorageProvider>
+          <MonitoredProvider>
             <div className=" bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
               <Header />
               <Container>
@@ -97,9 +107,9 @@ ReactDOM.createRoot(document.getElementById("root")).render(
               <Footer />
             </div>
             <Outlet />
-          </TrendingProvider>
-        </MonitoredProvider>
-      </StorageProvider>
-    </CryptoProvider>
+          </MonitoredProvider>
+        </StorageProvider>
+      </CryptoProvider>
+    </QueryClientProvider>
   </>
 );
