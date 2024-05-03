@@ -34,7 +34,7 @@ export default function TrendingComponent({ data }) {
               score:&nbsp;
             </span>
             <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
-              {data.score}
+              {data.score + 1}
             </span>
           </div>
           <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
