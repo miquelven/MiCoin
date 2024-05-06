@@ -2,14 +2,11 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import Home from "./pages/Home";
 import "./index.css";
-import { CryptoProvider } from "./context/CryptoContext";
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
 import CryptoModal from "./components/CryptoModal";
-import { StorageProvider } from "./context/StorageContext";
 import FavoritesPage from "./pages/FavoritesPage";
 import TrendingPage from "./pages/TrendingPage";
 import { MonitoredProvider } from "./context/MonitoredContext";
-import Container from "./components/Container";
 import Header from "./components/Header";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -19,6 +16,7 @@ import Footer from "./components/Footer";
 import ToTopButton from "./components/ToTopButton";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
+import Aos from "aos";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +75,8 @@ const client = new QueryClient({
   },
 });
 
+Aos.init();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <>
     <ToastContainer
@@ -93,23 +93,19 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       draggable
     />
     <QueryClientProvider client={client}>
-      <CryptoProvider>
-        <StorageProvider>
-          <MonitoredProvider>
-            <div className=" bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
-              <Header />
-              <Container>
-                <main className="mt-24 min-h-[calc(100vh-66px)] flex flex-col relative">
-                  <RouterProvider router={router} />
-                </main>
-              </Container>
-              <ToTopButton />
-              <Footer />
+      <MonitoredProvider>
+        <div className=" bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
+          <Header />
+          <div className="max-w-6xl m-auto px-5 ">
+            <div className="mt-24 min-h-[calc(100vh-66px)] flex flex-col relative">
+              <RouterProvider router={router} />
             </div>
-            <Outlet />
-          </MonitoredProvider>
-        </StorageProvider>
-      </CryptoProvider>
+          </div>
+          <ToTopButton />
+          <Footer />
+        </div>
+        <Outlet />
+      </MonitoredProvider>
     </QueryClientProvider>
   </>
 );
