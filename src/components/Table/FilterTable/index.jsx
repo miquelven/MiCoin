@@ -1,45 +1,40 @@
-import { useContext, useEffect, useRef } from "react";
-import { CryptoContext } from "../../../context/CryptoContext";
+import { useEffect, useRef, useState } from "react";
 import InputArea from "../InputArea";
 import { ArrowRightSquare, RefreshCcw, Triangle } from "lucide-react";
+import cryptoStore from "../../../stores/cryptoStore";
 
 export default function FilterTable() {
-  const {
-    setCurrency,
-    setSortby,
-    currency,
-    sortBy,
-    getCryptoData,
-    setPageSelected,
-    setCoinSelected,
-    pageSelected,
-    setSearchData,
-  } = useContext(CryptoContext);
+  const cryptoStoreData = cryptoStore();
+
+  const [sortByValue, setSortByValue] = useState("market_cap_desc");
+
+  useEffect(() => {
+    if (cryptoStoreData.cryptoParams.sortBy !== "market_cap_desc")
+      setSortByValue(cryptoStoreData.cryptoParams.sortBy);
+  }, []);
 
   const inputCurrency = useRef(null);
 
   const selectedSort = (e) => {
     e.preventDefault();
-    const value = e.target.value;
-    setSortby(value);
+    console.log(e.target.value);
+    cryptoStoreData.cryptoParams.sortBy = e.target.value;
+    cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
+    setSortByValue(cryptoStoreData.cryptoParams.sortBy);
   };
 
   const handleCurrency = (e) => {
     e.preventDefault();
-    const value = inputCurrency.current.value;
-    setCurrency(value);
+    cryptoStoreData.cryptoParams.currency = inputCurrency.current.value;
+    cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
     inputCurrency.current.value = "";
   };
 
   const handleResetData = () => {
-    setSearchData("");
-    setCoinSelected("");
-    setPageSelected(1);
+    cryptoStoreData.cryptoParams.coinSelected = "";
+    cryptoStoreData.cryptoParams.pageSelected = 1;
+    cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
   };
-
-  useEffect(() => {
-    getCryptoData();
-  }, [sortBy, currency, pageSelected]);
 
   return (
     <div
@@ -49,6 +44,7 @@ export default function FilterTable() {
    max-lg:justify-center max-lg:gap-8 max-lg:py-4 
     "
     >
+      {JSON.stringify(cryptoStoreData)}
       <InputArea />
       <div className="flex mr-7 max-lg:gap-3 max-sm:mr-0 max-sm:flex-col max-sm:gap-8">
         <form
@@ -60,7 +56,7 @@ export default function FilterTable() {
             <input
               type="text"
               ref={inputCurrency}
-              placeholder="usd"
+              placeholder={`${cryptoStoreData.cryptoParams.currency}`}
               className="w-16 rounded focus:border-zinc-300 bg-zinc-200 placeholder:text-zinc-400 dark:bg-zinc-800 dark:placeholder:text-zinc-400 pl-2 required outline-0 border border-transparent dark:focus:border-blue-400 leading-4"
             />
             <button type="submit" className="ml-1 cursor-pointer ">
@@ -73,7 +69,8 @@ export default function FilterTable() {
           <select
             name="sortby"
             className="rounded  bg-zinc-200 dark:bg-zinc-800 text-base pl-2 pr-10 py-0.5 leading-4 capitalize focus:outline-0"
-            onClick={selectedSort}
+            onChange={selectedSort}
+            value={sortByValue}
           >
             <option value="market_cap_desc">Market cap desc</option>
             <option value="market_cap_asc">Market cap asc</option>

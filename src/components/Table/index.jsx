@@ -1,9 +1,11 @@
-import { memo, useContext, useEffect, useRef } from "react";
-import { CryptoContext } from "../../context/CryptoContext";
+import { memo, useContext, useRef } from "react";
 import { StorageContext } from "../../context/StorageContext";
 import { ArrowRightSquare, Star } from "lucide-react";
 import Pagination from "./Pagination";
 import { Link, Outlet } from "react-router-dom";
+// import useGetTotalPages from "../../hooks/useGetTotalPages";
+import useTest from "../../hooks/useTeste";
+import cryptoStore from "../../stores/cryptoStore";
 
 const SaveBtn = ({ data }) => {
   const { saveCoin, coins, removeCoin } = useContext(StorageContext);
@@ -40,24 +42,14 @@ const SaveBtn = ({ data }) => {
 const PageFor = () => {
   const inputPage = useRef(null);
 
-  const { setPerPage, getCryptoData, per_page, getTotalPages } =
-    useContext(CryptoContext);
+  const cryptoStoreData = cryptoStore();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (inputPage.current.value < 1 || inputPage.current.value > 250) return;
-    setPerPage(inputPage.current.value);
-    inputPage.current.value = inputPage.current.value;
+    cryptoStoreData.cryptoParams.perPage = inputPage.current.value;
+    cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
   };
-
-  useEffect(() => {
-    getCryptoData();
-    getTotalPages();
-  }, [per_page]);
-
-  useEffect(() => {
-    getCryptoData();
-  }, []);
 
   return (
     <form
@@ -87,7 +79,11 @@ const PageFor = () => {
 };
 
 const Table = () => {
-  let { cryptoData, currency } = useContext(CryptoContext);
+  const cryptoStoreData = cryptoStore();
+
+  const { data: cryptoData, isPending: cryptoDataLoading } = useTest(
+    cryptoStoreData.cryptoParams
+  );
 
   return (
     <>
@@ -96,7 +92,7 @@ const Table = () => {
         data-aos-delay="800"
         className="flex  min-h-[656px] w-full flex-col mt-10 border-2  border-zinc-300 dark:border-zinc-700 rounded-2xl overflow-hidden  "
       >
-        {cryptoData ? (
+        {!cryptoDataLoading && cryptoData ? (
           <table className="table-auto">
             <thead className="capitalize text-base bg-zinc-300/90 dark:bg-transparent text-zinc-800 dark:text-gray-100 font-medium border-b-2 dark:border-b border-zinc-300 dark:border-zinc-700">
               <tr>
@@ -146,7 +142,7 @@ const Table = () => {
                   <td className="py-4 max-[460px]:text-sm max-[380px]:hidden">
                     {new Intl.NumberFormat("en-IN", {
                       style: "currency",
-                      currency: currency,
+                      currency: cryptoStoreData.cryptoParams.currency,
                     }).format(crypto.current_price)}
                   </td>
                   <td
