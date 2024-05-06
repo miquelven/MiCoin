@@ -33,8 +33,9 @@
 - React ⚛️
 - Tailwind CSS 🎨
 - Context API 🔄
-- Material UI 💼
 - React Hook Form 📝
+- React Query📡
+- Zustand 🧩
 
 
 <br/>
