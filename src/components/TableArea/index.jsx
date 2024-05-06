@@ -1,5 +1,5 @@
-import Table from "../Table";
-import FilterTable from "../Table/FilterTable";
+import Table from "./Table";
+import FilterTable from "./Table/FilterTable";
 
 export default function TableArea() {
   return (
