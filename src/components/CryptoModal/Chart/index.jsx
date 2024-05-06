@@ -1,6 +1,6 @@
-import { useContext, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 
-import { CryptoContext } from "../../../context/CryptoContext";
+import cryptoStore from "../../../stores/cryptoStore";
 
 import {
   LineChart,
@@ -59,7 +59,8 @@ export default function Chart({ id }) {
   const [chartData, setChartData] = useState();
   const [type, setType] = useState("prices");
   const [days, setDays] = useState(7);
-  const { currency } = useContext(CryptoContext);
+
+  const currency = cryptoStore((state) => state.cryptoParams.currency);
 
   useLayoutEffect(() => {
     const getChartData = async (id) => {
