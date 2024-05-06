@@ -1,34 +1,19 @@
-import { memo, useContext, useEffect, useLayoutEffect } from "react";
-import { StorageContext } from "../../context/StorageContext";
+import { memo } from "react";
 
 import FavoriteComponent from "./FavoriteComponent";
 import stepsItens from "../../data/stepsItens";
 import StepFavoriteItem from "./FavoriteComponent/StepFavoriteItem";
+import useGetCoinsData from "../../hooks/useGetCoinsData";
+import favoriteCryptoStore from "../../stores/favoriteCryptoStore";
+import cryptoStore from "../../stores/cryptoStore";
 function Favorites() {
-  const { savedCoins, setSavedCoins, setCoins, getCoinsData, coins } =
-    useContext(StorageContext);
-
-  useLayoutEffect(() => {
-    const isCoin = JSON.parse(localStorage.getItem("coins")) || [];
-
-    if (isCoin.length > 0) {
-      setCoins(isCoin);
-    } else {
-      localStorage.setItem("coins", JSON.stringify([]));
-    }
-  }, []);
-
-  useEffect(() => {
-    if (coins) {
-      if (coins.length > 0) {
-        getCoinsData(coins);
-      } else {
-        setSavedCoins([]);
-      }
-    } else {
-      localStorage.setItem("coins", JSON.stringify([]));
-    }
-  }, [coins]);
+  const favoriteCrypto = favoriteCryptoStore((state) => state.favoriteCrypto);
+  const cryptoData = cryptoStore();
+  const { data: savedCoins, isPending: savedCoinsLoading } = useGetCoinsData(
+    favoriteCrypto,
+    cryptoData.cryptoParams.currency,
+    cryptoData.cryptoParams.sortBy
+  );
 
   return (
     <section
@@ -60,7 +45,9 @@ function Favorites() {
         data-aos-delay="1400"
         className="w-full overflow-hidden min-h-[60vh]  mt-9 border-2 border-zinc-300 rounded-2xl shadow-md shadow-zinc-300 dark:shadow-transparent "
       >
-        {savedCoins.length > 0 ? (
+        {!savedCoinsLoading &&
+        favoriteCrypto.length !== 0 &&
+        savedCoins.length > 0 ? (
           <table
             data-aos="zoom-in"
             data-aos-delay="400"
@@ -84,7 +71,7 @@ function Favorites() {
               ))}
             </tbody>
           </table>
-        ) : savedCoins.length == 0 ? (
+        ) : savedCoins && favoriteCrypto.length == 0 ? (
           <div
             data-aos="zoom-in"
             data-aos-delay="400"
