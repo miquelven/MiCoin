@@ -3,6 +3,7 @@ import newsLatterImg from "../../assets/images/newsLatterImg.webp";
 export default function NewsLatterArea() {
   return (
     <section
+      data-aos="fade-up"
       className="min-h-40 rounded-lg py-10 px-10 shadow-md shadow-zinc-400 dark:shadow-black brightness-200 dark:brightness-100 text-white mt-20 xl:mt-0"
       style={{
         background: `url(${newsLatterImg})`,
