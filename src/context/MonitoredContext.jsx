@@ -1,12 +1,6 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useState,
-} from "react";
-import { CryptoContext } from "./CryptoContext";
+import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
+import cryptoStore from "../stores/cryptoStore";
 
 export const MonitoredContext = createContext();
 
@@ -15,7 +9,8 @@ export const MonitoredProvider = ({ children }) => {
   const [intervalIds, setIntervalIds] = useState({});
   const [userEmail, setUserEmail] = useState({});
 
-  const { currency, sortBy } = useContext(CryptoContext);
+  const currency = cryptoStore((state) => state.cryptoParams.currency);
+  const sortBy = cryptoStore((state) => state.cryptoParams.sortBy);
 
   const fetchMonitoredCoinPrice = (name, currentPrice, userPrice) => {
     if (currentPrice === userPrice) {
