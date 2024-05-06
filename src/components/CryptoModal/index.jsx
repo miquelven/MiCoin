@@ -1,13 +1,14 @@
 import { useContext, useEffect, useState } from "react";
 import ReactDOM from "react-dom";
-import { json, useNavigate, useParams } from "react-router-dom";
-import { CryptoContext } from "../../context/CryptoContext";
+import { useNavigate, useParams } from "react-router-dom";
+import useGetCoinData from "../../hooks/useGetCoinData";
 import { Triangle } from "lucide-react";
 import Chart from "./Chart";
 import { useForm } from "react-hook-form";
 import { MonitoredContext } from "../../context/MonitoredContext";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import cryptoStore from "../../stores/cryptoStore";
 
 const Indicator = ({ currentPrice, high, low }) => {
   const [greenColor, setGreenColor] = useState();
@@ -78,14 +79,10 @@ export default function CryptoModal() {
     navigate("../");
   };
 
-  const { getCoinData, coinData, currency } = useContext(CryptoContext);
+  const { data: coinData, isPending: coinDataLoading } = useGetCoinData(coinId);
+  const currency = cryptoStore((state) => state.cryptoParams.currency);
 
   useEffect(() => {
-    getCoinData(coinId);
-  }, [coinId]);
-
-  useEffect(() => {
-    console.log("USELAYOUTEFFECT");
     setUserEmail(localStorage.getItem("userEmail"));
 
     monitoredCoinsValue();
@@ -101,7 +98,7 @@ export default function CryptoModal() {
         className="overflow-x-none w-[65%] h-[75%] bg-blue-950/80 bg-opacity-75 rounded-xl text-zinc-50 relative max-2xl:w-5/6 max-xl:overflow-y-auto max-md:w-11/12 max-sm:w-4/5"
         onClick={(e) => e.stopPropagation()}
       >
-        {coinData ? (
+        {!coinDataLoading && coinData ? (
           <div className="flex items-center justify-between h-full w-full p-4 max-xl:flex-col">
             <div className="flex flex-col w-[45%] h-full pr-2 gap-4 max-2xl:w-full">
               <div className="flex w-full items-center justify-center ">
