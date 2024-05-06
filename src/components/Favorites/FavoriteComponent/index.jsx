@@ -1,50 +1,27 @@
-import { useContext, useEffect } from "react";
 import { Star } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { CryptoContext } from "../../../context/CryptoContext";
-import { StorageContext } from "../../../context/StorageContext";
+import favoriteCryptoStore from "../../../stores/favoriteCryptoStore";
+import cryptoStore from "../../../stores/cryptoStore";
 
 export default function FavoriteComponent({ data }) {
-  let { currency } = useContext(CryptoContext);
+  const favoriteCryptoData = favoriteCryptoStore();
+  const currency = cryptoStore((state) => state.cryptoParams.currency);
 
-  const { saveCoin, coins, removeCoin, setCoins, getCoinsData } =
-    useContext(StorageContext);
+  const handleClick = (id) => {
+    if (favoriteCryptoData.favoriteCrypto) {
+      if (favoriteCryptoData.favoriteCrypto.includes(id)) {
+        favoriteCryptoData.removeFavoriteCrypto(id);
+      } else {
+        favoriteCryptoData.addFavoriteCrypto(id);
+      }
+    }
+  };
 
   const navigate = useNavigate();
 
   const getCoinDetail = (id) => {
     navigate(`/favorites/crypto/${id}`);
   };
-
-  const handleClick = (id) => {
-    saveCoin(id);
-
-    if (coins) {
-      if (coins.includes(id)) {
-        removeCoin(id);
-      } else {
-        saveCoin(id);
-      }
-    }
-  };
-
-  useEffect(() => {
-    const total = JSON.parse(localStorage.getItem("coins")) || [];
-    if (total == null) {
-      localStorage.setItem("coins", JSON.stringify([]));
-    } else {
-      let totalCoins = JSON.parse(localStorage.getItem("coins"));
-      setCoins(totalCoins);
-
-      if (totalCoins) {
-        if (totalCoins.length > 0) {
-          getCoinsData(totalCoins);
-        }
-      } else {
-        localStorage.setItem("coins", JSON.stringify([]));
-      }
-    }
-  }, []);
 
   return (
     <tr
@@ -58,7 +35,10 @@ export default function FavoriteComponent({ data }) {
         >
           <Star
             className={`w-7 h-7 mx-1.5 text-blue-900 ${
-              coins && coins.includes(data.id) ? "fill-blue-900" : ""
+              favoriteCryptoData.favoriteCrypto &&
+              favoriteCryptoData.favoriteCrypto.includes(data.id)
+                ? "fill-blue-900"
+                : ""
             }`}
           />
         </button>
