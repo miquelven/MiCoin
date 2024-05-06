@@ -6,9 +6,9 @@ export default function FavoritesPage() {
   useTitle("Favorites");
 
   return (
-    <>
+    <main>
       <Favorites />
       <Outlet />
-    </>
+    </main>
   );
 }

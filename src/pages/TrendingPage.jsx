@@ -6,9 +6,9 @@ export default function TrendingPage() {
   useTitle("Trending");
 
   return (
-    <>
+    <main>
       <TrendingCoin />
       <Outlet />
-    </>
+    </main>
   );
 }

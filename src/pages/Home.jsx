@@ -17,13 +17,13 @@ function Home() {
   }, []);
 
   return (
-    <>
+    <main>
       <Banner />
       <TableArea />
       <FeaturesArea />
       <NewsLatterArea />
       <Outlet />
-    </>
+    </main>
   );
 }
 
