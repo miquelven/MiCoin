@@ -1,4 +1,4 @@
-<h1 align='center'>MiCoin 🚀</h1>
+<h1 align='center'>MiCoin 🪙</h1>
 
 
 
@@ -20,21 +20,16 @@
 </div>
 
 
-<br/>
-<br/>
-<br/>
-
-<br/>
 
 
-
-## Tecnologias Utilizadas
+## Tecnologias Utilizadas ⚙️
 
 - React ⚛️
 - Tailwind CSS 🎨
 - Context API 🔄
-- Material UI 💼
 - React Hook Form 📝
+- React Query📡
+- Zustand 🧩
 
 
 <br/>
@@ -42,28 +37,21 @@
 
 
 
-## Funcionalidades Principais
+## Principais Funcionalidades 🔍
 
-- **Pesquisa de Criptomoedas**: Permite aos usuários buscar por qualquer criptomoeda disponível na plataforma.
-- **Visualização Detalhada**: Oferece informações detalhadas sobre cada moeda, incluindo dados de mercado e estatísticas relevantes.
-- **Ordenação e Filtragem**: Permite aos usuários ordenar e filtrar as moedas de acordo com diferentes critérios, facilitando a análise.
-- **Alternância de Moedas**: Permite alternar entre diferentes tipos de moedas com facilidade.
-- **Monitoramento de Preços**: Possui um sistema de monitoramento de preços que envia notificações por e-mail quando uma moeda atinge um preço-alvo definido pelo usuário.
-- **Favoritos**: Permite aos usuários favoritar as moedas mais utilizadas para acesso rápido.
-
-<br/>
-<br/>
-
-
-## Paginação
-
-O MiCoin também inclui um sistema de paginação para lidar com grandes conjuntos de dados, proporcionando uma experiência de usuário fluida e responsiva.
+- **Pesquisa de Criptomoedas** 🔄
+- **Visualização Detalhada** 🔍
+- **Ordenação e Filtragem** 🔢🔍
+- **Alternância de Moedas** 💱
+- **Monitoramento de Preços** 📊
+- **Favoritos** ⭐
+- **Paginação** 📄
 
 <br/>
 <br/>
 
 
-## Limitações
+## Limitações 🚫
 
 Por favor, note que o MiCoin consome uma API de terceiros, o que impõe limites de requisições. Portanto, algumas funcionalidades podem estar sujeitas a restrições temporárias.
 
@@ -71,15 +59,39 @@ Por favor, note que o MiCoin consome uma API de terceiros, o que impõe limites 
 
 <br/>
 
-## Instalação e Uso
+## Instalação e Uso 🛠️
 
-1. Clone este repositório.
-2. Instale as dependências usando `npm install`.
-3. Inicie o servidor de desenvolvimento usando `npm run dev`.
+1. Clone do repositório
+   ```bash
+   git clone https://github.com/miquelven/MiCoin.git
+   
+</br>
+
+
+2. Navegue até o diretório do projeto
+   ```bash
+   cd MiCoin
+
+</br>
+
+
+3. Instale as dependências
+   ```bash
+   npm install
+
+</br>
+
+4. Inicie o servidor de desenvolvimento
+   ```bash
+   npm run dev
+
+</br>
+
+5. Abra seu navegador: navegue até http://localhost:5173
 
 <br/>
 <br/>
 
 ## Contribuição
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para reportar bugs ou sugerir novas funcionalidades. Se preferir, você também pode enviar um pull request.
+Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue para reportar bugs ou sugerir novas funcionalidades. Se preferir, você também pode enviar um pull request. 🚀
