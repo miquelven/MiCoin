@@ -13,10 +13,12 @@ import "react-toastify/dist/ReactToastify.css";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import Footer from "./components/Footer";
+import NewsLatterArea from "./components/NewsLatterArea";
 import ToTopButton from "./components/ToTopButton";
 
 import { QueryClientProvider, QueryClient } from "@tanstack/react-query";
 import Aos from "aos";
+import Container from "./components/Container";
 
 const router = createBrowserRouter([
   {
@@ -96,11 +98,12 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <MonitoredProvider>
         <div className=" bg-zinc-100 dark:bg-zinc-950 text-slate-900 dark:text-zinc-200">
           <Header />
-          <div className="max-w-6xl m-auto px-5 ">
-            <div className="mt-24 min-h-[calc(100vh-66px)] flex flex-col relative">
+          <Container>
+            <div className="mt-24 flex flex-col relative">
               <RouterProvider router={router} />
             </div>
-          </div>
+            <NewsLatterArea />
+          </Container>
           <ToTopButton />
           <Footer />
         </div>

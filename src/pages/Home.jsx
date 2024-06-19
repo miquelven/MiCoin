@@ -32,7 +32,6 @@ function Home() {
         <Banner />
         <TableArea />
         <FeaturesArea />
-        <NewsLatterArea />
         <Outlet />
       </main>
     </>
