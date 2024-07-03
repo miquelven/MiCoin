@@ -62,7 +62,7 @@ export default function Contact() {
             data-aos="fade-up"
             data-aos-delay="300"
             onSubmit={handleSubmit(createUserData)}
-            className="relative z-50 flex flex-col mt-10 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
+            className="relative z-50 flex flex-col mt-10 mb-14 gap-8 w-1/2 max-lg:w-8/12 max-sm:w-10/12 max-[390px]:w-11/12"
           >
             <div className="flex flex-col h-[94px] gap-2">
               <label
