@@ -1,4 +1,4 @@
-import { ArrowUp } from "lucide-react";
+import { ChevronUp } from "lucide-react";
 import { useEffect, useState } from "react";
 
 export default function ToTopButton() {
@@ -27,11 +27,12 @@ export default function ToTopButton() {
   return (
     <button
       onClick={scrollTop}
-      className={`transition-all duration-300 h-10 w-10 border-2 dark:text-zinc-400 border-zinc-500 rounded-full  text-zinc-500  flex justify-center items-center fixed bottom-10 right-10 hover:scale-110 bg-transparent dark:hover:bg-white/10  hover:bg-white/10 hover:text-zinc-700 hover:text-zinc-300
+      aria-label="Voltar ao topo"
+      className={`transition-all duration-300 h-12 w-12 shadow-lg rounded-full flex justify-center items-center fixed bottom-8 right-8 bg-gradient-to-br from-primary-500 to-primary-600 text-white hover:shadow-primary-500/20 hover:scale-105 active:scale-95
         ${showScroll ? "z-10 opacity-100" : "z-[-1] opacity-0"}
       `}
     >
-      <ArrowUp />
+      <ChevronUp size={24} strokeWidth={2.5} />
     </button>
   );
 }

@@ -17,14 +17,14 @@ function Home() {
   return (
     <>
       <Helmet>
-        <title>MiCoin - Home</title>
+        <title>MiCoin - Início</title>
         <meta
           name="description"
-          content="Explore the latest cryptocurrency information on MiCoin. Stay updated with real-time prices, market analysis, breaking news, and more. Stay one step ahead in the cryptocurrency markets with our comprehensive and intuitive platform. Start your journey now and dive into the exciting world of cryptocurrencies."
+          content="Explore as últimas informações sobre criptomoedas no MiCoin. Mantenha-se atualizado com preços em tempo real, análise de mercado, notícias e muito mais. Fique um passo à frente nos mercados de criptomoedas com nossa plataforma abrangente e intuitiva. Comece sua jornada agora e mergulhe no emocionante mundo das criptomoedas."
         ></meta>
         <meta
           name="keywords"
-          content="cryptocurrency, crypto, bitcoin, blockchain, ethereum, digital currency, cryptocurrency market, cryptocurrency news, cryptocurrency prices, cryptocurrency trading, decentralized finance, NFTs"
+          content="criptomoeda, crypto, bitcoin, blockchain, ethereum, moeda digital, mercado de criptomoedas, notícias de criptomoedas, preços de criptomoedas, trading de criptomoedas, finanças descentralizadas, NFTs"
         ></meta>
         <meta name="author" content="MiCoin" />
       </Helmet>

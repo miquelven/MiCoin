@@ -1,52 +1,56 @@
+import { TrendingUp, ChevronDown } from 'lucide-react';
 import DetailText from "../DetailText";
 import banner from "../../assets/images/banner.webp";
 import bannerLittle from "../../assets/images/banner2.webp";
 
 export default function Banner() {
   return (
-    <section className="flex  h-96 mt-28 max-md:flex-col md:mb-60 max-md:gap-8 max-md:mt-0">
-      <div className="flex-1 relative flex flex-col justify-around text-justify max-md:flex-col gap-12  max-md:text-center max-md:mb-14 max-md:gap-6">
-        <h1
-          data-aos="fade-right"
-          data-aos-delay="100"
-          className="text-5xl font-bold max-lg:text-4xl max-md:text-5xl max-sm:text-3xl max-[390px]:text-2xl"
-        >
-          Welcome to <DetailText>Mi</DetailText>
-          Coin
-        </h1>
-        <p
-          data-aos="fade-right"
-          data-aos-delay="300"
-          className=" dark:text-zinc-300 mt-10 text-lg font-light leading-8 max-md:max-w-[380px] max-md:mx-auto max-sm:leading-9 max-sm:text-sm max-[390px]:text-xs "
-        >
-          Your comprehensive hub for exploring the exciting world of digital
-          currencies. With <DetailText>real-time </DetailText>
-          prices, customizable
-          <DetailText> favorites</DetailText>, and the{" "}
-          <DetailText> latest news</DetailText>, we're here to help you navigate
-          the cryptocurrency universe. Join us and dive into the future of
-          finance.
-        </p>
-        <div
-          data-aos="fade-right"
-          data-aos-delay="500"
-          className="flex items-end max-md:justify-center"
-        >
-          <img src={bannerLittle} className="w-[50%] mt-10" />
-        </div>
-      </div>
+    <section
+      id="home"
+      className="w-full h-[calc(100vh-80px)] flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-light-100 to-light-300 dark:from-dark-100 dark:to-dark-300"
+    >
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMzMjMyMzIiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djZoNnYtNmgtNnptNiA2djZoLTZ2LTZoNnptLTYtMTJ2Nmg2di02aC02em0xMiA2djZoNnYtNmgtNnptLTYgMTJ2Nmg2di02aC02em0xMiAwdjZoNnYtNmgtNnptLTEyLTI0djZoNnYtNmgtNnptMTIgMHY2aDZ2LTZoLTZ6bS02IDEydjZoNnYtNmgtNnptLTYtNnY2aDZ2LTZoLTZ6bS02IDB2Nmg2di02aC02em0xMiAxMnY2aDZ2LTZoLTZ6bS0xMiAwdjZoNnYtNmgtNnptLTYgMHY2aDZ2LTZoLTZ6bTYgNnY2aDZ2LTZoLTZ6bS02IDZ2Nmg2di02aC02em0xMiAwdjZoNnYtNmgtNnoiLz48L2c+PC9nPjwvc3ZnPg==')] opacity-30 dark:opacity-10"></div>
+      
+      <div className="absolute top-0 left-0 right-0 h-64 bg-gradient-radial from-primary-400/20 via-transparent to-transparent dark:from-primary-600/10 blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-gradient-radial from-secondary-400/30 via-transparent to-transparent dark:from-secondary-600/10 blur-3xl"></div>
+      
       <div
-        data-aos="zoom-in"
-        data-aos-delay="700"
-        className="flex-1 self-center max-md:absolute max-md:top-0 max-md:left-0 max-md:w-full"
+        data-aos="fade-up"
+        data-aos-duration="1000"
+        className="w-full max-w-[1200px] mx-auto flex flex-col items-center justify-center gap-8 px-6 z-10"
       >
-        <div className="flex flex-col items-end justify-center  transition duration-300 ease-in-out max-md:justify-center max-md:items-center max-md:opacity-10">
-          <img
-            src={banner}
-            alt="Imagem do banner"
-            className=" w-[80%] my-20 transition-all duration-300 shadow-2xl dark:shadow-zinc-950 dark:opacity-90 rounded-2xl hover:opacity-100 brightness-105 hover:brightness-75 shadow-zinc-400 dark:brightness-100 dark:hover:brightness-110 "
-          />
+        <div className="flex items-center justify-center mb-2">
+          <span className="px-4 py-2 bg-primary-500/10 dark:bg-primary-500/20 rounded-full text-primary-700 dark:text-primary-300 font-medium flex items-center gap-2">
+            <TrendingUp className="w-4 h-4" />
+            Monitore o mercado em tempo real
+          </span>
         </div>
+        
+        <h1 className="text-6xl max-md:text-5xl max-sm:text-4xl font-bold text-center text-dark-100 dark:text-light-100 leading-tight">
+          Bem-vindo ao <span className="text-primary-600 dark:text-primary-400"><DetailText>Mi</DetailText>Coin</span>
+        </h1>
+        
+        <p className="text-xl max-md:text-lg max-sm:text-base text-center text-dark-200 dark:text-light-300 max-w-2xl">
+          Seu hub abrangente para explorar o emocionante mundo das moedas
+          digitais. Com <DetailText>preços em tempo real</DetailText>,
+          <DetailText> favoritos personalizáveis</DetailText> e as{" "}
+          <DetailText> últimas notícias</DetailText>, estamos aqui para ajudá-lo a navegar
+          no universo das criptomoedas.
+        </p>
+        
+        <a
+          href="#table"
+          className="mt-4 bg-primary-600 hover:bg-primary-700 dark:bg-primary-500 dark:hover:bg-primary-600 text-white px-8 py-3 rounded-full font-medium transition-all duration-300 shadow-button hover:shadow-button-hover flex items-center gap-2 group"
+        >
+          Explorar agora
+          <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform duration-300" />
+        </a>
+      </div>
+      
+      <div className="absolute bottom-8 left-0 right-0 flex justify-center animate-bounce">
+        <a href="#features" className="text-dark-300 dark:text-light-400 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300">
+          <ChevronDown className="w-6 h-6" />
+        </a>
       </div>
     </section>
   );

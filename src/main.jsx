@@ -68,11 +68,15 @@ const contextClass = {
   success: "bg-green-600",
 };
 
+// Configuração otimizada do QueryClient para reduzir chamadas à API
 const client = new QueryClient({
   defaultOptions: {
     queries: {
       refetchOnWindowFocus: false,
-      staleTime: 1000 * 60 * 30,
+      staleTime: 1000 * 60 * 10, // 10 minutos
+      retry: 1, // Reduz o número de tentativas em caso de falha
+      retryDelay: 3000, // 3 segundos entre tentativas
+      cacheTime: 1000 * 60 * 60, // 1 hora
     },
   },
 });

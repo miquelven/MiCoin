@@ -42,54 +42,64 @@ export default function FilterTable() {
   return (
     <div
       data-aos="fade-up"
-      data-aos-delay="500"
-      className="w-full min-h-14 border-2 dark:border border-zinc-300 dark:border-zinc-700 rounded-xl flex flex-wrap items-center justify-between relative z-50
-   max-lg:justify-center max-lg:gap-8 max-lg:py-4 
-    "
+      data-aos-delay="300"
+      className="w-full flex flex-wrap items-center justify-between gap-6 relative z-10 max-lg:justify-center max-lg:gap-8"
     >
       <InputArea />
-      <div className="flex mr-7 max-lg:gap-3 max-sm:mr-0 max-sm:flex-col max-sm:gap-8">
+      <div className="flex items-center gap-6 max-lg:gap-4 max-sm:flex-col max-sm:w-full max-sm:gap-6">
         <form
-          className="relative flex items-center mr-12 max-sm:flex-col max-sm:gap-4 max-sm:mr-0 "
+          className="relative flex items-center gap-3 max-sm:w-full max-sm:justify-center"
           onSubmit={handleCurrency}
         >
-          <label className="relative flex justify-center items-center mr-2 gap-2  text-zinc-700 dark:text-zinc-300 max-sm:mr-0 max-sm:flex-row max-sm:items-center">
+          <label className="flex items-center gap-2 text-dark-300 dark:text-light-400 font-medium">
             Currency:
-            <input
-              type="text"
-              ref={inputCurrency}
-              placeholder={`${cryptoStoreData.cryptoParams.currency}`}
-              className="w-16 rounded focus:border-zinc-300 bg-zinc-200 placeholder:text-zinc-400 dark:bg-zinc-800 dark:placeholder:text-zinc-400 pl-2 required outline-0 border border-transparent dark:focus:border-blue-400 leading-4"
-            />
-            <button type="submit" className="ml-1 cursor-pointer ">
-              <ArrowRightSquare className="w-full h-auto text-blue-400 hover:text-blue-500 dark:text-blue-600 dark:hover:text-blue-500" />
-            </button>
+            <div className="relative">
+              <input
+                type="text"
+                ref={inputCurrency}
+                placeholder={`${cryptoStoreData.cryptoParams.currency}`}
+                className="w-20 h-10 px-3 rounded-lg bg-white dark:bg-dark-400 placeholder:text-dark-400 dark:placeholder:text-light-500 border border-light-400 dark:border-dark-500 focus:border-primary-500 dark:focus:border-primary-400 outline-none transition-colors duration-200"
+              />
+              <button 
+                type="submit" 
+                className="absolute right-2 top-1/2 -translate-y-1/2 cursor-pointer p-1 rounded-md hover:bg-light-300 dark:hover:bg-dark-300 transition-colors duration-200"
+              >
+                <ArrowRightSquare className="w-5 h-5 text-primary-600 dark:text-primary-400" />
+              </button>
+            </div>
           </label>
         </form>
-        <label className="relative flex justify-center items-center text-zinc-700 dark:text-zinc-300 max-sm:justify-start max-sm:flex-col max-sm:items-center max-sm:gap-[10px] max-[490px]:items-start">
-          <span className=" mr-2">Sort by:</span>
-          <select
-            name="sortby"
-            className="rounded  bg-zinc-200 dark:bg-zinc-800 text-base pl-2 pr-10 py-0.5 leading-4 capitalize focus:outline-0"
-            onChange={selectedSort}
-            value={sortByValue}
-          >
-            <option value="market_cap_desc">Market cap desc</option>
-            <option value="market_cap_asc">Market cap asc</option>
-            <option value="volume_desc">Volume desc</option>
-            <option value="volume_asc">Volume asc</option>
-            <option value="id_desc">id desc</option>
-            <option value="id_asc">id asc</option>
-            <option value="gecko_desc">gecko desc</option>
-            <option value="gecko_asc">gecko asc</option>
-          </select>
-          <Triangle className="w-[0.9rem] h-auto absolute right-0.5 top-1.5 pointer-events-none fill-blue-400 text-blue-400  dark:fill-blue-800 rotate-180 dark:text-blue-800 max-sm:top-[2.4rem] " />
-        </label>
+        
+        <div className="relative max-sm:w-full max-sm:flex max-sm:justify-center">
+          <label className="flex items-center gap-2 text-dark-300 dark:text-light-400 font-medium">
+            <span>Sort by:</span>
+            <div className="relative">
+              <select
+                name="sortby"
+                className="appearance-none w-44 h-10 px-3 pr-10 rounded-lg bg-white dark:bg-dark-400 border border-light-400 dark:border-dark-500 focus:border-primary-500 dark:focus:border-primary-400 outline-none capitalize transition-colors duration-200"
+                onChange={selectedSort}
+                value={sortByValue}
+              >
+                <option value="market_cap_desc">Market cap desc</option>
+                <option value="market_cap_asc">Market cap asc</option>
+                <option value="volume_desc">Volume desc</option>
+                <option value="volume_asc">Volume asc</option>
+                <option value="id_desc">ID desc</option>
+                <option value="id_asc">ID asc</option>
+                <option value="gecko_desc">Gecko desc</option>
+                <option value="gecko_asc">Gecko asc</option>
+              </select>
+              <Triangle className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none fill-primary-600 text-primary-600 dark:fill-primary-400 dark:text-primary-400 rotate-180" />
+            </div>
+          </label>
+        </div>
+        
         <button
           onClick={handleResetData}
-          className="w-[2rem] ml-4 flex justify-center max-sm:self-center max-[490px]:ml-0"
+          className="p-2 rounded-full bg-light-300 dark:bg-dark-400 hover:bg-light-400 dark:hover:bg-dark-500 transition-colors duration-200 max-sm:self-center"
+          aria-label="Reset filters"
         >
-          <RefreshCcw className="transition-all  text-zinc-400  hover:text-blue-600 dark:hover:text-blue-600 " />
+          <RefreshCcw className="w-5 h-5 text-primary-600 dark:text-primary-400" />
         </button>
       </div>
     </div>

@@ -6,14 +6,14 @@ export default function FavoritesPage() {
   return (
     <>
       <Helmet>
-        <title>MiCoin - Favorites</title>
+        <title>MiCoin - Favoritos</title>
         <meta
           name="description"
-          content="Explore and manage your favorite cryptocurrencies on MiCoin. Keep track of prices, trends, and news for your selected digital assets. Customize your portfolio and stay informed about the cryptocurrencies that matter most to you. Start managing your favorites today and stay ahead in the dynamic world of crypto."
+          content="Explore e gerencie suas criptomoedas favoritas na MiCoin. Acompanhe preços, tendências e notícias para seus ativos digitais selecionados. Personalize seu portfólio e mantenha-se informado sobre as criptomoedas que mais importam para você. Comece a gerenciar seus favoritos hoje e mantenha-se à frente no mundo dinâmico das criptomoedas."
         ></meta>
         <meta
           name="keywords"
-          content="cryptocurrency favorites, favorite cryptocurrencies, crypto portfolio, digital assets, crypto prices, cryptocurrency trends, crypto news, cryptocurrency management"
+          content="criptomoedas favoritas, favoritos de criptomoedas, portfólio de cripto, ativos digitais, preços de cripto, tendências de criptomoedas, notícias de cripto, gerenciamento de criptomoedas"
         ></meta>
         <meta name="author" content="MiCoin" />
       </Helmet>

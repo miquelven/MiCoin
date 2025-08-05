@@ -1,21 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
+import { API } from "../services/api";
 
-const getTreding = async () => {
-  try {
-    const data = await fetch(`https://api.coingecko.com/api/v3/search/trending`)
-      .then((res) => res.json())
-      .then((json) => json);
-
-    return data.coins;
-  } catch (e) {
-    toast.error("An error occurred. Please wait a moment and try again");
-  }
-};
-
+/**
+ * Hook para obter as criptomoedas em tendência
+ * @returns {Object} - Resultado da consulta
+ */
 const useGetTrending = () => {
   return useQuery({
-    queryKey: ["trending-data"],
-    queryFn: () => getTreding(),
+    queryKey: ["trending"],
+    queryFn: () => API.getTrending(),
+    staleTime: 15 * 60 * 1000, // 15 minutos
+    refetchOnWindowFocus: false,
   });
 };
 

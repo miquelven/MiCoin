@@ -3,23 +3,27 @@ import { Filter, Info, Star, ThumbsUp } from "lucide-react";
 const featuresItens = [
   {
     id: 0,
-    icon: <Star size={"60px"} />,
-    text: "Keep your favorite cryptocurrencies at your fingertips. Easily bookmark them with a click for quick and easy access.",
+    icon: <Star size={24} strokeWidth={2} />,
+    title: "Favoritos",
+    text: "Mantenha suas criptomoedas favoritas ao seu alcance. Marque-as facilmente com um clique para acesso rápido e fácil.",
   },
   {
     id: 1,
-    icon: <ThumbsUp size={"60px"} />,
-    text: "Discover the top-performing cryptocurrencies. See the best investment options at a glance.",
+    icon: <ThumbsUp size={24} strokeWidth={2} />,
+    title: "Tendências",
+    text: "Descubra as criptomoedas com melhor desempenho. Veja as melhores opções de investimento rapidamente.",
   },
   {
     id: 2,
-    icon: <Filter size={"60px"} />,
-    text: "Customize your search. Use our filtering options to find cryptocurrencies that fit your investment profile.",
+    icon: <Filter size={24} strokeWidth={2} />,
+    title: "Filtros avançados",
+    text: "Personalize sua busca. Use nossas opções de filtragem para encontrar criptomoedas que se adequem ao seu perfil de investimento.",
   },
   {
     id: 3,
-    icon: <Info size={"60px"} />,
-    text: "Explore comprehensive data. Get detailed information on each cryptocurrency, including price history and market analysis.",
+    icon: <Info size={24} strokeWidth={2} />,
+    title: "Dados detalhados",
+    text: "Explore dados abrangentes. Obtenha informações detalhadas sobre cada criptomoeda, incluindo histórico de preços e análise de mercado.",
   },
 ];
 

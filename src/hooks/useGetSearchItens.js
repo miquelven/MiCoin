@@ -1,24 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
+import { API } from "../services/api";
 
-const getSearchData = async (textSearch) => {
-  try {
-    const data = await fetch(
-      `https://api.coingecko.com/api/v3/search?query=${textSearch}`
-    )
-      .then((res) => res.json())
-      .then((json) => json);
-
-    return data.coins;
-  } catch (e) {
-    toast.error("An error occurred. Please wait a moment and try again");
-  }
-};
-
-const useGetSearch = (textSearch) => {
+/**
+ * Hook para buscar criptomoedas com base em um texto de pesquisa
+ * @param {string} textSearch - Texto para pesquisa
+ * @returns {Object} - Resultado da consulta
+ */
+const useGetSearchItens = (textSearch) => {
   return useQuery({
     queryKey: ["search-data", textSearch],
-    queryFn: () => getSearchData(textSearch),
+    queryFn: () => API.getSearchItems(textSearch),
+    staleTime: 2 * 60 * 1000, // 2 minutos
+    refetchOnWindowFocus: false,
+    enabled: !!textSearch && textSearch.length > 1, // Só executa se tiver pelo menos 2 caracteres
   });
 };
 
-export default useGetSearch;
+export default useGetSearchItens;

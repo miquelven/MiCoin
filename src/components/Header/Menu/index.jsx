@@ -1,17 +1,21 @@
-import { AlignJustify, X } from "lucide-react";
+import { Menu as MenuIcon, X } from "lucide-react";
 import { useRef } from "react";
 export default function Menu() {
   const headerLinks = [
     {
-      name: "favorites",
+      name: "início",
+      to: "/",
+    },
+    {
+      name: "favoritos",
       to: "/favorites",
     },
     {
-      name: "trending",
+      name: "tendências",
       to: "/trending",
     },
     {
-      name: "contact",
+      name: "contato",
       to: "/contact",
     },
   ];
@@ -58,16 +62,19 @@ export default function Menu() {
   };
 
   return (
-    <nav className="">
+    <nav>
       {/* menu desktop */}
-      <ul className="max-md:hidden flex mr-3 ">
+      <ul className="max-md:hidden flex mr-3">
         {headerLinks.map((link) => (
           <li
             key={link.name}
             onClick={() => redirectAnchor(link.to)}
-            className="py-4 relative  cursor-pointer transition duration-300 ease-in before:content[''] before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:-bottom-0.5 hover:text-zinc-500 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300  "
+            className="relative cursor-pointer transition-all duration-300 ease-in-out group"
           >
-            <button className="px-6 capitalize">{link.name}</button>
+            <button className="px-5 py-2 capitalize font-medium text-dark-200 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 flex items-center">
+              {link.name}
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 group-hover:w-full transition-all duration-300 ease-in-out"></span>
+            </button>
           </li>
         ))}
       </ul>
@@ -75,28 +82,30 @@ export default function Menu() {
         <button
           ref={openMenuBtn}
           onClick={openMenu}
-          className="py-3 px-2 relative before:content-['']  before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:left-0  before:-bottom-0.5 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300"
+          aria-label="Abrir menu"
+          className="p-2 text-dark-200 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30"
         >
-          <AlignJustify />
+          <MenuIcon className="h-5 w-5" strokeWidth={2.5} />
         </button>
         <button
           ref={closeMenuBtn}
           onClick={closeMenu}
-          className="hidden py-3 px-2 relative before:content-['']  before:w-full before:h-[2px] before:bg-transparent before:absolute before:transition-all before:duration-300 before:left-0  before:-bottom-0.5 hover:before:bg-[#f4f4f5] dark:hover:before:bg-zinc-300"
+          aria-label="Fechar menu"
+          className="hidden p-2 text-dark-200 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 transition-colors duration-300 rounded-full hover:bg-primary-100 dark:hover:bg-primary-900/30"
         >
-          <X />
+          <X className="h-5 w-5" strokeWidth={2.5} />
         </button>
         <ul
           ref={menuBar}
-          className="flex w-[100vw] py-2  absolute transition-all  duration-700 ease-in opacity-0 top-[-685px] -left-0 h-[35vh] flex-col items-center divide-y-2 divide-zinc-300 dark:divide-zinc-900 dark:bg-zinc-900/30 z-[99] backdrop-blur-3xl "
+          className="flex w-full py-4 absolute transition-all duration-500 ease-in-out opacity-0 top-[-685px] left-0 flex-col items-center divide-y divide-light-400 dark:divide-dark-300 bg-light-200/95 dark:bg-dark-200/95 z-[99] backdrop-blur-lg shadow-xl rounded-b-xl border-t border-light-400 dark:border-dark-300"
         >
           {headerLinks.map((link) => (
             <button
               onClick={() => redirectAnchor(link.to)}
               key={link.name}
-              className="hover:bg-zinc-200 hover:text-zinc-500 font-semibold dark:hover:bg-zinc-800 w-full text-center py-6 dark:text-zinc-100"
+              className="w-full text-center py-4 text-dark-200 dark:text-light-300 hover:text-primary-600 dark:hover:text-primary-400 hover:bg-light-300 dark:hover:bg-dark-300 transition-all duration-300"
             >
-              <li className="px-10 capitalize  transition-all  dark:hover:text-zinc-400">
+              <li className="px-10 capitalize font-medium">
                 {link.name}
               </li>
             </button>

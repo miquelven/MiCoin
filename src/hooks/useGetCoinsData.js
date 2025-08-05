@@ -1,28 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
+import { API } from "../services/api";
 
-const getCoinsData = async (coins, currency, sortBy) => {
-  try {
-    const data = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency}&ids=${coins.join(
-        ","
-      )}&order=${sortBy}&sparkline=false&price_change_percentage=1h%2C24h%2C7d`,
-      {
-        method: "GET",
-      }
-    )
-      .then((res) => res.json())
-      .then((json) => json);
-
-    return data;
-  } catch (e) {
-    toast.error("An error occurred. Please wait a moment and try again");
-  }
-};
-
+/**
+ * Hook para obter dados de múltiplas criptomoedas
+ * @param {Array} coins - Lista de IDs das criptomoedas
+ * @param {string} currency - Moeda para conversão (ex: usd, eur)
+ * @param {string} sortBy - Critério de ordenação
+ * @returns {Object} - Resultado da consulta
+ */
 const useGetCoinsData = (coins, currency, sortBy) => {
   return useQuery({
-    queryKey: ["coins-data", coins],
-    queryFn: () => getCoinsData(coins, currency, sortBy),
+    queryKey: ["coins-data", coins, currency, sortBy],
+    queryFn: () => API.getCoinsData(coins, currency, sortBy),
+    staleTime: 3 * 60 * 1000, // 3 minutos
+    refetchOnWindowFocus: false,
+    enabled: !!coins && coins.length > 0, // Só executa se houver moedas para buscar
   });
 };
 

@@ -26,44 +26,47 @@ export default function FavoriteComponent({ data }) {
   return (
     <tr
       key={data.id}
-      className="text-center text-base border-b-2 border-zinc-400  hover:bg-zinc-200/70 dark:border-gray-600 dark:hover:bg-zinc-800/30 last:border-b-0 max-[470px]:text-sm"
+      className="border-b border-light-300 dark:border-dark-400 hover:bg-light-100/50 dark:hover:bg-dark-400/30 last:border-b-0 text-sm transition-colors duration-150"
     >
-      <td className="py-4 flex items-center uppercase  ">
+      <td className="py-4 px-4 flex items-center">
         <button
-          className="outline-0 border-0 bg-none cursor-pointer"
+          className="outline-none border-0 bg-transparent cursor-pointer mr-2 transition-transform duration-200 hover:scale-110"
           onClick={() => handleClick(data.id)}
         >
           <Star
-            className={`w-7 h-7 mx-1.5 text-blue-900 ${
+            className={`w-5 h-5 text-primary-500 ${
               favoriteCryptoData.favoriteCrypto &&
               favoriteCryptoData.favoriteCrypto.includes(data.id)
-                ? "fill-blue-900"
+                ? "fill-primary-500"
                 : ""
             }`}
           />
         </button>
 
         <img
-          className="w-[1.2rem] h-[1.2] mx-1.5"
+          className="w-6 h-6 mr-2 rounded-full"
           src={data.image}
           alt={data.name}
         />
         <span>
           <div
             onClick={() => getCoinDetail(data.id)}
-            className="cursor-pointer"
+            className="cursor-pointer font-medium text-dark-100 dark:text-light-100 uppercase"
           >
             {data.symbol}
           </div>
         </span>
       </td>
-      <td className="py-4 ">
-        <Link onClick={() => getCoinDetail(data.id)} className="cursor-pointer">
+      <td className="py-4 px-4 text-left">
+        <Link 
+          onClick={() => getCoinDetail(data.id)} 
+          className="cursor-pointer text-dark-200 dark:text-light-200 hover:text-primary-500 dark:hover:text-primary-400 transition-colors duration-200"
+        >
           {data.name}
         </Link>
       </td>
-      <td className="py-4">
-        {new Intl.NumberFormat("en-IN", {
+      <td className="py-4 px-4 text-right font-medium text-dark-200 dark:text-light-200">
+        {new Intl.NumberFormat("pt-BR", {
           style: "currency",
           currency: currency,
         }).format(data.current_price)}
@@ -71,34 +74,39 @@ export default function FavoriteComponent({ data }) {
       <td
         className={
           data.price_change_percentage_1h_in_currency > 0
-            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[370px]:hidden"
-            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[370px]:hidden"
+            ? "text-green-500 font-medium py-4 px-4 text-right max-[370px]:hidden"
+            : "text-red-500 font-medium py-4 px-4 text-right max-[370px]:hidden"
         }
       >
-        {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}
+        {Number(data.price_change_percentage_1h_in_currency).toFixed(2)}%
       </td>
       <td
         className={
           data.price_change_percentage_24h_in_currency > 0
-            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[470px]:hidden"
-            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[470px]:hidden"
+            ? "text-green-500 font-medium py-4 px-4 text-right max-[470px]:hidden"
+            : "text-red-500 font-medium py-4 px-4 text-right max-[470px]:hidden"
         }
       >
-        {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}
+        {Number(data.price_change_percentage_24h_in_currency).toFixed(2)}%
       </td>
       <td
         className={
           data.price_change_percentage_7d_in_currency > 0
-            ? "text-green-600 font-medium dark:font-normal dark:text-green-400 py-4 max-[540px]:hidden"
-            : "text-red-600 font-medium dark:font-normal dark:text-red-400 py-4 max-[540px]:hidden"
+            ? "text-green-500 font-medium py-4 px-4 text-right max-[540px]:hidden"
+            : "text-red-500 font-medium py-4 px-4 text-right max-[540px]:hidden"
         }
       >
-        {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}
+        {Number(data.price_change_percentage_7d_in_currency).toFixed(2)}%
       </td>
-      <td className="py-4 max-md:hidden">
+      <td className="py-4 px-4 text-right font-medium text-dark-200 dark:text-light-200 max-md:hidden">
         {data.market_cap_change_percentage_24h}%
       </td>
-      <td className="py-4 max-lg:hidden">{data.total_volume}</td>
+      <td className="py-4 px-4 text-right font-medium text-dark-200 dark:text-light-200 max-lg:hidden">
+        {new Intl.NumberFormat("pt-BR", {
+          style: "currency",
+          currency: currency,
+        }).format(data.total_volume)}
+      </td>
     </tr>
   );
 }

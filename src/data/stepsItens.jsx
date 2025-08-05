@@ -5,24 +5,24 @@ import stepFavorite3 from "../assets/images/stepImg3.png";
 const stepsItens = [
   {
     id: 0,
-    stepCounter: "1- ",
-    text: "First, you should click on the star icon next to the asset you want to favorite.",
+    stepCounter: "Adicione aos favoritos",
+    text: "Clique no ícone de estrela ao lado do ativo que você deseja adicionar aos favoritos. A estrela ficará preenchida indicando que o ativo foi adicionado com sucesso.",
     img: stepFavorite1,
-    alt: "Step-by-step image of how to favorite an asset",
+    alt: "Imagem passo a passo de como favoritar um ativo",
   },
   {
     id: 1,
-    stepCounter: "2- ",
-    text: "Second, navigate to the 'Favorites' tab where you can see your favorited asset.",
+    stepCounter: "Acesse a página de favoritos",
+    text: "Navegue até a aba 'Favoritos' no menu principal para visualizar todos os seus ativos favoritos em um só lugar.",
     img: stepFavorite2,
-    alt: "Step-by-step image of how to favorite an asset",
+    alt: "Imagem passo a passo de como acessar os favoritos",
   },
   {
     id: 2,
-    stepCounter: "3- ",
-    text: "Third, you can now view your favorite assets.",
+    stepCounter: "Gerencie seus favoritos",
+    text: "Visualize informações detalhadas sobre seus ativos favoritos, incluindo preços atualizados, variações e dados de mercado. Você pode remover um ativo dos favoritos clicando novamente na estrela.",
     img: stepFavorite3,
-    alt: "Step-by-step image of how to favorite an asset",
+    alt: "Imagem passo a passo de como gerenciar os favoritos",
   },
 ];
 

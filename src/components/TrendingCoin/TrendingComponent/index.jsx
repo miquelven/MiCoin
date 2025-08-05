@@ -11,51 +11,48 @@ export default function TrendingComponent({ data }) {
     <div
       data-aos="fade-up"
       data-aos-delay="300"
-      className="w-[80%] flex flex-col items-center mx-auto gap-3 shadow-lg shadow-zinc-200 dark:shadow-transparent justify-center bg-zinc-300 dark:bg-zinc-900 mb-12 last:mb-0 rounded-lg p-4 relative cursor-pointer hover:bg-zinc-500 hover:dark:bg-zinc-800 hover:bg-opacity-40"
+      className="flex flex-col items-center gap-4 bg-light-100 dark:bg-dark-400 p-6 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer relative hover:bg-light-300 dark:hover:bg-dark-500"
       onClick={() => getCoinDetail(data.id)}
     >
       {data ? (
         <>
-          <div className="text-xl flex items-center  max-[420px]:text-lg  mt-0.5 mb-2.5">
-            <h3 className="text-zinc-800 font-semibold dark:font-normal dark:text-zinc-600 capitalize ">
-              name:&nbsp;
-            </h3>
-            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
-              {data.name}
-            </span>
+          <div className="w-16 h-16 mb-2">
             <img
               src={data.small}
               alt={data.name}
-              className="w-[1.5rem] h-[1.5rem] mx-1.5 rounded-full"
+              className="w-full h-full object-contain rounded-full bg-light-300 dark:bg-dark-500 p-1"
             />
           </div>
-          <div className="text-base flex items-center  max-[420px]:text-sm my-0.5">
-            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
-              score:&nbsp;
-            </span>
-            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
-              {data.score + 1}
-            </span>
+          
+          <h3 className="text-xl font-bold text-dark-100 dark:text-light-100 mb-1">
+            {data.name}
+          </h3>
+          
+          <div className="text-sm text-dark-300 dark:text-light-400 mb-4">
+            <span className="uppercase font-medium">{data.symbol}</span>
           </div>
-          <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
-            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
-              price (in btc):&nbsp;
-            </span>
-            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
-              {new Intl.NumberFormat("en-IN", {
+          
+          <div className="w-full grid grid-cols-2 gap-4 text-sm">
+            <div className="bg-light-200 dark:bg-dark-500 p-3 rounded-lg">
+              <div className="text-dark-400 dark:text-light-500 mb-1">Score</div>
+              <div className="font-medium text-dark-200 dark:text-light-200">{data.score + 1}</div>
+            </div>
+            
+            <div className="bg-light-200 dark:bg-dark-500 p-3 rounded-lg">
+              <div className="text-dark-400 dark:text-light-500 mb-1">Rank</div>
+              <div className="font-medium text-dark-200 dark:text-light-200">#{data.market_cap_rank}</div>
+            </div>
+          </div>
+          
+          <div className="w-full bg-light-200 dark:bg-dark-500 p-3 rounded-lg mt-2">
+            <div className="text-dark-400 dark:text-light-500 mb-1">Preço (BTC)</div>
+            <div className="font-medium text-dark-200 dark:text-light-200">
+              {new Intl.NumberFormat("pt-BR", {
                 style: "currency",
-                currency: "btc",
-                maximumSignificantDigits: 5,
+                currency: "BTC",
+                maximumSignificantDigits: 8,
               }).format(data.price_btc)}
-            </span>
-          </div>
-          <div className="text-base flex items-center  max-[420px]:text-sm  my-0.5">
-            <span className="text-zinc-600 font-medium dark:font-normal dark:text-zinc-600 capitalize ">
-              market cap rank:&nbsp;
-            </span>
-            <span className="text-blue-500 font-medium dark:font-normal dark:text-blue-400 ">
-              {data.market_cap_rank}
-            </span>
+            </div>
           </div>
         </>
       ) : null}

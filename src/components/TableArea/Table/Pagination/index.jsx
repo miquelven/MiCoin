@@ -1,4 +1,4 @@
-import { ArrowLeftCircle, ArrowRightCircle } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import useGetTotalPages from "../../../../hooks/useGetTotalPages";
 import cryptoStore from "../../../../stores/cryptoStore";
 
@@ -30,81 +30,109 @@ export default function Pagination() {
   };
 
   return (
-    <div className="flex items-center max-[470px]:flex-col max-[470px]:gap-7 max-[470px]:pt-10">
-      <ul className="flex items-center justify-end text-sm">
-        <li className="flex items-center">
-          <button className="outline-0  w-8" onClick={prev}>
-            <ArrowLeftCircle className="text-blue-400 hover:text-blue-500 dark:text-blue-700 dark:hover:text-blue-500" />
-          </button>
-        </li>
-
-        {cryptoStoreData.cryptoParams.pageSelected > 2 && (
+    <div className="flex items-center max-[470px]:flex-col max-[470px]:gap-4 max-[470px]:pt-6">
+      <nav aria-label="Pagination" className="flex items-center justify-end">
+        <ul className="flex items-center gap-1">
           <li>
-            <button
-              onClick={() => setPageSelected(1)}
-              className="outline-0 hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center bg-zinc-300 dark:bg-zinc-800 mx-1.5"
-            >
-              1
-            </button>
-          </li>
-        )}
-
-        {cryptoStoreData.cryptoParams.pageSelected > 3 && (
-          <li>
-            <button
-              onClick={() => setPageSelected(pageSelected - 3)}
-              className="outline-0 hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center mx-1.5 "
-            >
-              ...
-            </button>
-          </li>
-        )}
-        {cryptoStoreData.cryptoParams.pageSelected !== 1 && (
-          <li>
-            <button
+            <button 
+              className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" 
               onClick={prev}
-              className="outline-0 hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center bg-zinc-300 dark:bg-zinc-800 mx-1.5"
+              disabled={cryptoStoreData.cryptoParams.pageSelected === 1}
+              aria-label="Previous page"
             >
-              {cryptoStoreData.cryptoParams.pageSelected - 1}
+              <ChevronLeft className="w-5 h-5" />
             </button>
           </li>
-        )}
-        <li>
-          <button
-            disabled
-            className="outline-0 hover:text-blue-100 dark:hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center bg-blue-400 dark:bg-blue-700 mx-1.5 "
-          >
-            {cryptoStoreData.cryptoParams.pageSelected}
-          </button>
-        </li>
 
-        {cryptoStoreData.cryptoParams.pageSelected !== TotalPages && (
+          {cryptoStoreData.cryptoParams.pageSelected > 2 && (
+            <li>
+              <button
+                onClick={() => {
+                  cryptoStoreData.cryptoParams.pageSelected = 1;
+                  cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
+                }}
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+                aria-label="Go to page 1"
+              >
+                1
+              </button>
+            </li>
+          )}
+
+          {cryptoStoreData.cryptoParams.pageSelected > 3 && (
+            <li>
+              <button
+                onClick={() => {
+                  cryptoStoreData.cryptoParams.pageSelected = cryptoStoreData.cryptoParams.pageSelected - 3;
+                  cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
+                }}
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+                aria-label="Go to previous pages"
+              >
+                ...
+              </button>
+            </li>
+          )}
+          
+          {cryptoStoreData.cryptoParams.pageSelected !== 1 && (
+            <li>
+              <button
+                onClick={prev}
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+                aria-label={`Go to page ${cryptoStoreData.cryptoParams.pageSelected - 1}`}
+              >
+                {cryptoStoreData.cryptoParams.pageSelected - 1}
+              </button>
+            </li>
+          )}
+          
           <li>
             <button
-              onClick={next}
-              className="outline-0  dark:hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center bg-zinc-300 hover:bg-zinc-400  dark:bg-zinc-800 mx-1.5"
+              disabled
+              className="flex items-center justify-center w-10 h-10 rounded-lg bg-primary-500 text-white font-medium transition-colors duration-200"
+              aria-label={`Current page, page ${cryptoStoreData.cryptoParams.pageSelected}`}
+              aria-current="page"
             >
-              {cryptoStoreData.cryptoParams.pageSelected + 1}
+              {cryptoStoreData.cryptoParams.pageSelected}
             </button>
           </li>
-        )}
 
-        {cryptoStoreData.cryptoParams.pageSelected < TotalPages - 2 && (
-          <li>
-            <button
-              onClick={() => setPageSelected(pageSelected + 3)}
-              className="outline-0 font-bold dark:font-normal dark:hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center mx-1.5 "
-            >
-              ...
-            </button>
-          </li>
-        )}
+          {cryptoStoreData.cryptoParams.pageSelected !== TotalPages && (
+            <li>
+              <button
+                onClick={next}
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+                aria-label={`Go to page ${cryptoStoreData.cryptoParams.pageSelected + 1}`}
+              >
+                {cryptoStoreData.cryptoParams.pageSelected + 1}
+              </button>
+            </li>
+          )}
+
+          {cryptoStoreData.cryptoParams.pageSelected < TotalPages - 2 && (
+            <li>
+              <button
+                onClick={() => {
+                  cryptoStoreData.cryptoParams.pageSelected = cryptoStoreData.cryptoParams.pageSelected + 3;
+                  cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
+                }}
+                className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+                aria-label="Go to next pages"
+              >
+                ...
+              </button>
+            </li>
+          )}
 
         {cryptoStoreData.cryptoParams.pageSelected < TotalPages - 1 && (
           <li>
             <button
-              onClick={() => setPageSelected(TotalPages)}
-              className="outline-0  dark:hover:text-blue-500 rounded-full w-8 h-8 flex items-center justify-center bg-zinc-300 hover:bg-zinc-400  dark:bg-zinc-800 mx-1.5"
+              onClick={() => {
+                cryptoStoreData.cryptoParams.pageSelected = TotalPages;
+                cryptoStoreData.updateCryptoParams(cryptoStoreData.cryptoParams);
+              }}
+              className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200"
+              aria-label={`Go to last page, page ${TotalPages}`}
             >
               {TotalPages}
             </button>
@@ -112,11 +140,17 @@ export default function Pagination() {
         )}
 
         <li>
-          <button className="outline-0  w-8" onClick={next}>
-            <ArrowRightCircle className="text-blue-400 hover:text-blue-500 dark:text-blue-700 dark:hover:text-blue-500" />
+          <button 
+            className="flex items-center justify-center w-10 h-10 rounded-lg text-dark-300 dark:text-light-400 hover:bg-light-300 dark:hover:bg-dark-400 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed" 
+            onClick={next}
+            disabled={cryptoStoreData.cryptoParams.pageSelected === TotalPages}
+            aria-label="Next page"
+          >
+            <ChevronRight className="w-5 h-5" />
           </button>
         </li>
       </ul>
+      </nav>
     </div>
   );
 }

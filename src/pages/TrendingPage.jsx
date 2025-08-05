@@ -6,14 +6,14 @@ export default function TrendingPage() {
   return (
     <>
       <Helmet>
-        <title>MiCoin - Trending</title>
+        <title>MiCoin - Tendências</title>
         <meta
           name="description"
-          content="Discover the hottest trends in the cryptocurrency market on MiCoin. Stay updated with real-time data on trending digital assets, price movements, and market sentiment. Explore the latest insights and identify emerging opportunities in the dynamic world of crypto. Start exploring the trends today and stay ahead of the curve."
+          content="Descubra as tendências mais quentes do mercado de criptomoedas no MiCoin. Mantenha-se atualizado com dados em tempo real sobre ativos digitais em alta, movimentos de preços e sentimento do mercado. Explore os insights mais recentes e identifique oportunidades emergentes no mundo dinâmico das criptos. Comece a explorar as tendências hoje e fique à frente da curva."
         ></meta>
         <meta
           name="keywords"
-          content="cryptocurrency trends, trending cryptocurrencies, crypto market trends, digital asset trends, cryptocurrency price movements, market sentiment, crypto insights"
+          content="tendências de criptomoedas, criptomoedas em alta, tendências do mercado crypto, tendências de ativos digitais, movimentos de preços de criptomoedas, sentimento do mercado, insights crypto"
         ></meta>
         <meta name="author" content="MiCoin" />
       </Helmet>

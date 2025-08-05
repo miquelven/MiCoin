@@ -31,49 +31,63 @@ export default function InputArea() {
     useGetSearch(inputSearch);
 
   return (
-    <div className="relative flex">
-      <>
-        <form className="w-96 relative flex items-center ml-7 max-sm:ml-0 max-sm:w-72 max-[380px]:w-60 z-50">
+    <div className="relative">
+      <form className="relative w-full max-w-md max-sm:max-w-xs">
+        <div className="relative">
           <input
             type="text"
             onChange={handleText}
             name="search"
-            className="w-full rounded bg-zinc-300 placeholder-text-zinc-200 dark:bg-zinc-900 dark:placeholder:text-zinc-600 pl-2 required outline-0 border-2 border-transparent focus:border-zinc-400 dark:focus:border-blue-400 "
-            placeholder="Search"
+            className="w-full h-10 pl-4 pr-12 rounded-lg bg-white dark:bg-dark-400 placeholder:text-dark-400 dark:placeholder:text-light-500 border border-light-400 dark:border-dark-500 focus:border-primary-500 dark:focus:border-primary-400 outline-none transition-colors duration-200"
+            placeholder="Search cryptocurrency..."
             value={inputText ? inputSearch : ""}
           />
-          <button type="submit" className="absolute right-2 cursor-pointer">
-            <Search className="w-7 text-zinc-400" />
+          <button 
+            type="submit" 
+            className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer p-1 rounded-md hover:bg-light-300 dark:hover:bg-dark-300 transition-colors duration-200"
+          >
+            <Search className="w-5 h-5 text-primary-600 dark:text-primary-400" />
           </button>
-        </form>
+        </div>
 
-        {inputText.length > 0 && showResults == true ? (
-          <ul className="absolute top-11 right-0 w-96 h-96 rounded overflow-x-hidden py-2 bg-zinc-200 dark:bg-zinc-800 backdrop-blur-md scrollbar-thin  dark:scrollbar-thumb-zinc-700 dark:scrollbar-track-zinc-900 z-[90]">
+        {inputText.length > 0 && showResults === true && (
+          <ul className="absolute top-12 left-0 right-0 max-h-80 overflow-y-auto rounded-lg shadow-card bg-white dark:bg-dark-400 backdrop-blur-md scrollbar-thin scrollbar-thumb-light-400 scrollbar-track-light-200 dark:scrollbar-thumb-dark-300 dark:scrollbar-track-dark-500 z-50">
             {!searchDataLoading && searchData ? (
-              searchData.map((data) => {
-                return (
+              searchData.length > 0 ? (
+                searchData.map((data) => (
                   <li
                     key={data.id}
-                    className="flex transition-all duration-500 items-center pl-4 py-2 cursor-pointer hover:dark:bg-zinc-700"
+                    className="flex items-center gap-3 px-4 py-3 cursor-pointer hover:bg-light-200 dark:hover:bg-dark-300 transition-colors duration-200 border-b border-light-300 dark:border-dark-500 last:border-0"
                     onClick={() => selectedCoin(data.id)}
                   >
-                    <img src={data.thumb} alt={data.name} />
-                    <span className="ml-4 ">{data.name}</span>
+                    <img 
+                      src={data.thumb} 
+                      alt={data.name} 
+                      className="w-6 h-6 rounded-full"
+                    />
+                    <div className="flex flex-col">
+                      <span className="font-medium text-dark-100 dark:text-light-100">{data.name}</span>
+                      <span className="text-xs text-dark-400 dark:text-light-500 uppercase">{data.symbol}</span>
+                    </div>
                   </li>
-                );
-              })
+                ))
+              ) : (
+                <li className="px-4 py-3 text-center text-dark-300 dark:text-light-400">
+                  No results found
+                </li>
+              )
             ) : (
-              <div className="w-full h-full flex justify-center items-center ">
+              <div className="w-full py-8 flex flex-col justify-center items-center gap-2">
                 <div
-                  className="w-8 h-8 border-4 border-blue-600 rounded-full border-b-transparent animate-spin"
+                  className="w-6 h-6 border-3 border-primary-600 dark:border-primary-400 rounded-full border-b-transparent animate-spin"
                   role="status"
                 ></div>
-                <span className="ml-2">Searching...</span>
+                <span className="text-dark-300 dark:text-light-400">Searching...</span>
               </div>
             )}
           </ul>
-        ) : null}
-      </>
+        )}
+      </form>
     </div>
   );
 }
