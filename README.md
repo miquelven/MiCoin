@@ -20,29 +20,30 @@ O **MiCoin** é uma aplicação web moderna e responsiva desenvolvida para o mon
 
 Fornecer uma plataforma centralizada e fácil de usar para investidores e entusiastas de criptomoedas acompanharem o mercado digital com dados precisos e atualizados.
 
-
-
-
 ## 🚀 Funcionalidades Principais
 
 ### 📊 Dashboard Completo
+
 - **Listagem de Criptomoedas**: Visualize mais de 10.000 criptomoedas com dados em tempo real
 - **Pesquisa Avançada**: Encontre rapidamente qualquer criptomoeda por nome ou símbolo
 - **Filtros e Ordenação**: Organize dados por preço, capitalização de mercado, volume e variação
 - **Paginação Inteligente**: Navegue facilmente através de grandes volumes de dados
 
 ### 📈 Análise Detalhada
+
 - **Modal de Detalhes**: Informações completas sobre cada criptomoeda
 - **Gráficos Interativos**: Visualize histórico de preços com diferentes períodos (7d, 14d, 30d)
 - **Métricas Avançadas**: Cap. de mercado, volume de negociação, fornecimento circulante
 - **Indicadores de Sentimento**: Análise de sentimento do mercado
 
 ### ⭐ Gestão de Favoritos
+
 - **Lista Personalizada**: Adicione suas criptomoedas favoritas
 - **Monitoramento Rápido**: Acesso rápido aos seus ativos preferidos
 - **Sincronização Local**: Dados salvos no navegador
 
 ### 🎨 Interface e Experiência
+
 - **Design Responsivo**: Funciona perfeitamente em desktop, tablet e mobile
 - **Tema Escuro/Claro**: Alternância entre temas para melhor experiência
 - **Animações Suaves**: Transições e efeitos visuais elegantes
@@ -51,31 +52,34 @@ Fornecer uma plataforma centralizada e fácil de usar para investidores e entusi
 ## 🛠️ Tecnologias e Ferramentas
 
 ### Frontend
+
 - **[React 18.2.0](https://reactjs.org/)** - Biblioteca para construção de interfaces
 - **[Vite 5.1.0](https://vitejs.dev/)** - Build tool e dev server ultra-rápido
 - **[Tailwind CSS 3.4.1](https://tailwindcss.com/)** - Framework CSS utility-first
 - **[React Router DOM 6.22.0](https://reactrouter.com/)** - Roteamento para aplicações React
 
 ### Gerenciamento de Estado
+
 - **[Zustand 4.5.2](https://github.com/pmndrs/zustand)** - Gerenciamento de estado leve e flexível
 - **[React Query 5.32.1](https://tanstack.com/query)** - Gerenciamento de estado do servidor
 
 ### Formulários e Validação
+
 - **[React Hook Form 7.50.1](https://react-hook-form.com/)** - Formulários performáticos
 - **[Zod 3.22.4](https://zod.dev/)** - Validação de esquemas TypeScript-first
 - **[@hookform/resolvers 3.3.4](https://github.com/react-hook-form/resolvers)** - Resolvers para validação
 
 ### UI e Experiência
+
 - **[Lucide React 0.330.0](https://lucide.dev/)** - Ícones SVG modernos
 - **[Recharts 2.12.0](https://recharts.org/)** - Biblioteca de gráficos para React
 - **[React Toastify 10.0.4](https://fkhadra.github.io/react-toastify/)** - Notificações elegantes
 - **[AOS 2.3.4](https://michalsnik.github.io/aos/)** - Animações on scroll
 
 ### Utilitários
+
 - **[Lodash 4.17.21](https://lodash.com/)** - Biblioteca de utilitários JavaScript
 - **[@uidotdev/usehooks 2.4.1](https://usehooks.com/)** - Hooks customizados para React
-
-
 
 ## 📁 Estrutura do Projeto
 
@@ -120,7 +124,6 @@ O MiCoin utiliza a **[CoinGecko API](https://www.coingecko.com/en/api)** para ob
 
 > ⚠️ **Limitação**: A API possui limite de requisições. Em caso de muitas consultas simultâneas, algumas funcionalidades podem ter delay.
 
-
 ## ⚡ Performance e Otimizações
 
 - **Cache Inteligente**: Implementação de cache para reduzir requisições desnecessárias
@@ -142,16 +145,19 @@ Antes de começar, certifique-se de ter instalado:
 ### Passo a Passo
 
 1. **Clone o repositório**
+
    ```bash
    git clone https://github.com/miquelven/MiCoin.git
    ```
 
 2. **Navegue até o diretório**
+
    ```bash
    cd MiCoin
    ```
 
 3. **Instale as dependências**
+
    ```bash
    npm install
    # ou
@@ -159,6 +165,7 @@ Antes de começar, certifique-se de ter instalado:
    ```
 
 4. **Inicie o servidor de desenvolvimento**
+
    ```bash
    npm run dev
    # ou
@@ -166,7 +173,7 @@ Antes de começar, certifique-se de ter instalado:
    ```
 
 5. **Acesse a aplicação**
-   
+
    Abra seu navegador e acesse: [http://localhost:5173](http://localhost:5173)
 
 ### Scripts Disponíveis
@@ -214,23 +221,3 @@ Contribuições são sempre bem-vindas! Existem várias formas de contribuir com
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👨‍💻 Autor
-
-**Miquel Ventura**
-- GitHub: [@miquelven](https://github.com/miquelven)
-- LinkedIn: [Miquel Ventura](https://linkedin.com/in/miquelven)
-
-## 🙏 Agradecimentos
-
-- [CoinGecko](https://www.coingecko.com/) pela API gratuita e confiável
-- [React](https://reactjs.org/) pela excelente biblioteca
-- [Tailwind CSS](https://tailwindcss.com/) pelo framework CSS incrível
-- Comunidade open source por todas as bibliotecas utilizadas
-
----
-
-<div align="center">
-  <p>⭐ Se este projeto te ajudou, considere dar uma estrela!</p>
-  <p>Feito com ❤️ por <a href="https://github.com/miquelven">Miquel Ventura</a></p>
-</div>
